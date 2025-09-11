@@ -41,14 +41,42 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
   });
 
   const updatePreview = (colorType: string, color: string) => {
+    const root = document.documentElement;
     if (colorType === 'primary') {
-      document.documentElement.style.setProperty('--custom-primary', color);
-      document.documentElement.style.setProperty('--custom-primary-hover', generateHoverColor(color));
+      root.style.setProperty('--custom-primary', color);
+      root.style.setProperty('--custom-primary-hover', generateHoverColor(color));
+      // Update CSS variables for the public menu theme
+      root.style.setProperty('--primary', `${hexToHsl(color).h} ${hexToHsl(color).s}% ${hexToHsl(color).l}%`);
     } else if (colorType === 'secondary') {
-      document.documentElement.style.setProperty('--custom-secondary', color);
+      root.style.setProperty('--custom-secondary', color);
+      root.style.setProperty('--secondary', `${hexToHsl(color).h} ${hexToHsl(color).s}% ${hexToHsl(color).l}%`);
     } else if (colorType === 'accent') {
-      document.documentElement.style.setProperty('--custom-accent', color);
+      root.style.setProperty('--custom-accent', color);
+      root.style.setProperty('--accent', `${hexToHsl(color).h} ${hexToHsl(color).s}% ${hexToHsl(color).l}%`);
     }
+  };
+
+  const hexToHsl = (hex: string) => {
+    const r = parseInt(hex.slice(1, 3), 16) / 255;
+    const g = parseInt(hex.slice(3, 5), 16) / 255;
+    const b = parseInt(hex.slice(5, 7), 16) / 255;
+
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h = 0, s = 0, l = (max + min) / 2;
+
+    if (max !== min) {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+
+    return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
   };
 
   const handleColorChange = (colorType: 'primary' | 'secondary' | 'accent', color: string) => {

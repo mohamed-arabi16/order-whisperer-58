@@ -82,7 +82,7 @@ export const StickyNavigation: React.FC<StickyNavigationProps> = ({
         {/* Category Chips - Scrollable */}
         <div 
           ref={categoryTabsRef}
-          className="flex overflow-x-auto snap-x gap-3 px-1 -mx-1 scrollbar-hide"
+          className="flex overflow-x-auto snap-x gap-3 px-4 pb-1 -mb-1 scrollbar-hide"
           style={{ 
             scrollbarWidth: 'none', 
             msOverflowStyle: 'none',

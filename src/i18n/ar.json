@@ -135,11 +135,42 @@
   },
   "restaurant": {
     "dashboardTitle": "مطعم {{restaurantName}}",
-    "welcome": "مرحباً {{userName}} - لوحة تحكم المطعم",
+    "welcome": "مرحباً {{userName}} - لوحة تحكم المطعم", 
     "noTenant": {
       "welcome": "مرحباً {{name}}",
       "description": "لم يتم العثور على حساب مطعم مرتبط بهذا المستخدم",
       "contactAdmin": "يرجى التواصل مع المدير العام لإعداد حساب المطعم"
+    },
+    "profile": {
+      "title": "ملف المطعم",
+      "name": "اسم المطعم",
+      "namePlaceholder": "أدخل اسم المطعم",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "+1234567890",
+      "address": "العنوان",
+      "addressPlaceholder": "عنوان المطعم",
+      "description": "الوصف",
+      "descriptionPlaceholder": "وصف مختصر عن مطعمك",
+      "menuSlug": "رابط القائمة",
+      "saveChanges": "حفظ التغييرات",
+      "updating": "جاري التحديث...",
+      "updateSuccess": "تم تحديث الملف",
+      "updateSuccessDescription": "تم تحديث ملف المطعم بنجاح",
+      "updateError": "فشل التحديث",
+      "updateErrorDescription": "فشل في تحديث ملف المطعم"
+    },
+    "theme": {
+      "title": "تخصيص الألوان",
+      "primaryColor": "اللون الأساسي",
+      "secondaryColor": "اللون الثانوي",
+      "accentColor": "لون التمييز",
+      "resetToDefault": "إعادة تعيين افتراضي",
+      "saveChanges": "حفظ الألوان",
+      "updating": "جاري التحديث...",
+      "updateSuccess": "تم تحديث الألوان",
+      "updateSuccessDescription": "تم تحديث ألوان المظهر بنجاح",
+      "updateError": "فشل التحديث",
+      "updateErrorDescription": "فشل في تحديث ألوان المظهر"
     },
     "infoCard": {
       "title": "معلومات المطعم",

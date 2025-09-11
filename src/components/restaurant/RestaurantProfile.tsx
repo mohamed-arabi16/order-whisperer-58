@@ -28,11 +28,17 @@ interface RestaurantProfileProps {
 const generateSlugFromName = (name: string): string => {
   return name
     .toLowerCase()
-    .replace(/[^a-z0-9\u0600-\u06FF\s-]/g, '') // Allow Arabic characters
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
-    .substring(0, 50);
+    .trim()
+    .replace(/[^a-z0-9\u0600-\u06FF\s-]/g, '') // Allow Arabic characters and basic chars
+    .replace(/[\u0600-\u06FF]+/g, (match) => 
+      // Replace Arabic text with transliteration or simplified version
+      match.replace(/\u0627/g, 'a').replace(/\u0628/g, 'b').replace(/\u062A/g, 't') || 'restaurant'
+    )
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+    .replace(/^-|-$/g, '') // Remove leading/trailing hyphens
+    .substring(0, 50) // Limit length
+    || 'restaurant-menu'; // Fallback if empty
 };
 
 export const RestaurantProfile: React.FC<RestaurantProfileProps> = ({

@@ -143,6 +143,12 @@ const RestaurantDashboard = (): JSX.Element => {
     };
   }, [tenant, supabase, toast, t]);
 
+  const handleTenantUpdate = (updatedTenant: Partial<Tenant>) => {
+    if (tenant) {
+      setTenant({ ...tenant, ...updatedTenant });
+    }
+  };
+
   const copyToClipboard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
@@ -389,7 +395,7 @@ const RestaurantDashboard = (): JSX.Element => {
 
         {/* Getting Started Guide / Feedback / Profile / Theme */}
         <Tabs defaultValue="getting-started">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-4" dir={isRTL ? 'rtl' : 'ltr'}>
             <TabsTrigger value="getting-started">{t('restaurant.gettingStarted.title')}</TabsTrigger>
             <TabsTrigger value="feedback">{t('restaurant.feedback.title')}</TabsTrigger>
             <TabsTrigger value="profile">{t('restaurant.profile.title')}</TabsTrigger>
@@ -406,37 +412,37 @@ const RestaurantDashboard = (): JSX.Element => {
           <CardContent>
             <div className="space-y-4" dir={isRTL ? 'rtl' : 'ltr'}>
               <div className={`flex items-start gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <div className={`w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold ${isRTL ? 'order-2' : ''}`}>
+                <div className={`w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
                   {isRTL ? '١' : '1'}
                 </div>
-                <div className={`${isRTL ? 'order-1 text-right' : ''}`}>
+                <div className={`${isRTL ? 'order-1 text-right' : ''} flex-grow`}>
                   <h4 className="font-medium">{t('restaurant.gettingStarted.step1.title')}</h4>
                   <p className="text-sm text-muted-foreground">{t('restaurant.gettingStarted.step1.description')}</p>
                 </div>
               </div>
               <div className={`flex items-start gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <div className={`w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold ${isRTL ? 'order-2' : ''}`}>
+                <div className={`w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
                   {isRTL ? '٢' : '2'}
                 </div>
-                <div className={`${isRTL ? 'order-1 text-right' : ''}`}>
+                <div className={`${isRTL ? 'order-1 text-right' : ''} flex-grow`}>
                   <h4 className="font-medium">{t('restaurant.gettingStarted.step2.title')}</h4>
                   <p className="text-sm text-muted-foreground">{t('restaurant.gettingStarted.step2.description')}</p>
                 </div>
               </div>
               <div className={`flex items-start gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <div className={`w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold ${isRTL ? 'order-2' : ''}`}>
+                <div className={`w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
                   {isRTL ? '٣' : '3'}
                 </div>
-                <div className={`${isRTL ? 'order-1 text-right' : ''}`}>
+                <div className={`${isRTL ? 'order-1 text-right' : ''} flex-grow`}>
                   <h4 className="font-medium">{t('restaurant.gettingStarted.step3.title')}</h4>
                   <p className="text-sm text-muted-foreground">{t('restaurant.gettingStarted.step3.description')}</p>
                 </div>
               </div>
               <div className={`flex items-start gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <div className={`w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold ${isRTL ? 'order-2' : ''}`}>
+                <div className={`w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
                   {isRTL ? '٤' : '4'}
                 </div>
-                <div className={`${isRTL ? 'order-1 text-right' : ''}`}>
+                <div className={`${isRTL ? 'order-1 text-right' : ''} flex-grow`}>
                   <h4 className="font-medium">{t('restaurant.gettingStarted.step4.title')}</h4>
                   <p className="text-sm text-muted-foreground">{t('restaurant.gettingStarted.step4.description')}</p>
                 </div>
@@ -500,13 +506,13 @@ const RestaurantDashboard = (): JSX.Element => {
           <TabsContent value="profile">
             <RestaurantProfile 
               tenant={tenant} 
-              onUpdate={(updatedTenant) => setTenant(updatedTenant)}
+              onUpdate={handleTenantUpdate}
             />
           </TabsContent>
           <TabsContent value="theme">
             <ThemeCustomizer 
               tenant={tenant} 
-              onUpdate={(colors) => setTenant(prev => ({ ...prev, ...colors }))}
+              onUpdate={handleTenantUpdate}
             />
           </TabsContent>
         </Tabs>

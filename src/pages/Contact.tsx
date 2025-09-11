@@ -177,20 +177,20 @@ const Contact = (): JSX.Element => {
               <CardHeader>
                 <CardTitle>Our Information</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <Mail className="h-6 w-6 text-primary" />
-                  <span>contact@example.com</span>
+              <CardContent className={`space-y-4 ${isRTL ? 'text-right' : ''}`}>
+                <div className={`flex items-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <Mail className="h-6 w-6 text-primary flex-shrink-0" />
+                  <span>mohamed.arabi16@icloud.com</span>
                 </div>
-                <div className="flex items-center space-x-4">
-                  <Phone className="h-6 w-6 text-primary" />
-                  <span>+1 (555) 123-4567</span>
+                <div className={`flex items-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <Phone className="h-6 w-6 text-primary flex-shrink-0" />
+                  <span dir="ltr">+905380130948</span>
                 </div>
-                <div className="flex items-center space-x-4">
-                  <MapPin className="h-6 w-6 text-primary" />
-                  <span>123 Main St, Anytown, USA</span>
+                <div className={`flex items-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <MapPin className="h-6 w-6 text-primary flex-shrink-0" />
+                  <span>Istanbul, Turkey</span>
                 </div>
-                <div className="flex space-x-4 pt-4">
+                <div className={`flex gap-4 pt-4 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
                   <a href="#" className="text-muted-foreground hover:text-primary">
                     <Twitter />
                   </a>

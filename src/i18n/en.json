@@ -162,6 +162,37 @@
       "description": "No restaurant account associated with this user was found",
       "contactAdmin": "Please contact the general manager to set up the restaurant account"
     },
+    "profile": {
+      "title": "Restaurant Profile",
+      "name": "Restaurant Name",
+      "namePlaceholder": "Enter restaurant name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+1234567890",
+      "address": "Address",
+      "addressPlaceholder": "Restaurant address",
+      "description": "Description",
+      "descriptionPlaceholder": "Brief description of your restaurant",
+      "menuSlug": "Menu URL Slug",
+      "saveChanges": "Save Changes",
+      "updating": "Updating...",
+      "updateSuccess": "Profile Updated",
+      "updateSuccessDescription": "Restaurant profile updated successfully",
+      "updateError": "Update Failed",
+      "updateErrorDescription": "Failed to update restaurant profile"
+    },
+    "theme": {
+      "title": "Theme Customization",
+      "primaryColor": "Primary Color",
+      "secondaryColor": "Secondary Color", 
+      "accentColor": "Accent Color",
+      "resetToDefault": "Reset to Default",
+      "saveChanges": "Save Theme",
+      "updating": "Updating...",
+      "updateSuccess": "Theme Updated",
+      "updateSuccessDescription": "Theme colors updated successfully",
+      "updateError": "Update Failed",
+      "updateErrorDescription": "Failed to update theme colors"
+    },
     "infoCard": {
       "title": "Restaurant Information",
       "name": "Restaurant Name",

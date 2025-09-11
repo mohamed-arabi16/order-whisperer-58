@@ -213,13 +213,27 @@
     color: rgb(var(--primary));
   }
 
-  /* Hide scrollbar for webkit browsers */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+/* Hide scrollbars for webkit browsers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide horizontal scrollbars */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 0px;
+  background: transparent;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: transparent;
+}
 }
