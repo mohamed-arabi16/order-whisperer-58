@@ -11,6 +11,7 @@ interface TranslationContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string, variables?: Record<string, string | number>) => string;
+  t_array: (key: string) => string[];
   isRTL: boolean;
 }
 
@@ -115,11 +116,39 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({
     return result;
   };
 
+  const t_array = (key: string): string[] => {
+    const keys = key.split(".");
+    let value: any = translations[language];
+
+    for (const k of keys) {
+      if (value && typeof value === "object" && k in value) {
+        value = value[k];
+      } else {
+        // Fallback to English
+        value = translations.en;
+        for (const fallbackKey of keys) {
+            if (value && typeof value === 'object' && fallbackKey in value) {
+                value = value[fallbackKey];
+            } else {
+                return []; // Return empty array if not found
+            }
+        }
+        break;
+      }
+    }
+
+    if (Array.isArray(value)) {
+      return value;
+    }
+
+    return []; // Return empty array if not an array
+  };
+
   const isRTL = language === "ar";
 
   return (
     <TranslationContext.Provider
-      value={{ language, setLanguage: handleSetLanguage, t, isRTL }}
+      value={{ language, setLanguage: handleSetLanguage, t, t_array, isRTL }}
     >
       {children}
     </TranslationContext.Provider>
