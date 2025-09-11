@@ -53,19 +53,19 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
     >
       <Card className="group overflow-hidden rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 bg-card border-0 h-full">
         <CardContent className="p-0 h-full flex flex-col">
-          {/* Image Section - 4:3 aspect ratio */}
-          <div className="relative aspect-[4/3] w-full">
+          {/* Image Section - Fixed 4:3 aspect ratio */}
+          <div className="relative w-full h-32 sm:h-40 bg-muted rounded-t-2xl overflow-hidden">
             {item.image_url ? (
               <LazyLoadImage
                 src={item.image_url}
                 alt={item.name}
-                className="w-full h-full object-cover rounded-t-2xl group-hover:scale-105 transition-transform duration-500 cursor-pointer"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer"
                 effect="blur"
                 onClick={onViewDetails}
               />
             ) : (
               <div 
-                className="w-full h-full flex items-center justify-center bg-muted rounded-t-2xl cursor-pointer"
+                className="w-full h-full flex items-center justify-center bg-muted cursor-pointer"
                 onClick={onViewDetails}
               >
                 <Utensils className="w-8 h-8 text-muted-foreground" />

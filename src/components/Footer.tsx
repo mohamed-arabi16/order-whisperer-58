@@ -8,7 +8,7 @@ const Footer = (): JSX.Element => {
   const { t, isRTL } = useTranslation();
 
   return (
-    <footer className="gradient-hero text-primary-foreground py-12 px-4" dir={isRTL ? "rtl" : "ltr"}>
+    <footer className="bg-primary text-primary-foreground py-12 px-4" dir={isRTL ? "rtl" : "ltr"}>
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>

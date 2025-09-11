@@ -116,12 +116,8 @@ export const generateWhatsAppMessage = (data: WhatsAppMessageData): string => {
   }
   
   if (data.orderNotes) {
-    message += `ملاحظات إضافية: ${data.orderNotes}\n`;
+    message += `ملاحظات إضافية: ${data.orderNotes}`;
   }
-  
-  message += `معرّف السلة: ${data.cartId}\n`;
-  message += `التاريخ/الوقت: ${timestamp}\n`;
-  message += `وقت الإرسال: ${displayTime}`;
 
   return message;
 };

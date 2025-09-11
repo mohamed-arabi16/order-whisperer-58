@@ -82,8 +82,11 @@ export const StickyNavigation: React.FC<StickyNavigationProps> = ({
         {/* Category Chips - Scrollable */}
         <div 
           ref={categoryTabsRef}
-          className="flex overflow-x-auto snap-x scrollbar-hide gap-3 pb-1"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          className="flex overflow-x-auto snap-x gap-3 px-1 -mx-1 scrollbar-hide"
+          style={{ 
+            scrollbarWidth: 'none', 
+            msOverflowStyle: 'none',
+          }}
         >
           {categories.map((category) => {
             const isActive = activeCategory === category.id;

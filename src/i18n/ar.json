@@ -628,5 +628,36 @@
     "support": "الدعم",
     "supportText": "احصل على المساعدة في إعداد مطعمك الرقمي.",
     "allRights": "جميع الحقوق محفوظة"
+  },
+  "restaurant": {
+    "profile": {
+      "title": "ملف المطعم",
+      "name": "اسم المطعم",
+      "namePlaceholder": "أدخل اسم المطعم",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "+963 xxx xxx xxx",
+      "address": "العنوان",
+      "addressPlaceholder": "أدخل عنوان المطعم",
+      "description": "الوصف",
+      "descriptionPlaceholder": "وصف مختصر عن مطعمك",
+      "menuSlug": "رابط القائمة",
+      "saveChanges": "حفظ التغييرات",
+      "updateSuccess": "تم تحديث الملف",
+      "updateSuccessDescription": "تم تحديث ملف المطعم بنجاح.",
+      "updateError": "فشل التحديث",
+      "updating": "جاري التحديث..."
+    },
+    "theme": {
+      "title": "تخصيص الألوان",
+      "primaryColor": "اللون الأساسي",
+      "secondaryColor": "اللون الثانوي",
+      "accentColor": "لون التمييز",
+      "resetToDefault": "إعادة تعيين الافتراضي",
+      "saveChanges": "حفظ الألوان",
+      "updateSuccess": "تم تحديث الألوان",
+      "updateSuccessDescription": "تم تحديث ألوان المطعم بنجاح.",
+      "updateError": "فشل تحديث الألوان",
+      "updating": "جاري التحديث..."
+    }
   }
 }

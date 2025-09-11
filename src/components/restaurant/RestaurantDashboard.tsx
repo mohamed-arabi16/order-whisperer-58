@@ -16,6 +16,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { useTranslation } from "@/hooks/useTranslation";
 import RestaurantDashboardSkeleton from "./RestaurantDashboardSkeleton";
+import { RestaurantProfile } from "./RestaurantProfile";
+import { ThemeCustomizer } from "./ThemeCustomizer";
 
 /**
  * Represents a tenant (restaurant) with its details.
@@ -28,6 +30,10 @@ interface Tenant {
   is_active: boolean;
   phone_number?: string;
   address?: string;
+  description?: string;
+  primary_color?: string;
+  secondary_color?: string;
+  accent_color?: string;
 }
 
 /**
@@ -381,11 +387,13 @@ const RestaurantDashboard = (): JSX.Element => {
           </Card>
         </div>
 
-        {/* Getting Started Guide / Feedback */}
+        {/* Getting Started Guide / Feedback / Profile / Theme */}
         <Tabs defaultValue="getting-started">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="getting-started">{t('restaurant.gettingStarted.title')}</TabsTrigger>
             <TabsTrigger value="feedback">{t('restaurant.feedback.title')}</TabsTrigger>
+            <TabsTrigger value="profile">{t('restaurant.profile.title')}</TabsTrigger>
+            <TabsTrigger value="theme">{t('restaurant.theme.title')}</TabsTrigger>
           </TabsList>
           <TabsContent value="getting-started">
             <Card className="shadow-card border-primary/20">
@@ -488,6 +496,18 @@ const RestaurantDashboard = (): JSX.Element => {
                 )}
               </CardContent>
             </Card>
+          </TabsContent>
+          <TabsContent value="profile">
+            <RestaurantProfile 
+              tenant={tenant} 
+              onUpdate={(updatedTenant) => setTenant(updatedTenant)}
+            />
+          </TabsContent>
+          <TabsContent value="theme">
+            <ThemeCustomizer 
+              tenant={tenant} 
+              onUpdate={(colors) => setTenant(prev => ({ ...prev, ...colors }))}
+            />
           </TabsContent>
         </Tabs>
       </div>

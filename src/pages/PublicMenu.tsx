@@ -32,6 +32,7 @@ import { StickyNavigation } from "@/components/menu/StickyNavigation";
 import { EnhancedCartBar } from "@/components/menu/EnhancedCartBar";
 import { CartDrawer } from "@/components/menu/CartDrawer";
 import { RestaurantOverview } from "@/components/menu/RestaurantOverview";
+import { RestaurantOSPromo } from "@/components/branding/RestaurantOSPromo";
 
 interface Tenant {
   id: string;
@@ -45,6 +46,7 @@ interface Tenant {
   description: string | null;
   delivery_fee?: number;
   branch_name?: string | null;
+  subscription_plan?: string;
   social_media_links: {
     facebook?: string;
     instagram?: string;
@@ -483,6 +485,12 @@ const PublicMenu = (): JSX.Element => {
         restaurantName={tenant.name}
         deliveryFee={tenant.delivery_fee || 0}
         isProcessingOrder={isProcessingOrder}
+      />
+
+      {/* RestaurantOS Promo for Free/Starter Plans */}
+      <RestaurantOSPromo 
+        plan={(tenant.subscription_plan as 'free' | 'starter' | 'premium') || 'free'} 
+        className="mb-16"
       />
 
       {/* Item Details Modal */}

@@ -649,5 +649,36 @@
     "support": "Support",
     "supportText": "Get help setting up your digital restaurant.",
     "allRights": "All rights reserved"
+  },
+  "restaurant": {
+    "profile": {
+      "title": "Restaurant Profile",
+      "name": "Restaurant Name",
+      "namePlaceholder": "Enter restaurant name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+963 xxx xxx xxx",
+      "address": "Address",
+      "addressPlaceholder": "Enter restaurant address",
+      "description": "Description",
+      "descriptionPlaceholder": "Brief description about your restaurant",
+      "menuSlug": "Menu URL",
+      "saveChanges": "Save Changes",
+      "updateSuccess": "Profile Updated",
+      "updateSuccessDescription": "Restaurant profile has been updated successfully.",
+      "updateError": "Update Failed",
+      "updating": "Updating..."
+    },
+    "theme": {
+      "title": "Theme Customization",
+      "primaryColor": "Primary Color",
+      "secondaryColor": "Secondary Color", 
+      "accentColor": "Accent Color",
+      "resetToDefault": "Reset to Default",
+      "saveChanges": "Save Theme",
+      "updateSuccess": "Theme Updated",
+      "updateSuccessDescription": "Restaurant theme has been updated successfully.",
+      "updateError": "Theme Update Failed",
+      "updating": "Updating..."
+    }
   }
 }

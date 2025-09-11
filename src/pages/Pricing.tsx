@@ -70,12 +70,12 @@ const Pricing = (): JSX.Element => {
                 </CardHeader>
                 <CardContent className="flex-grow">
                   <ul className="space-y-4">
-                    {Array.isArray(plan.features) ? plan.features.map((feature) => (
-                      <li key={feature} className="flex items-center">
-                        <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
+                    {Array.isArray(plan.features) && plan.features.map((feature, idx) => (
+                      <li key={`${feature}-${idx}`} className="flex items-center">
+                        <Check className={`h-5 w-5 text-primary ${isRTL ? 'ml-2' : 'mr-2'} flex-shrink-0`} />
                         <span className="text-sm">{feature}</span>
                       </li>
-                    )) : null}
+                    ))}
                   </ul>
                 </CardContent>
                 <div className="p-6 pt-0 mt-auto">
