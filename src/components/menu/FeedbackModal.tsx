@@ -107,7 +107,7 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
                   <Star
                     className={`w-8 h-8 ${
                       star <= (hoveredStar || rating)
-                        ? 'fill-yellow-400 text-yellow-400'
+                        ? 'fill-amber-400 text-amber-400'
                         : 'text-muted-foreground'
                     }`}
                   />

@@ -29,6 +29,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { MenuItemCard } from "@/components/menu/MenuItemCard";
 import { StickySearchHeader } from "@/components/menu/StickySearchHeader";
 import { RestaurantBrandingHeader } from "@/components/menu/RestaurantBrandingHeader";
+import { RestaurantFeedbackDisplay } from "@/components/menu/RestaurantFeedbackDisplay";
 import { EnhancedCartBar } from "@/components/menu/EnhancedCartBar";
 import { CartDrawer } from "@/components/menu/CartDrawer";
 import { RestaurantOverview } from "@/components/menu/RestaurantOverview";
@@ -436,6 +437,11 @@ const PublicMenu = (): JSX.Element => {
 
       {/* Restaurant Overview */}
       <RestaurantOverview tenant={tenant} />
+
+      {/* Customer Feedback Display */}
+      <div className="container mx-auto px-4 py-4">
+        <RestaurantFeedbackDisplay tenantId={tenant.id} />
+      </div>
 
       {/* Menu Content - Grid Layout */}
       <div className="container mx-auto px-4 py-0 pb-32">

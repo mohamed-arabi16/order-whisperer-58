@@ -17,7 +17,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { ThemeCustomizer } from "@/components/restaurant/ThemeCustomizer";
+import { EnhancedThemeCustomizer } from "@/components/restaurant/EnhancedThemeCustomizer";
 
 // WCAG AA minimum contrast ratio for normal text
 const MIN_CONTRAST_RATIO = 4.5;
@@ -496,8 +496,8 @@ const RestaurantBranding = (): JSX.Element => {
               </CardContent>
             </Card>
 
-            {/* Theme Customizer - moved from Restaurant Profile */}
-            <ThemeCustomizer
+            {/* Enhanced Theme Customizer - moved from Restaurant Profile */}
+            <EnhancedThemeCustomizer
               tenant={tenant}
               onUpdate={(updatedTenant) => {
                 setTenant(prev => prev ? { ...prev, ...updatedTenant } : null);

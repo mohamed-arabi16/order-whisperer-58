@@ -76,12 +76,16 @@ const Analytics = () => {
             ]);
 
             if (totalViewsError) console.error("Total Views Error:", totalViewsError);
-            if (popularItemsError) console.error("Popular Items Error:", popularItemsError);
+            if (popularItemsError) {
+              console.error("Popular Items Error:", popularItemsError);
+              data.popularItems = [];
+            } else {
+              data.popularItems = popularItems || [];
+            }
             if (salesDataError) console.error("Sales Data Error:", salesDataError);
             if (feedbackError) console.error("Feedback Error:", feedbackError);
 
             data.totalViews = totalViews;
-            data.popularItems = popularItems;
             data.salesData = salesData;
             data.feedback = feedback;
           }
@@ -221,18 +225,27 @@ const Analytics = () => {
                 <CardTitle>{t('analytics.popularItems')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <ChartContainer config={{ total_orders: { label: t('analytics.totalOrders'), color: 'hsl(var(--primary))' } }}>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <BarChart data={analyticsData.popularItems}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip content={<ChartTooltipContent />} />
-                      <Legend />
-                      <Bar dataKey="total_orders" fill="hsl(var(--primary))" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </ChartContainer>
+                {analyticsData.popularItems && analyticsData.popularItems.length > 0 ? (
+                  <ChartContainer config={{ total_orders: { label: t('analytics.totalOrders'), color: 'hsl(var(--primary))' } }}>
+                    <ResponsiveContainer width="100%" height={300}>
+                      <BarChart data={analyticsData.popularItems}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip content={<ChartTooltipContent />} />
+                        <Legend />
+                        <Bar dataKey="total_orders" fill="hsl(var(--primary))" />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </ChartContainer>
+                ) : (
+                  <div className="flex flex-col items-center justify-center h-64 text-center">
+                    <div className="text-muted-foreground">
+                      <p className="text-lg font-medium">{t('analytics.noPopularItems')}</p>
+                      <p className="text-sm mt-2">{t('analytics.noPopularItemsDescription')}</p>
+                    </div>
+                  </div>
+                )}
               </CardContent>
             </Card>
             
