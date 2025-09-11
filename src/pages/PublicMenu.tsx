@@ -27,8 +27,8 @@ import PublicMenuSkeleton from "@/components/menu/PublicMenuSkeleton";
 import { generateHoverColor } from "@/components/branding/RestaurantBranding";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { MenuItemCard } from "@/components/menu/MenuItemCard";
-import PublicMenuHeader from "@/components/menu/PublicMenuHeader";
-import { StickyNavigation } from "@/components/menu/StickyNavigation";
+import { StickySearchHeader } from "@/components/menu/StickySearchHeader";
+import { RestaurantBrandingHeader } from "@/components/menu/RestaurantBrandingHeader";
 import { EnhancedCartBar } from "@/components/menu/EnhancedCartBar";
 import { CartDrawer } from "@/components/menu/CartDrawer";
 import { RestaurantOverview } from "@/components/menu/RestaurantOverview";
@@ -409,11 +409,16 @@ const PublicMenu = (): JSX.Element => {
 
   return (
     <div className="min-h-screen bg-gradient-subtle" dir={isRTL ? 'rtl' : 'ltr'}>
-      {/* Combined Header and Navigation */}
-      <PublicMenuHeader
+      {/* Restaurant Branding Header - Non-sticky */}
+      <RestaurantBrandingHeader
         tenant={tenant}
+        onFeedbackClick={() => setShowFeedback(true)}
+      />
+
+      {/* Sticky Search and Category Navigation */}
+      <StickySearchHeader
         categories={categories}
-        activeCategory={activeCategory}
+        activeCategory={activeCategory || ''}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         onCategorySelect={scrollToCategory}
@@ -465,14 +470,16 @@ const PublicMenu = (): JSX.Element => {
       </div>
 
       {/* Enhanced Cart Bar */}
-      <EnhancedCartBar
-        cart={cart}
-        totalPrice={totalPrice}
-        totalItems={totalItems}
-        onShowCart={() => setShowCart(true)}
-        restaurantName={tenant.name}
-        cartAnimation={cartAnimation}
-      />
+      {totalItems > 0 && (
+        <EnhancedCartBar
+          cart={cart}
+          totalPrice={totalPrice}
+          totalItems={totalItems}
+          onShowCart={() => setShowCart(true)}
+          restaurantName={tenant.name}
+          cartAnimation={cartAnimation}
+        />
+      )}
 
       {/* Enhanced Cart Drawer */}
       <CartDrawer
@@ -490,7 +497,7 @@ const PublicMenu = (): JSX.Element => {
       {/* RestaurantOS Promo for Free/Starter Plans */}
       <RestaurantOSPromo 
         plan={(tenant?.subscription_plan as 'free' | 'starter' | 'premium') || 'free'} 
-        className="fixed bottom-0 left-0 right-0 z-40"
+        className="fixed bottom-0 left-0 right-0 z-10"
       />
 
       {/* Item Details Modal */}

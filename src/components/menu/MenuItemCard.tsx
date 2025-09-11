@@ -110,7 +110,7 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
             {/* Price and Controls - RTL optimized */}
             <div className={`flex items-center justify-between mt-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <span className="text-lg font-bold text-primary">
+              <span className="text-sm font-semibold text-primary">
                 {formatPrice(item.price)}
               </span>
               
