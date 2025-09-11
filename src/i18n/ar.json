@@ -177,7 +177,8 @@
     "unsavedChanges": "تغييرات غير محفوظة",
     "unsavedChangesDescription": "لديك تغييرات غير محفوظة. هل أنت متأكد من أنك تريد المغادرة؟",
     "update": "تحديث",
-    "view": "عرض",
+    "view": "عرض"
+  },
   "header": {
     "analytics": "التحليلات",
     "branding": "الهوية التجارية",
@@ -231,7 +232,7 @@
       "active": "نشط",
       "inactive": "غير نشط",
       "name": "اسم المطعم",
-      "plan": "الخطة الحالية",
+      "plan": "الخطة الحالية", 
       "status": "الحالة",
       "title": "معلومات المطعم"
     },
@@ -407,9 +408,7 @@
     "items": [
       {
         "description": "قطع دجاج مشوية مع الخضار والأرز",
-        "dietary_preferences": [
-          "spicy"
-        ],
+        "dietary_preferences": ["spicy"],
         "id": 1,
         "image": "https://images.unsplash.com/photo-1633945274417-b5a8ac5e2a2a?w=300&h=200&fit=crop",
         "name": "شيش طاووق",
@@ -417,10 +416,7 @@
       },
       {
         "description": "سلطة لبنانية تقليدية مع الخضار الطازجة",
-        "dietary_preferences": [
-          "vegetarian",
-          "gluten-free"
-        ],
+        "dietary_preferences": ["vegetarian", "gluten-free"],
         "id": 2,
         "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=200&fit=crop",
         "name": "فتوش",
@@ -428,9 +424,7 @@
       },
       {
         "description": "حمص كريمي مع طحينة وزيت الزيتون",
-        "dietary_preferences": [
-          "vegetarian"
-        ],
+        "dietary_preferences": ["vegetarian"],
         "id": 3,
         "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=300&h=200&fit=crop",
         "name": "حمص بالطحينة",
@@ -502,6 +496,8 @@
   "publicMenu": {
     "addToCart": "إضافة للسلة",
     "cart": "السلة",
+    "cartItems": "عناصر السلة",
+    "cartTitle": "عربة التسوق",
     "categories": "الفئات",
     "checkLink": "يرجى التحقق من الرابط والمحاولة مرة أخرى",
     "delivery": "توصيل",
@@ -522,12 +518,15 @@
     "restaurantLogo": "شعار المطعم",
     "restaurantNotFound": "المطعم غير موجود",
     "sendOrder": "إرسال الطلب عبر واتساب",
-    "toast.orderSuccess": "تم إرسال الطلب عبر واتساب!"
+    "sendWhatsApp": "إرسال عبر واتساب",
+    "toast.orderSuccess": "تم إرسال الطلب عبر واتساب!",
+    "total": "المجموع",
+    "welcome": "مرحباً بكم"
   },
   "qr": {
     "actions": {
       "download": "تحميل رمز QR",
-      "preview": "معاينة القائمة",
+      "preview": "معاينة القائمة", 
       "print": "طباعة رمز QR",
       "title": "الإجراءات"
     },
@@ -537,16 +536,23 @@
     },
     "copyFailed": "لم يتم نسخ الرابط",
     "copySuccess": "تم نسخ الرابط إلى الحافظة",
+    "customizeColors": "تخصيص الألوان",
     "description": "إنشاء وتحميل رمز QR للمطعم",
+    "download": "تحميل رمز QR",
+    "downloadAll": "تحميل جميع أحجام رمز QR",
+    "downloadInstructions": "تعليمات التحميل",
     "downloadSuccess": "تم تحميل رمز QR بنجاح",
+    "foregroundColor": "لون المقدمة",
+    "generateNewCode": "إنشاء رمز جديد",
     "generationFailed": "فشل إنشاء رمز الاستجابة السريعة",
+    "howToUse": "كيفية الاستخدام",
     "instructions": {
       "step1": {
         "description": "احفظ أو اطبع رمز QR بحجم مناسب (يُفضل 5×5 سم على الأقل)",
         "title": "طباعة الرمز"
       },
       "step2": {
-        "description": "ضع الرمز على طاولات المطعم أو بالقرب من المدخل",
+        "description": "ضع الرمز على طاولات المطعم أو بالقرب من المدخل", 
         "title": "وضع الرمز"
       },
       "step3": {
@@ -580,132 +586,8 @@
       "tip4": "يمكنك إنشاء أحجام مختلفة للاستخدامات المختلفة",
       "title": "نصائح هامة"
     },
-    "title": "رمز QR للقائمة الرقمية"
-  },
-  "restaurant": {
-    "dashboardTitle": "مطعم {{restaurantName}}",
-    "feedback": {
-      "description": "مراجعة تقييمات العملاء وملاحظاتهم",
-      "noFeedback": {
-        "description": "ستظهر تقييمات العملاء هنا عند إرسالها.",
-        "title": "لا توجد تقييمات بعد"
-      },
-      "title": "التقييمات"
-    },
-    "gettingStarted": {
-      "cta": "ابدأ بناء القائمة الآن",
-      "description": "اتبع هذه الخطوات لإعداد قائمة مطعمك الرقمية",
-      "step1": {
-        "description": "ابدأ بإضافة فئات مثل \"المشاوي\" و \"المقبلات\"",
-        "title": "إنشاء فئات القائمة"
-      },
-      "step2": {
-        "description": "أضف الأطباق مع الأسعار والصور والوصف",
-        "title": "إضافة الأصناف"
-      },
-      "step3": {
-        "description": "ارفع شعار المطعم واختر الألوان المناسبة",
-        "title": "تخصيص التصميم"
-      },
-      "step4": {
-        "description": "احصل على رمز QR وضعه على طاولات المطعم",
-        "title": "طباعة رمز QR"
-      },
-      "title": "دليل البدء السريع"
-    },
-    "infoCard": {
-      "address": "العنوان",
-      "name": "اسم المطعم",
-      "phone": "رقم الهاتف",
-      "plan": "خطة الاشتراك",
-      "title": "معلومات المطعم"
-    },
-    "noTenant": {
-      "contactAdmin": "يرجى التواصل مع المدير العام لإعداد حساب المطعم",
-      "description": "لم يتم العثور على حساب مطعم مرتبط بهذا المستخدم",
-      "welcome": "مرحباً {{name}}"
-    },
-    "profile": {
-      "address": "العنوان",
-      "addressPlaceholder": "أدخل عنوان المطعم",
-      "currency": "العملة",
-      "selectCurrency": "اختر العملة",
-      "description": "الوصف",
-      "descriptionPlaceholder": "وصف مختصر عن مطعمك",
-      "menuSlug": "رابط القائمة",
-      "name": "اسم المطعم",
-      "namePlaceholder": "أدخل اسم المطعم",
-      "phone": "رقم الهاتف",
-      "phonePlaceholder": "+963 xxx xxx xxx",
-      "saveChanges": "حفظ التغييرات",
-      "title": "ملف المطعم",
-      "updateError": "فشل التحديث",
-      "updateSuccess": "تم تحديث الملف",
-      "updateSuccessDescription": "تم تحديث ملف المطعم بنجاح.",
-      "updating": "جاري التحديث..."
-    },
-    "quickActions": {
-      "analytics": {
-        "button": "عرض التحليلات",
-        "description": "عرض التقارير وتحليلات المبيعات",
-        "title": "التحليلات"
-      },
-      "branding": {
-        "button": "تخصيص التصميم",
-        "description": "تخصيص ألوان وشعار المطعم",
-        "title": "التصميم والشعار"
-      },
-      "menu": {
-        "button": "بناء القائمة",
-        "description": "إضافة وتعديل الأصناف والفئات",
-        "title": "إدارة القائمة"
-      },
-      "qr": {
-        "button": "إنشاء رمز QR",
-        "description": "تحميل وطباعة رمز QR للقائمة",
-        "title": "رمز QR"
-      }
-    },
-    "shareableLink": {
-      "description": "شارك هذا الرابط مع عملائك لعرض القائمة الرقمية.",
-      "title": "رابط القائمة للمشاركة"
-    },
-    "theme": {
-      "accentColor": "لون التمييز",
-      "primaryColor": "اللون الأساسي",
-      "resetToDefault": "إعادة تعيين افتراضي",
-      "saveChanges": "حفظ الألوان",
-      "secondaryColor": "اللون الثانوي",
-      "title": "تخصيص الألوان",
-      "updateError": "فشل تحديث الألوان",
-      "updateSuccess": "تم تحديث الألوان",
-      "updateSuccessDescription": "تم تحديث ألوان المطعم بنجاح.",
-      "updating": "جاري التحديث..."
-    },
-    "toast": {
-      "copyErrorDescription": "لم يتم نسخ الرابط",
-      "copyErrorTitle": "خطأ",
-      "copySuccessDescription": "تم نسخ الرابط إلى الحافظة",
-      "copySuccessTitle": "تم النسخ",
-      "feedbackErrorDescription": "لا يمكن تحميل التقييمات. يرجى المحاولة مرة أخرى في وقت لاحق.",
-      "feedbackErrorTitle": "خطأ في جلب التقييمات",
-      "noTenantDescription": "لا يوجد مطعم مرتبط بحسابك.",
-      "noTenantTitle": "المطعم غير موجود"
-    },
-    "theme": {
-      "accentColor": "اللون المكمل",
-      "description": "خصص الألوان الأساسية لموقع المطعم",
-      "primaryColor": "اللون الأساسي",
-      "resetToDefault": "إعادة للوضع الافتراضي",
-      "saveChanges": "حفظ التغييرات",
-      "secondaryColor": "اللون الثانوي",
-      "title": "تخصيص الألوان",
-      "updateError": "فشل في تحديث الألوان",
-      "updateSuccess": "تم تحديث الألوان",
-      "updateSuccessDescription": "تم تحديث ألوان المطعم بنجاح.",
-      "updating": "جاري التحديث..."
-    },
-    "welcome": "مرحباً {{userName}} - لوحة تحكم المطعم"
+    "title": "رمز QR للقائمة الرقمية",
+    "yourMenuLink": "رابط القائمة الخاص بك"
   },
   "restaurant": {
     "analytics": "التحليلات",
@@ -832,7 +714,6 @@
         "all": "جميع الخطط",
         "placeholder": "تصفية حسب الخطة"
       },
-      "searchPlaceholder": "ابحث عن طريق اسم المطعم أو المالك ...",
       "status": {
         "active": "نشط",
         "all": "جميع الحالات",
@@ -840,15 +721,8 @@
         "placeholder": "تصفية حسب الحالة"
       }
     },
-    "noTenants": {
-      "description": "ابدأ بإضافة أول مطعم على المنصة",
-      "title": "لا توجد مطاعم مسجلة بعد"
-    },
     "stats": {
-      "activeAccounts": "الحسابات النشطة",
-      "activeCount": "{{count}} نشط",
-      "activityPercentage": "%{{percentage}} نسبة النشاط",
-      "analytics": "عرض التحليلات",
+      "activeRestaurants": "المطاعم النشطة",
       "analyticsDescription": "الغوص في تحليلات المنصة",
       "outOfTotal": "من أصل {{total}} مطعم",
       "paidPlans": "الخطط المدفوعة",
