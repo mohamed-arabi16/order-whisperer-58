@@ -705,7 +705,7 @@
       "updateSuccessDescription": "تم تحديث ألوان المطعم بنجاح.",
       "updating": "جاري التحديث..."
     },
-    "welcome": "مرحباً {{userName}} - لوحة تحكم المطعم"
+    "welcome": "مرحباً {{userName}} - لوحة تحكم المطعم",
   },
   "superAdmin": {
     "filters": {
