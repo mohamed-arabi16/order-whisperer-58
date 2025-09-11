@@ -593,123 +593,118 @@
     "yourMenuLink": "رابط القائمة الخاص بك"
   },
   "restaurant": {
-    "analytics": "التحليلات",
-    "backToDashboard": "العودة إلى لوحة التحكم",
-    "branding": "الهوية التجارية",
-    "dashboard": {
-      "feedbackSection": {
-        "averageRating": "متوسط التقييم",
-        "latestFeedback": "آخر التقييمات",
-        "noFeedback": "لا توجد تقييمات بعد",
-        "totalFeedback": "إجمالي التقييمات"
-      },
-      "gettingStarted": {
-        "step1": {
-          "description": "أضف معلومات المطعم الأساسية مثل الاسم والعنوان ورقم الهاتف",
-          "title": "أكمل ملف المطعم"
-        },
-        "step2": {
-          "description": "اختر الألوان والشعار الذي يمثل هوية مطعمك",
-          "title": "خصص الهوية التجارية"
-        },
-        "step3": {
-          "description": "أنشئ فئات وأضف أصناف القائمة مع الصور والأسعار",
-          "title": "بناء القائمة"
-        },
-        "step4": {
-          "description": "أنشئ رموز QR للطاولات وابدأ استقبال الطلبات",
-          "title": "شارك القائمة"
-        },
-        "title": "البدء السريع"
-      },
-      "infoCard": {
-        "address": "العنوان",
-        "phone": "الهاتف",
-        "plan": "الخطة",
-        "status": "الحالة",
-        "title": "معلومات المطعم"
-      },
-      "menuLink": {
-        "copied": "تم نسخ الرابط!",
-        "copy": "نسخ الرابط",
-        "description": "شارك هذا الرابط مع عملائك لعرض القائمة الرقمية وتلقي الطلبات",
-        "open": "فتح القائمة",
-        "title": "رابط القائمة"
-      },
-      "quickActions": {
-        "analytics": {
-          "description": "عرض إحصائيات المبيعات وتحليل الأداء",
-          "title": "التحليلات"
-        },
-        "branding": {
-          "description": "تخصيص الألوان والشعار والهوية البصرية",
-          "title": "الهوية التجارية"
-        },
-        "menu": {
-          "description": "إضافة وتعديل فئات وأصناف القائمة",
-          "title": "إدارة القائمة"
-        },
-        "qr": {
-          "description": "إنشاء رموز QR للطاولات والمطبوعات",
-          "title": "رموز QR"
-        },
-        "title": "الإجراءات السريعة"
-      },
-      "title": "لوحة تحكم المطعم",
-      "welcome": "مرحباً بك في لوحة تحكم مطعم"
-    },
+    "dashboardTitle": "مطعم {{restaurantName}}",
     "feedback": {
-      "averageRating": "متوسط التقييم",
-      "comment": "تعليقك (اختياري)",
-      "commentPlaceholder": "شاركنا رأيك حول تجربتك...",
-      "error": {
-        "submit": "حدث خطأ أثناء إرسال التقييم",
-        "rating": "يرجى اختيار تقييم"
+      "description": "مراجعة تقييمات العملاء وملاحظاتهم",
+      "noFeedback": {
+        "description": "ستظهر تقييمات العملاء هنا عند إرسالها.",
+        "title": "لا توجد تقييمات بعد"
       },
-      "modal": {
-        "cancel": "إلغاء",
-        "submit": "إرسال التقييم",
-        "submitting": "جاري الإرسال...",
-        "title": "تقييم تجربتك في"
-      },
-      "rating": {
-        "excellent": "ممتاز",
-        "good": "جيد",
-        "great": "رائع",
-        "ok": "مقبول",
-        "poor": "سيء",
-        "required": "تقييمك *"
-      },
-      "success": {
-        "description": "تم إرسال تقييمك بنجاح",
-        "title": "شكراً لك!"
-      }
+      "title": "التقييمات"
     },
-    "manageMenu": "إدارة القائمة",
+    "gettingStarted": {
+      "cta": "ابدأ بناء القائمة الآن",
+      "description": "اتبع هذه الخطوات لإعداد قائمة مطعمك الرقمية",
+      "step1": {
+        "description": "ابدأ بإضافة فئات مثل \"المشاوي\" و \"المقبلات\"",
+        "title": "إنشاء فئات القائمة"
+      },
+      "step2": {
+        "description": "أضف الأطباق مع الأسعار والصور والوصف",
+        "title": "إضافة الأصناف"
+      },
+      "step3": {
+        "description": "ارفع شعار المطعم واختر الألوان المناسبة",
+        "title": "تخصيص التصميم"
+      },
+      "step4": {
+        "description": "احصل على رمز QR وضعه على طاولات المطعم",
+        "title": "طباعة رمز QR"
+      },
+      "title": "دليل البدء السريع"
+    },
+    "infoCard": {
+      "address": "العنوان",
+      "name": "اسم المطعم",
+      "phone": "رقم الهاتف",
+      "plan": "خطة الاشتراك",
+      "title": "معلومات المطعم"
+    },
+    "noTenant": {
+      "contactAdmin": "يرجى التواصل مع المدير العام لإعداد حساب المطعم",
+      "description": "لم يتم العثور على حساب مطعم مرتبط بهذا المستخدم",
+      "welcome": "مرحباً {{name}}"
+    },
     "profile": {
       "address": "العنوان",
       "addressPlaceholder": "أدخل عنوان المطعم",
-      "branchName": "اسم الفرع",
-      "branchNamePlaceholder": "أدخل اسم الفرع (اختياري)",
       "currency": "العملة",
-      "currencyPlaceholder": "اختر العملة",
-      "deliveryFee": "رسوم التوصيل",
-      "deliveryFeePlaceholder": "أدخل رسوم التوصيل",
+      "selectCurrency": "اختر العملة",
       "description": "الوصف",
-      "descriptionPlaceholder": "اوصف مطعمك",
-      "error": "فشل في تحديث الملف",
+      "descriptionPlaceholder": "وصف مختصر عن مطعمك",
+      "menuSlug": "رابط القائمة",
       "name": "اسم المطعم",
       "namePlaceholder": "أدخل اسم المطعم",
       "phone": "رقم الهاتف",
-      "phonePlaceholder": "أدخل رقم الهاتف",
-      "save": "حفظ التغييرات",
-      "saved": "تم تحديث الملف بنجاح!",
-      "saving": "جاري الحفظ...",
-      "slug": "رابط القائمة",
-      "slugPlaceholder": "أدخل رابط مخصص (اختياري)",
-      "title": "ملف المطعم"
+      "phonePlaceholder": "+963 xxx xxx xxx",
+      "saveChanges": "حفظ التغييرات",
+      "title": "ملف المطعم",
+      "updateError": "فشل التحديث",
+      "updateSuccess": "تم تحديث الملف",
+      "updateSuccessDescription": "تم تحديث ملف المطعم بنجاح.",
+      "updating": "جاري التحديث..."
     },
-    "qrCode": "رموز QR"
+    "quickActions": {
+      "analytics": {
+        "button": "عرض التحليلات",
+        "description": "عرض التقارير وتحليلات المبيعات",
+        "title": "التحليلات"
+      },
+      "branding": {
+        "button": "تخصيص التصميم",
+        "description": "تخصيص ألوان وشعار المطعم",
+        "title": "التصميم والشعار"
+      },
+      "menu": {
+        "button": "بناء القائمة",
+        "description": "إضافة وتعديل الأصناف والفئات",
+        "title": "إدارة القائمة"
+      },
+      "qr": {
+        "button": "إنشاء رمز QR",
+        "description": "تحميل وطباعة رمز QR للقائمة",
+        "title": "رمز QR"
+      }
+    },
+    "shareableLink": {
+      "description": "شارك هذا الرابط مع عملائك لعرض القائمة الرقمية.",
+      "title": "رابط القائمة للمشاركة",
+      "copyAriaLabel": "نسخ الرابط"
+    },
+    "theme": {
+      "accentColor": "اللون المكمل",
+      "description": "خصص الألوان الأساسية لموقع المطعم",
+      "primaryColor": "اللون الأساسي",
+      "resetToDefault": "إعادة للوضع الافتراضي",
+      "saveChanges": "حفظ التغييرات",
+      "secondaryColor": "اللون الثانوي",
+      "title": "تخصيص الألوان",
+      "updateError": "فشل في تحديث الألوان",
+      "updateSuccess": "تم تحديث الألوان",
+      "updateSuccessDescription": "تم تحديث ألوان المطعم بنجاح.",
+      "updating": "جاري التحديث..."
+    },
+    "toast": {
+      "copyErrorDescription": "لم يتم نسخ الرابط",
+      "copyErrorTitle": "خطأ",
+      "copySuccessDescription": "تم نسخ الرابط إلى الحافظة",
+      "copySuccessTitle": "تم النسخ",
+      "feedbackErrorDescription": "لا يمكن تحميل التقييمات. يرجى المحاولة مرة أخرى في وقت لاحق.",
+      "feedbackErrorTitle": "خطأ في جلب التقييمات",
+      "noTenantDescription": "لا يوجد مطعم مرتبط بحسابك.",
+      "noTenantTitle": "المطعم غير موجود"
+    },
+    "welcome": "مرحباً {{userName}} - لوحة تحكم المطعم"
   },
   "superAdmin": {
     "bulkActions": {

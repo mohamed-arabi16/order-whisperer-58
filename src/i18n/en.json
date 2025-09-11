@@ -601,190 +601,118 @@
     "yourMenuLink": "Your Menu Link"
   },
   "restaurant": {
-    "dashboard": {
-      "quickActions": "Quick Actions",
-      "title": "Restaurant Dashboard"
-    },
+    "dashboardTitle": "{{restaurantName}}'s Dashboard",
     "feedback": {
-      "description": "Customer opinions and ratings",
-      "noFeedback": "No feedback yet",
-      "title": "Customer Feedback"
+      "description": "Review customer ratings and feedback.",
+      "noFeedback": {
+        "description": "Customer feedback will appear here once submitted.",
+        "title": "No Feedback Yet"
+      },
+      "title": "Feedback"
     },
     "gettingStarted": {
-      "completed": "Completed",
-      "description": "Complete these steps to fully set up your restaurant",
-      "pending": "Pending",
-      "steps": {
-        "branding": {
-          "description": "Upload your restaurant logo and choose colors",
-          "title": "Customize Branding"
-        },
-        "menu": {
-          "description": "Add food categories and items",
-          "title": "Create Menu"
-        },
-        "profile": {
-          "description": "Add basic restaurant information",
-          "title": "Complete Profile"
-        },
-        "qr": {
-          "description": "Create QR codes for tables",
-          "title": "Generate QR Codes"
-        }
+      "cta": "Start Building Your Menu Now",
+      "description": "Follow these steps to set up your digital restaurant menu.",
+      "step1": {
+        "description": "Start by adding categories like 'Grills' and 'Appetizers'.",
+        "title": "Create Menu Categories"
       },
-      "title": "Quick Start"
+      "step2": {
+        "description": "Add dishes with prices, photos, and descriptions.",
+        "title": "Add Menu Items"
+      },
+      "step3": {
+        "description": "Upload your restaurant's logo and choose your brand colors.",
+        "title": "Customize Branding"
+      },
+      "step4": {
+        "description": "Generate a QR code and place it on your restaurant tables.",
+        "title": "Print QR Code"
+      },
+      "title": "Quick Start Guide"
     },
-    "info": {
+    "infoCard": {
       "address": "Address",
-      "description": "Description",
       "name": "Restaurant Name",
-      "phone": "Phone",
+      "phone": "Phone Number",
+      "plan": "Subscription Plan",
       "title": "Restaurant Information"
+    },
+    "noTenant": {
+      "contactAdmin": "Please contact the super admin to set up your restaurant account.",
+      "description": "No restaurant account is associated with this user.",
+      "welcome": "Welcome, {{name}}"
     },
     "profile": {
       "address": "Address",
       "addressPlaceholder": "Enter restaurant address",
       "currency": "Currency",
       "description": "Description",
-      "descriptionPlaceholder": "Describe your restaurant",
+      "descriptionPlaceholder": "A short description of your restaurant.",
       "menuSlug": "Menu Link",
       "name": "Restaurant Name",
       "namePlaceholder": "Enter restaurant name",
       "phone": "Phone Number",
-      "phonePlaceholder": "Enter phone number",
+      "phonePlaceholder": "+1 123 456 7890",
       "saveChanges": "Save Changes",
       "selectCurrency": "Select Currency",
       "title": "Restaurant Profile",
-      "updateError": "Update Error",
+      "updateError": "Update Failed",
       "updateSuccess": "Profile Updated",
-      "updateSuccessDescription": "Restaurant profile has been updated successfully",
+      "updateSuccessDescription": "Restaurant profile has been updated successfully.",
       "updating": "Updating..."
     },
     "quickActions": {
-      "analytics": "View Analytics",
-      "branding": "Customize Branding",
-      "manageMenu": "Manage Menu",
-      "qrCodes": "QR Codes"
-    }
-  },
-  "restaurant": {
-    "analytics": "Analytics",
-    "backToDashboard": "Back to Dashboard",
-    "branding": "Branding",
-    "dashboard": {
-      "feedbackSection": {
-        "averageRating": "Average Rating",
-        "latestFeedback": "Latest Feedback",
-        "noFeedback": "No feedback yet",
-        "totalFeedback": "Total Feedback"
+      "analytics": {
+        "button": "View Analytics",
+        "description": "View reports and sales analytics.",
+        "title": "Analytics"
       },
-      "gettingStarted": {
-        "step1": {
-          "description": "Add basic restaurant information such as name, address and phone number",
-          "title": "Complete Restaurant Profile"
-        },
-        "step2": {
-          "description": "Choose colors and logo that represent your restaurant's identity",
-          "title": "Customize Branding"
-        },
-        "step3": {
-          "description": "Create categories and add menu items with images and prices",
-          "title": "Build Menu"
-        },
-        "step4": {
-          "description": "Generate QR codes for tables and start receiving orders",
-          "title": "Share Menu"
-        },
-        "title": "Quick Start"
+      "branding": {
+        "button": "Customize Branding",
+        "description": "Customize your restaurant's colors and logo.",
+        "title": "Branding & Logo"
       },
-      "infoCard": {
-        "address": "Address",
-        "phone": "Phone",
-        "plan": "Plan",
-        "status": "Status",
-        "title": "Restaurant Information"
+      "menu": {
+        "button": "Build Menu",
+        "description": "Add and edit menu items and categories.",
+        "title": "Menu Management"
       },
-      "menuLink": {
-        "copied": "Link copied!",
-        "copy": "Copy Link",
-        "description": "Share this link with your customers to view the digital menu and receive orders",
-        "open": "Open Menu",
-        "title": "Menu Link"
-      },
-      "quickActions": {
-        "analytics": {
-          "description": "View sales statistics and performance analysis",
-          "title": "Analytics"
-        },
-        "branding": {
-          "description": "Customize colors, logo and visual identity",
-          "title": "Branding"
-        },
-        "menu": {
-          "description": "Add and edit menu categories and items",
-          "title": "Manage Menu"
-        },
-        "qr": {
-          "description": "Generate QR codes for tables and prints",
-          "title": "QR Codes"
-        },
-        "title": "Quick Actions"
-      },
-      "title": "Restaurant Dashboard",
-      "welcome": "Welcome to your restaurant dashboard"
-    },
-    "feedback": {
-      "averageRating": "Average Rating",
-      "comment": "Your comment (optional)",
-      "commentPlaceholder": "Share your thoughts about your experience...",
-      "error": {
-        "submit": "Error occurred while submitting feedback",
-        "rating": "Please select a rating"
-      },
-      "modal": {
-        "cancel": "Cancel",
-        "submit": "Submit Rating",
-        "submitting": "Submitting...",
-        "title": "Rate your experience at"
-      },
-      "rating": {
-        "excellent": "Excellent",
-        "good": "Good",
-        "great": "Great",
-        "ok": "OK",
-        "poor": "Poor",
-        "required": "Your rating *"
-      },
-      "success": {
-        "description": "Your feedback has been submitted successfully",
-        "title": "Thank you!"
+      "qr": {
+        "button": "Generate QR Code",
+        "description": "Download and print a QR code for your menu.",
+        "title": "QR Code"
       }
     },
-    "manageMenu": "Manage Menu",
-    "profile": {
-      "address": "Address",
-      "addressPlaceholder": "Enter restaurant address",
-      "branchName": "Branch Name",
-      "branchNamePlaceholder": "Enter branch name (optional)",
-      "currency": "Currency",
-      "currencyPlaceholder": "Select currency",
-      "deliveryFee": "Delivery Fee",
-      "deliveryFeePlaceholder": "Enter delivery fee",
-      "description": "Description",
-      "descriptionPlaceholder": "Describe your restaurant",
-      "error": "Failed to update profile",
-      "name": "Restaurant Name",
-      "namePlaceholder": "Enter restaurant name",
-      "phone": "Phone Number",
-      "phonePlaceholder": "Enter phone number",
-      "save": "Save Changes",
-      "saved": "Profile updated successfully!",
-      "saving": "Saving...",
-      "slug": "Menu Link",
-      "slugPlaceholder": "Enter custom link (optional)",
-      "title": "Restaurant Profile"
+    "shareableLink": {
+      "description": "Share this link with your customers to display the digital menu.",
+      "title": "Shareable Menu Link",
+      "copyAriaLabel": "Copy link"
     },
-    "qrCode": "QR Codes"
+    "theme": {
+      "accentColor": "Accent Color",
+      "description": "Customize the primary colors for your restaurant's site.",
+      "primaryColor": "Primary Color",
+      "resetToDefault": "Reset to Default",
+      "saveChanges": "Save Colors",
+      "secondaryColor": "Secondary Color",
+      "title": "Theme Customization",
+      "updateError": "Failed to update colors.",
+      "updateSuccess": "Colors Updated",
+      "updateSuccessDescription": "Restaurant colors have been updated successfully.",
+      "updating": "Updating..."
+    },
+    "toast": {
+      "copyErrorDescription": "Failed to copy link.",
+      "copyErrorTitle": "Error",
+      "copySuccessDescription": "Link copied to clipboard.",
+      "copySuccessTitle": "Copied",
+      "feedbackErrorDescription": "Could not load feedback. Please try again later.",
+      "feedbackErrorTitle": "Feedback Fetch Error",
+      "noTenantDescription": "There is no restaurant associated with your account.",
+      "noTenantTitle": "Restaurant Not Found"
+    },
+    "welcome": "Welcome, {{userName}} - Restaurant Dashboard"
   },
   "superAdmin": {
     "bulkActions": {
