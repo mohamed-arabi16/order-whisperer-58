@@ -742,37 +742,6 @@
         "cta": "Contact Sales"
       }
     }
-  }
-          "WhatsApp ordering",
-          "Basic analytics",
-          "Email support"
-        ],
-        "cta": "Get Started"
-      },
-      "premium": {
-        "name": "Starter",
-        "price": "$15/mo",
-        "features": [
-          "Unlimited menu items",
-          "Advanced QR code customization",
-          "Priority support",
-          "Advanced analytics",
-          "Customer feedback management",
-          "Staff accounts"
-        ],
-        "cta": "Get Started"
-      },
-      "enterprise": {
-        "name": "Premium",
-        "price": "$29/mo yearly billing",
-        "features": [
-          "All Starter features",
-          "Custom branding",
-          "Custom integrations"
-        ],
-        "cta": "Contact Us"
-      }
-    }
   },
   "contact": {
     "title": "Contact Us",
