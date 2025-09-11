@@ -2,6 +2,7 @@
   "analytics": {
     "avgOrderValue": "Average Order Value Over Time",
     "avgOrderValueLabel": "Avg. Order Value",
+    "avgRating": "Average Rating",
     "avgRatingOverTime": "Average Rating Over Time",
     "count": "Count",
     "customerFeedback": "Customer Feedback Analytics",
@@ -16,6 +17,7 @@
     "ratingDistribution": "Rating Distribution",
     "revenueOverTime": "Revenue Over Time",
     "title": "Analytics Dashboard",
+    "totalFeedback": "Total Feedback",
     "totalMenuViews": "Total Menu Views",
     "totalOrders": "Total Orders",
     "totalRevenue": "Total Revenue",
@@ -215,8 +217,65 @@
   },
   "cta": {
     "dashboard": "Dashboard",
+    "infoCard": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "name": "Restaurant Name",
+      "plan": "Current Plan",
+      "status": "Status",
+      "title": "Restaurant Information"
+    },
+    "profile": {
+      "address": "Address",
+      "addressPlaceholder": "Enter restaurant address",
+      "deliveryFee": "Delivery Fee",
+      "deliveryFeePlaceholder": "Enter delivery fee",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe your restaurant",
+      "error": "Failed to update profile",
+      "name": "Restaurant Name",
+      "namePlaceholder": "Enter restaurant name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter phone number",
+      "save": "Save Changes",
+      "saved": "Profile updated successfully!",
+      "saving": "Saving...",
+      "slug": "Menu Link",
+      "slugPlaceholder": "Enter custom link (optional)",
+      "title": "Restaurant Profile"
+    },
+    "quickStart": {
+      "steps": {
+        "menu": "Add menu categories and items",
+        "profile": "Complete your restaurant profile",
+        "share": "Share your menu with customers",
+        "theme": "Customize your theme colors"
+      },
+      "title": "Quick Start Guide"
+    },
     "restaurantLogin": "Restaurant Login",
+    "shareableLink": {
+      "copied": "Link copied!",
+      "copy": "Copy Link",
+      "description": "Share this link with your customers to view your menu",
+      "qrCode": "QR Code",
+      "title": "Shareable Menu Link"
+    },
     "subtitle": "Comprehensive platform for managing digital restaurant menus with direct WhatsApp integration for orders",
+    "theme": {
+      "accent": "Accent Color",
+      "background": "Background Color",
+      "card": "Card Color",
+      "error": "Failed to update theme",
+      "preview": "Preview",
+      "primary": "Primary Color",
+      "reset": "Reset to Default",
+      "save": "Save Theme",
+      "saved": "Theme updated successfully!",
+      "saving": "Saving...",
+      "secondary": "Secondary Color",
+      "title": "Theme Customization"
+    },
     "title": "Get Started with Digital Restaurant Platform"
   },
   "dashboard": {
@@ -388,6 +447,7 @@
   },
   "pricing": {
     "description": "Choose the best plan for your restaurant.",
+    "placeholder": "Pricing content will be here.",
     "title": "Pricing Plans",
     "plans": {
       "basic": {
@@ -590,6 +650,35 @@
       "feedbackErrorTitle": "Error fetching feedback",
       "noTenantDescription": "No restaurant is associated with your account.",
       "noTenantTitle": "Restaurant Not Found"
+    },
+    "profile": {
+      "address": "Address",
+      "addressPlaceholder": "Enter restaurant address",
+      "description": "Description",
+      "descriptionPlaceholder": "Brief description of your restaurant",
+      "menuSlug": "Menu Link",
+      "name": "Restaurant Name",
+      "namePlaceholder": "Enter restaurant name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+963 xxx xxx xxx",
+      "saveChanges": "Save Changes",
+      "title": "Restaurant Profile",
+      "updateError": "Update failed",
+      "updateSuccess": "Profile updated",
+      "updateSuccessDescription": "Restaurant profile updated successfully.",
+      "updating": "Updating..."
+    },
+    "theme": {
+      "accentColor": "Accent Color",
+      "primaryColor": "Primary Color",
+      "resetToDefault": "Reset to Default",
+      "saveChanges": "Save Colors",
+      "secondaryColor": "Secondary Color",
+      "title": "Color Customization",
+      "updateError": "Failed to update colors",
+      "updateSuccess": "Colors updated",
+      "updateSuccessDescription": "Restaurant colors updated successfully.",
+      "updating": "Updating..."
     },
     "welcome": "Welcome {{userName}} - Restaurant Control Panel"
   },
