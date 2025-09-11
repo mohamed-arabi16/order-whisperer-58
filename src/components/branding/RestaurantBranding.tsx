@@ -362,7 +362,7 @@ const RestaurantBranding = (): JSX.Element => {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold gradient-hero bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold text-foreground">
               {t('branding.title')}
             </h1>
             <p className="text-muted-foreground mt-1">

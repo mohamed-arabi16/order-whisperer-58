@@ -63,22 +63,19 @@ export const EnhancedThemeCustomizer: React.FC<EnhancedThemeCustomizerProps> = (
   });
 
   const updatePreview = (colorType: string, color: string) => {
-    const root = document.documentElement;
     const hsl = hexToHsl(color);
     
+    // Only update menu-specific CSS variables for public menu
     if (colorType === 'primary') {
-      // Primary color for main branding elements
-      root.style.setProperty('--menu-primary', `${hsl.h} ${hsl.s}% ${hsl.l}%`);
-      root.style.setProperty('--primary', `${hsl.h} ${hsl.s}% ${hsl.l}%`);
+      // Primary color for main branding elements in public menu only
+      document.documentElement.style.setProperty('--menu-primary', `${hsl.h} ${hsl.s}% ${hsl.l}%`);
     } else if (colorType === 'secondary') {
-      // Secondary color for backgrounds and cards
-      root.style.setProperty('--menu-secondary', `${hsl.h} ${hsl.s}% ${hsl.l}%`);
-      root.style.setProperty('--secondary', `${hsl.h} ${hsl.s}% ${hsl.l}%`);
-      root.style.setProperty('--card', `${hsl.h} ${hsl.s}% ${Math.min(hsl.l + 10, 95)}%`);
+      // Secondary color for backgrounds and cards in public menu only
+      document.documentElement.style.setProperty('--menu-secondary', `${hsl.h} ${hsl.s}% ${hsl.l}%`);
+      document.documentElement.style.setProperty('--menu-card', `${hsl.h} ${hsl.s}% ${Math.min(hsl.l + 10, 95)}%`);
     } else if (colorType === 'accent') {
-      // Accent color for highlights and call-to-action elements
-      root.style.setProperty('--menu-accent', `${hsl.h} ${hsl.s}% ${hsl.l}%`);
-      root.style.setProperty('--accent', `${hsl.h} ${hsl.s}% ${hsl.l}%`);
+      // Accent color for highlights and call-to-action elements in public menu only
+      document.documentElement.style.setProperty('--menu-accent', `${hsl.h} ${hsl.s}% ${hsl.l}%`);
     }
   };
 

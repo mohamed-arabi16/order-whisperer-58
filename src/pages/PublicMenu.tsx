@@ -438,11 +438,6 @@ const PublicMenu = (): JSX.Element => {
       {/* Restaurant Overview */}
       <RestaurantOverview tenant={tenant} />
 
-      {/* Customer Feedback Display */}
-      <div className="container mx-auto px-4 py-4">
-        <RestaurantFeedbackDisplay tenantId={tenant.id} />
-      </div>
-
       {/* Menu Content - Grid Layout */}
       <div className="container mx-auto px-4 py-0 pb-32">
         {categories.map((category) => {
@@ -562,6 +557,11 @@ const PublicMenu = (): JSX.Element => {
         tenantId={tenant.id}
         restaurantName={tenant.name}
       />
+
+      {/* Customer Feedback Display - Moved to bottom */}
+      <div id="customer-reviews" className="container mx-auto px-4 py-8">
+        <RestaurantFeedbackDisplay tenantId={tenant.id} />
+      </div>
 
       {/* RestaurantOS Promo Footer */}
       <RestaurantOSPromo 

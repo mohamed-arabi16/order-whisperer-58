@@ -1,4 +1,4 @@
-import { ChevronDown, Phone, MessageSquare, Globe } from "lucide-react";
+import { ChevronDown, Phone, MessageSquare, Globe, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -7,13 +7,14 @@ import LanguageSwitcher from "../LanguageSwitcher";
 interface HamburgerMenuProps {
   phoneNumber?: string;
   onFeedbackClick?: () => void;
+  onReviewsClick?: () => void;
 }
 
 /**
  * Dropdown menu component for mobile-friendly navigation.
  * Contains language switcher, call button, and feedback button.
  */
-export const HamburgerMenu = ({ phoneNumber, onFeedbackClick }: HamburgerMenuProps) => {
+export const HamburgerMenu = ({ phoneNumber, onFeedbackClick, onReviewsClick }: HamburgerMenuProps) => {
   const { t, isRTL } = useTranslation();
 
   const handleCall = () => {
@@ -60,6 +61,15 @@ export const HamburgerMenu = ({ phoneNumber, onFeedbackClick }: HamburgerMenuPro
             {t('common.callUs')}
           </DropdownMenuItem>
         )}
+
+        {/* Customer Reviews */}
+        <DropdownMenuItem
+          onClick={onReviewsClick}
+          className="flex items-center gap-3 cursor-pointer"
+        >
+          <Star className="h-4 w-4" />
+          {t('menu.customerReviews')}
+        </DropdownMenuItem>
 
         {/* Feedback Button */}
         <DropdownMenuItem

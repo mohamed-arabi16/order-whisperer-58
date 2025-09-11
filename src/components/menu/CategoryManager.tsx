@@ -1,4 +1,19 @@
 import { useState } from "react";
+import { 
+  DndContext, 
+  closestCenter, 
+  KeyboardSensor, 
+  PointerSensor, 
+  useSensor, 
+  useSensors,
+  DragEndEvent,
+} from '@dnd-kit/core';
+import { 
+  arrayMove, 
+  SortableContext, 
+  sortableKeyboardCoordinates, 
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,10 +34,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Plus, Edit2, GripVertical, Menu } from "lucide-react";
+import { Plus, Menu } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/useTranslation";
+import { SortableCategoryItem } from "./SortableCategoryItem";
 
 /**
  * Represents a menu category.
@@ -72,6 +88,13 @@ const CategoryManager = ({
   const [editingCategory, setEditingCategory] = useState<Category | null>(null);
   const [categoryName, setCategoryName] = useState('');
   const [saving, setSaving] = useState(false);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
 
   const handleAddCategory = async () => {
     if (!categoryName.trim()) {
@@ -192,6 +215,50 @@ const CategoryManager = ({
     }
   };
 
+  const handleDragEnd = async (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (over && active.id !== over.id) {
+      const oldIndex = categories.findIndex((item) => item.id === active.id);
+      const newIndex = categories.findIndex((item) => item.id === over.id);
+      
+      const reorderedCategories = arrayMove(categories, oldIndex, newIndex).map((category, index) => ({
+        ...category,
+        display_order: index
+      }));
+
+      onCategoriesChange(reorderedCategories);
+
+      // Update display orders in database
+      try {
+        const updates = reorderedCategories.map((category, index) => ({
+          id: category.id,
+          display_order: index
+        }));
+
+        for (const update of updates) {
+          const { error } = await supabase
+            .from('menu_categories')
+            .update({ display_order: update.display_order })
+            .eq('id', update.id);
+          if (error) throw error;
+        }
+
+        toast({
+          title: t('common.success'),
+          description: t('menu.categoriesReordered'),
+        });
+      } catch (error) {
+        console.error('Error updating display order:', error);
+        toast({
+          title: t('common.error'),
+          description: t('common.genericError'),
+          variant: "destructive",
+        });
+      }
+    }
+  };
+
   return (
     <div className="space-y-6" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Add Category Dialog */}
@@ -281,7 +348,7 @@ const CategoryManager = ({
           <Card className="shadow-card">
             <CardContent className="p-12 text-center">
               <Menu className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">{t('menu.noCategories')}</h3>
+              <h3 className="text-xl font-semibold mb-2 text-foreground">{t('menu.noCategories')}</h3>
               <p className="text-muted-foreground mb-4">
                 {t('menu.createFirstCategory')}
               </p>
@@ -292,49 +359,29 @@ const CategoryManager = ({
             </CardContent>
           </Card>
         ) : (
-          categories.map((category, index) => (
-            <Card key={category.id} className="shadow-card">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <GripVertical className="h-5 w-5 text-muted-foreground cursor-move" />
-                    <div>
-                      <h3 className="text-lg font-semibold">{category.name}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {t('menu.displayOrder')}: {index + 1}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-2">
-                      <Label htmlFor={`category-${category.id}`} className="text-sm">
-                        {category.is_active ? t('common.active') : t('common.inactive')}
-                      </Label>
-                      <Switch
-                        id={`category-${category.id}`}
-                        checked={category.is_active}
-                        onCheckedChange={(checked) => handleToggleCategory(category.id, checked)}
-                      />
-                    </div>
-                    <Badge variant={category.is_active ? "default" : "secondary"}>
-                      {category.is_active ? t('common.active') : t('common.inactive')}
-                    </Badge>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => {
-                        setEditingCategory(category);
-                        setCategoryName(category.name);
-                      }}
-                    >
-                      <Edit2 className="h-4 w-4 mx-1" />
-                      {t('common.edit')}
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+          >
+            <SortableContext
+              items={categories.map(cat => cat.id)}
+              strategy={verticalListSortingStrategy}
+            >
+              {categories.map((category, index) => (
+                <SortableCategoryItem
+                  key={category.id}
+                  category={category}
+                  index={index}
+                  onToggle={handleToggleCategory}
+                  onEdit={(category) => {
+                    setEditingCategory(category);
+                    setCategoryName(category.name);
+                  }}
+                />
+              ))}
+            </SortableContext>
+          </DndContext>
         )}
       </div>
     </div>

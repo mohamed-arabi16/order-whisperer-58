@@ -69,10 +69,14 @@ export const RestaurantBrandingHeader = ({
           </div>
 
           {/* Hamburger Menu */}
-          <HamburgerMenu 
-            phoneNumber={tenant.phone_number}
-            onFeedbackClick={onFeedbackClick}
-          />
+        <HamburgerMenu 
+          phoneNumber={tenant.phone_number}
+          onFeedbackClick={onFeedbackClick}
+          onReviewsClick={() => {
+            const element = document.getElementById('customer-reviews');
+            element?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        />
         </div>
 
         {/* Optional Description */}

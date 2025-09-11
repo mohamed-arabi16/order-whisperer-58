@@ -280,7 +280,7 @@ const RestaurantDashboard = (): JSX.Element => {
         </Card>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
           <Card
             className="shadow-card hover:shadow-warm transition-smooth cursor-pointer"
             onClick={() => window.location.href = '/menu-management'}
@@ -292,17 +292,18 @@ const RestaurantDashboard = (): JSX.Element => {
             role="button"
             tabIndex={0}
           >
-            <CardHeader className="text-center">
-              <Menu className="h-12 w-12 text-primary mx-auto mb-2" />
-              <CardTitle>{t('restaurant.quickActions.menu.title')}</CardTitle>
-              <CardDescription>
+            <CardHeader className="text-center p-3 md:p-6">
+              <Menu className="h-8 w-8 md:h-12 md:w-12 text-primary mx-auto mb-1 md:mb-2" />
+              <CardTitle className="text-sm md:text-base">{t('restaurant.quickActions.menu.title')}</CardTitle>
+              <CardDescription className="text-xs md:text-sm">
                 {t('restaurant.quickActions.menu.description')}
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-3 md:p-6 pt-0">
               <Button 
-                className="w-full" 
+                className="w-full text-xs md:text-sm" 
                 variant="outline"
+                size="sm"
               >
                 {t('restaurant.quickActions.menu.button')}
               </Button>
@@ -320,17 +321,18 @@ const RestaurantDashboard = (): JSX.Element => {
             role="button"
             tabIndex={0}
           >
-            <CardHeader className="text-center">
-              <Palette className="h-12 w-12 text-accent mx-auto mb-2" />
-              <CardTitle>{t('restaurant.quickActions.branding.title')}</CardTitle>
-              <CardDescription>
+            <CardHeader className="text-center p-3 md:p-6">
+              <Palette className="h-8 w-8 md:h-12 md:w-12 text-accent mx-auto mb-1 md:mb-2" />
+              <CardTitle className="text-sm md:text-base">{t('restaurant.quickActions.branding.title')}</CardTitle>
+              <CardDescription className="text-xs md:text-sm">
                 {t('restaurant.quickActions.branding.description')}
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-3 md:p-6 pt-0">
               <Button 
-                className="w-full" 
+                className="w-full text-xs md:text-sm" 
                 variant="outline"
+                size="sm"
               >
                 {t('restaurant.quickActions.branding.button')}
               </Button>
@@ -348,17 +350,18 @@ const RestaurantDashboard = (): JSX.Element => {
             role="button"
             tabIndex={0}
           >
-            <CardHeader className="text-center">
-              <QrCode className="h-12 w-12 text-warm-orange mx-auto mb-2" />
-              <CardTitle>{t('restaurant.quickActions.qr.title')}</CardTitle>
-              <CardDescription>
+            <CardHeader className="text-center p-3 md:p-6">
+              <QrCode className="h-8 w-8 md:h-12 md:w-12 text-accent mx-auto mb-1 md:mb-2" />
+              <CardTitle className="text-sm md:text-base">{t('restaurant.quickActions.qr.title')}</CardTitle>
+              <CardDescription className="text-xs md:text-sm">
                 {t('restaurant.quickActions.qr.description')}
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-3 md:p-6 pt-0">
               <Button 
-                className="w-full" 
+                className="w-full text-xs md:text-sm" 
                 variant="outline"
+                size="sm"
               >
                 {t('restaurant.quickActions.qr.button')}
               </Button>
@@ -375,17 +378,18 @@ const RestaurantDashboard = (): JSX.Element => {
             role="button"
             tabIndex={0}
           >
-            <CardHeader className="text-center">
-              <LineChart className="h-12 w-12 text-green-500 mx-auto mb-2" />
-              <CardTitle>{t('restaurant.quickActions.analytics.title')}</CardTitle>
-              <CardDescription>
+            <CardHeader className="text-center p-3 md:p-6">
+              <LineChart className="h-8 w-8 md:h-12 md:w-12 text-primary mx-auto mb-1 md:mb-2" />
+              <CardTitle className="text-sm md:text-base">{t('restaurant.quickActions.analytics.title')}</CardTitle>
+              <CardDescription className="text-xs md:text-sm">
                 {t('restaurant.quickActions.analytics.description')}
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-3 md:p-6 pt-0">
               <Button
-                className="w-full"
+                className="w-full text-xs md:text-sm"
                 variant="outline"
+                size="sm"
               >
                 {t('restaurant.quickActions.analytics.button')}
               </Button>
