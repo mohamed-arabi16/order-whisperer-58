@@ -30,8 +30,8 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
   const handleSubmit = async () => {
     if (rating === 0) {
       toast({
-        title: "خطأ",
-        description: "يرجى اختيار تقييم",
+        title: t("common.error"),
+        description: t("restaurant.feedback.error.rating"),
         variant: "destructive",
       });
       return;
@@ -50,8 +50,8 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
       if (error) throw error;
 
       toast({
-        title: "شكراً لك!",
-        description: "تم إرسال تقييمك بنجاح",
+        title: t("restaurant.feedback.success.title"),
+        description: t("restaurant.feedback.success.description"),
       });
 
       setRating(0);
@@ -60,8 +60,8 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
     } catch (error: any) {
       console.error('Error submitting feedback:', error);
       toast({
-        title: "خطأ",
-        description: "حدث خطأ أثناء إرسال التقييم",
+        title: t("common.error"),
+        description: t("restaurant.feedback.error.submit"),
         variant: "destructive",
       });
     } finally {
@@ -86,14 +86,14 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <MessageSquare className="w-5 h-5" />
-            تقييم تجربتك في {restaurantName}
+            {t("restaurant.feedback.modal.title")} {restaurantName}
           </DialogTitle>
         </DialogHeader>
 
         <div className="space-y-6 py-4">
           {/* Rating Stars */}
           <div className="space-y-2">
-            <label className="text-sm font-medium">تقييمك *</label>
+            <label className="text-sm font-medium">{t("restaurant.feedback.rating.required")}</label>
             <div className="flex gap-1 justify-center">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
@@ -117,11 +117,11 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
             <div className="text-center text-sm text-muted-foreground">
               {rating > 0 && (
                 <span>
-                  {rating === 1 && "سيء"}
-                  {rating === 2 && "مقبول"}
-                  {rating === 3 && "جيد"}
-                  {rating === 4 && "ممتاز"}
-                  {rating === 5 && "رائع"}
+                  {rating === 1 && t("restaurant.feedback.rating.poor")}
+                  {rating === 2 && t("restaurant.feedback.rating.ok")}
+                  {rating === 3 && t("restaurant.feedback.rating.good")}
+                  {rating === 4 && t("restaurant.feedback.rating.excellent")}
+                  {rating === 5 && t("restaurant.feedback.rating.great")}
                 </span>
               )}
             </div>
@@ -129,11 +129,11 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
 
           {/* Comment */}
           <div className="space-y-2">
-            <label className="text-sm font-medium">تعليقك (اختياري)</label>
+            <label className="text-sm font-medium">{t("restaurant.feedback.comment")}</label>
             <Textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              placeholder="شاركنا رأيك حول تجربتك..."
+              placeholder={t("restaurant.feedback.commentPlaceholder")}
               rows={3}
               maxLength={500}
             />
@@ -150,14 +150,14 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
               disabled={isSubmitting}
               className="flex-1"
             >
-              إلغاء
+              {t("restaurant.feedback.modal.cancel")}
             </Button>
             <Button
               onClick={handleSubmit}
               disabled={rating === 0 || isSubmitting}
               className="flex-1"
             >
-              {isSubmitting ? "جاري الإرسال..." : "إرسال التقييم"}
+              {isSubmitting ? t("restaurant.feedback.modal.submitting") : t("restaurant.feedback.modal.submit")}
             </Button>
           </div>
         </div>

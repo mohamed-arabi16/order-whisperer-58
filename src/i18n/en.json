@@ -618,6 +618,125 @@
       "qrCodes": "QR Codes"
     }
   },
+  "restaurant": {
+    "analytics": "Analytics",
+    "backToDashboard": "Back to Dashboard",
+    "branding": "Branding",
+    "dashboard": {
+      "feedbackSection": {
+        "averageRating": "Average Rating",
+        "latestFeedback": "Latest Feedback",
+        "noFeedback": "No feedback yet",
+        "totalFeedback": "Total Feedback"
+      },
+      "gettingStarted": {
+        "step1": {
+          "description": "Add basic restaurant information such as name, address and phone number",
+          "title": "Complete Restaurant Profile"
+        },
+        "step2": {
+          "description": "Choose colors and logo that represent your restaurant's identity",
+          "title": "Customize Branding"
+        },
+        "step3": {
+          "description": "Create categories and add menu items with images and prices",
+          "title": "Build Menu"
+        },
+        "step4": {
+          "description": "Generate QR codes for tables and start receiving orders",
+          "title": "Share Menu"
+        },
+        "title": "Quick Start"
+      },
+      "infoCard": {
+        "address": "Address",
+        "phone": "Phone",
+        "plan": "Plan",
+        "status": "Status",
+        "title": "Restaurant Information"
+      },
+      "menuLink": {
+        "copied": "Link copied!",
+        "copy": "Copy Link",
+        "description": "Share this link with your customers to view the digital menu and receive orders",
+        "open": "Open Menu",
+        "title": "Menu Link"
+      },
+      "quickActions": {
+        "analytics": {
+          "description": "View sales statistics and performance analysis",
+          "title": "Analytics"
+        },
+        "branding": {
+          "description": "Customize colors, logo and visual identity",
+          "title": "Branding"
+        },
+        "menu": {
+          "description": "Add and edit menu categories and items",
+          "title": "Manage Menu"
+        },
+        "qr": {
+          "description": "Generate QR codes for tables and prints",
+          "title": "QR Codes"
+        },
+        "title": "Quick Actions"
+      },
+      "title": "Restaurant Dashboard",
+      "welcome": "Welcome to your restaurant dashboard"
+    },
+    "feedback": {
+      "averageRating": "Average Rating",
+      "comment": "Your comment (optional)",
+      "commentPlaceholder": "Share your thoughts about your experience...",
+      "error": {
+        "submit": "Error occurred while submitting feedback",
+        "rating": "Please select a rating"
+      },
+      "modal": {
+        "cancel": "Cancel",
+        "submit": "Submit Rating",
+        "submitting": "Submitting...",
+        "title": "Rate your experience at"
+      },
+      "rating": {
+        "excellent": "Excellent",
+        "good": "Good",
+        "great": "Great",
+        "ok": "OK",
+        "poor": "Poor",
+        "required": "Your rating *"
+      },
+      "success": {
+        "description": "Your feedback has been submitted successfully",
+        "title": "Thank you!"
+      }
+    },
+    "manageMenu": "Manage Menu",
+    "profile": {
+      "address": "Address",
+      "addressPlaceholder": "Enter restaurant address",
+      "branchName": "Branch Name",
+      "branchNamePlaceholder": "Enter branch name (optional)",
+      "currency": "Currency",
+      "currencyPlaceholder": "Select currency",
+      "deliveryFee": "Delivery Fee",
+      "deliveryFeePlaceholder": "Enter delivery fee",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe your restaurant",
+      "error": "Failed to update profile",
+      "name": "Restaurant Name",
+      "namePlaceholder": "Enter restaurant name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter phone number",
+      "save": "Save Changes",
+      "saved": "Profile updated successfully!",
+      "saving": "Saving...",
+      "slug": "Menu Link",
+      "slugPlaceholder": "Enter custom link (optional)",
+      "title": "Restaurant Profile"
+    },
+    "qrCode": "QR Codes"
+  },
   "superAdmin": {
     "bulkActions": {
       "activate": "Activate Selected",
