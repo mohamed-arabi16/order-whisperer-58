@@ -632,6 +632,11 @@
       "updateSuccessDescription": "Restaurant profile updated successfully.",
       "updating": "Updating..."
     },
+    "noTenant": {
+      "contactAdmin": "Please contact the general manager to set up the restaurant account",
+      "description": "No restaurant account associated with this user was found",
+      "welcome": "Welcome {{name}}"
+    },
     "quickActions": {
       "analytics": {
         "button": "View Analytics",
@@ -667,23 +672,6 @@
       "feedbackErrorTitle": "Error fetching feedback",
       "noTenantDescription": "No restaurant is associated with your account.",
       "noTenantTitle": "Restaurant Not Found"
-    },
-    "profile": {
-      "address": "Address",
-      "addressPlaceholder": "Enter restaurant address",
-      "description": "Description",
-      "descriptionPlaceholder": "Brief description of your restaurant",
-      "menuSlug": "Menu Link",
-      "name": "Restaurant Name",
-      "namePlaceholder": "Enter restaurant name",
-      "phone": "Phone Number",
-      "phonePlaceholder": "+963 xxx xxx xxx",
-      "saveChanges": "Save Changes",
-      "title": "Restaurant Profile",
-      "updateError": "Update failed",
-      "updateSuccess": "Profile updated",
-      "updateSuccessDescription": "Restaurant profile updated successfully.",
-      "updating": "Updating..."
     },
     "theme": {
       "accentColor": "Accent Color",
