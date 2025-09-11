@@ -195,7 +195,7 @@ const RestaurantDashboard = (): JSX.Element => {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold gradient-hero bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold text-foreground">
               {t('restaurant.dashboardTitle', { restaurantName: tenant.name })}
             </h1>
             <p className="text-muted-foreground mt-1">
@@ -205,7 +205,7 @@ const RestaurantDashboard = (): JSX.Element => {
           <div className="flex items-center gap-3">
             <Badge 
               variant={tenant.is_active ? "default" : "secondary"}
-              className={tenant.is_active ? "bg-fresh-green" : ""}
+              className={tenant.is_active ? "bg-green-600 text-white" : "bg-gray-500 text-white"}
             >
               {tenant.is_active ? t('common.active') : t('common.inactive')}
             </Badge>
@@ -393,13 +393,12 @@ const RestaurantDashboard = (): JSX.Element => {
           </Card>
         </div>
 
-        {/* Getting Started Guide / Feedback / Profile / Theme */}
+        {/* Dashboard Sections */}
         <Tabs defaultValue="getting-started">
-          <TabsList className="grid w-full grid-cols-4" dir={isRTL ? 'rtl' : 'ltr'}>
+          <TabsList className="grid w-full grid-cols-3" dir={isRTL ? 'rtl' : 'ltr'}>
             <TabsTrigger value="getting-started">{t('restaurant.gettingStarted.title')}</TabsTrigger>
             <TabsTrigger value="feedback">{t('restaurant.feedback.title')}</TabsTrigger>
             <TabsTrigger value="profile">{t('restaurant.profile.title')}</TabsTrigger>
-            <TabsTrigger value="theme">{t('restaurant.theme.title')}</TabsTrigger>
           </TabsList>
           <TabsContent value="getting-started">
             <Card className="shadow-card border-primary/20">
@@ -504,16 +503,16 @@ const RestaurantDashboard = (): JSX.Element => {
             </Card>
           </TabsContent>
           <TabsContent value="profile">
-            <RestaurantProfile 
-              tenant={tenant} 
-              onUpdate={handleTenantUpdate}
-            />
-          </TabsContent>
-          <TabsContent value="theme">
-            <ThemeCustomizer 
-              tenant={tenant} 
-              onUpdate={handleTenantUpdate}
-            />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <RestaurantProfile 
+                tenant={tenant} 
+                onUpdate={handleTenantUpdate}
+              />
+              <ThemeCustomizer 
+                tenant={tenant} 
+                onUpdate={handleTenantUpdate}
+              />
+            </div>
           </TabsContent>
         </Tabs>
       </div>

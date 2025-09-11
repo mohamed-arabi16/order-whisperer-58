@@ -178,6 +178,9 @@
     "unsavedChangesDescription": "لديك تغييرات غير محفوظة. هل أنت متأكد من أنك تريد المغادرة؟",
     "update": "تحديث",
     "view": "عرض",
+    "menu": "القائمة",
+    "feedback": "التقييم",
+    "language": "اللغة",
     "yes": "نعم"
   },
   "contact": {
@@ -617,6 +620,8 @@
     "profile": {
       "address": "العنوان",
       "addressPlaceholder": "أدخل عنوان المطعم",
+      "currency": "العملة",
+      "selectCurrency": "اختر العملة",
       "description": "الوصف",
       "descriptionPlaceholder": "وصف مختصر عن مطعمك",
       "menuSlug": "رابط القائمة",

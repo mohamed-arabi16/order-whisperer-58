@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useTranslation } from "@/hooks/useTranslation";
 import { InlineQuantityControls } from "./InlineQuantityControls";
+import { formatPrice } from "@/components/ui/currency-selector";
 
 interface MenuItem {
   id: string;
@@ -15,6 +16,7 @@ interface MenuItem {
   price: number;
   image_url: string | null;
   is_featured?: boolean;
+  currency?: string;
 }
 
 interface MenuItemCardProps {
@@ -40,8 +42,8 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
 }) => {
   const { isRTL } = useTranslation();
 
-  const formatPrice = (price: number): string => {
-    return `${price.toLocaleString()} ل.س`;
+  const formatItemPrice = (price: number): string => {
+    return formatPrice(price, item.currency || 'SYP');
   };
 
   return (
@@ -111,7 +113,7 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
             {/* Price and Controls - RTL optimized */}
             <div className={`flex items-center justify-between mt-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
               <span className="text-sm font-semibold text-primary">
-                {formatPrice(item.price)}
+                {formatItemPrice(item.price)}
               </span>
               
               <InlineQuantityControls

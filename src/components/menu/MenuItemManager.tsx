@@ -37,9 +37,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Plus, Edit2, Image, Upload, X, Trash2 } from "lucide-react";
+import { Plus, Edit2, Image, Upload, X, Trash2, GripVertical } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { useSortable } from '@dnd-kit/sortable';
+import { SortableMenuItem } from './SortableMenuItem';
 
 /**
  * Represents a menu category.
@@ -104,6 +108,12 @@ const MenuItemManager = ({
 }: MenuItemManagerProps): JSX.Element => {
   const { toast } = useToast();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<MenuItem | null>(null);
   const [itemToDelete, setItemToDelete] = useState<MenuItem | null>(null);
@@ -365,12 +375,52 @@ const MenuItemManager = ({
     }
   };
 
+  const handleReorderItems = async (newOrder: MenuItem[]) => {
+    try {
+      // Update display_order for all affected items using individual updates
+      const updates = newOrder.map((item, index) => 
+        supabase
+          .from('menu_items')
+          .update({ display_order: index })
+          .eq('id', item.id)
+      );
+
+      await Promise.all(updates);
+
+      onMenuItemsChange(newOrder);
+      
+      toast({
+        title: "تم بنجاح",
+        description: "تم إعادة ترتيب الأصناف",
+      });
+    } catch (error) {
+      console.error('Error reordering items:', error);
+      toast({
+        title: "خطأ",
+        description: "حدث خطأ في إعادة ترتيب الأصناف",
+        variant: "destructive",
+      });
+    }
+  };
+
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('ar-LB').format(price) + ' ل.ل';
   };
 
   const getCategoryName = (categoryId: string) => {
     return categories.find(cat => cat.id === categoryId)?.name || 'غير محدد';
+  };
+
+  const handleDragEnd = (event: any) => {
+    const { active, over } = event;
+
+    if (active.id !== over.id) {
+      const oldIndex = menuItems.findIndex((item) => item.id === active.id);
+      const newIndex = menuItems.findIndex((item) => item.id === over.id);
+
+      const reorderedItems = arrayMove(menuItems, oldIndex, newIndex);
+      handleReorderItems(reorderedItems);
+    }
   };
 
   if (categories.length === 0) {
@@ -661,78 +711,33 @@ const MenuItemManager = ({
             </CardContent>
           </Card>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {menuItems.map((item) => (
-              <Card key={item.id} className="shadow-card">
-                <CardContent className="p-4">
-                  {item.image_url && (
-                    <img
-                      src={item.image_url}
-                      alt={item.name}
-                      className="w-full h-32 object-cover rounded-lg mb-3"
-                    />
-                  )}
-                  <div className="space-y-2">
-                    <div className="flex items-start justify-between">
-                      <h3 className="font-semibold text-lg">{item.name}</h3>
-                      <Badge variant={item.is_available ? "default" : "secondary"}>
-                        {item.is_available ? "متوفر" : "غير متوفر"}
-                      </Badge>
-                    </div>
-                    
-                    <p className="text-sm text-muted-foreground">
-                      {getCategoryName(item.category_id)}
-                    </p>
-                    
-                    {item.description && (
-                      <p className="text-sm text-muted-foreground">
-                        {item.description}
-                      </p>
-                    )}
-                    
-                    <p className="text-lg font-bold text-primary">
-                      {formatPrice(item.price)}
-                    </p>
-                    
-                    <div className="flex items-center justify-between pt-2">
-                      <div className="flex items-center gap-2">
-                        <Label htmlFor={`item-${item.id}`} className="text-sm">
-                          {item.is_available ? 'متوفر' : 'غير متوفر'}
-                        </Label>
-                        <Switch
-                          id={`item-${item.id}`}
-                          checked={item.is_available}
-                          onCheckedChange={(checked) => handleToggleAvailability(item.id, checked)}
-                        />
-                      </div>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => {
-                          setEditingItem(item);
-                          setItemName(item.name);
-                          setItemDescription(item.description || '');
-                          setItemPrice(item.price.toString());
-                          setImagePreview(item.image_url || '');
-                        }}
-                      >
-                        <Edit2 className="h-4 w-4 ml-1" />
-                        تعديل
-                      </Button>
-                      <Button
-                        variant="destructive"
-                        size="sm"
-                        onClick={() => setItemToDelete(item)}
-                      >
-                        <Trash2 className="h-4 w-4 ml-1" />
-                        حذف
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <DndContext 
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+          >
+            <SortableContext items={menuItems} strategy={verticalListSortingStrategy}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {menuItems.map((item) => (
+                  <SortableMenuItem
+                    key={item.id}
+                    item={item}
+                    getCategoryName={getCategoryName}
+                    formatPrice={formatPrice}
+                    onToggleAvailability={handleToggleAvailability}
+                    onEdit={(item) => {
+                      setEditingItem(item);
+                      setItemName(item.name);
+                      setItemDescription(item.description || '');
+                      setItemPrice(item.price.toString());
+                      setImagePreview(item.image_url || '');
+                    }}
+                    onDelete={setItemToDelete}
+                  />
+                ))}
+              </div>
+            </SortableContext>
+          </DndContext>
         )}
       </div>
 

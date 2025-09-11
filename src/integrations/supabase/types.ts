@@ -399,6 +399,7 @@ export type Database = {
           address: string | null
           branch_name: string | null
           created_at: string
+          currency: string
           delivery_fee: number | null
           description: string | null
           id: string
@@ -420,6 +421,7 @@ export type Database = {
           address?: string | null
           branch_name?: string | null
           created_at?: string
+          currency?: string
           delivery_fee?: number | null
           description?: string | null
           id?: string
@@ -441,6 +443,7 @@ export type Database = {
           address?: string | null
           branch_name?: string | null
           created_at?: string
+          currency?: string
           delivery_fee?: number | null
           description?: string | null
           id?: string

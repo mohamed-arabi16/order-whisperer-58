@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Building2, Save, RefreshCw } from "lucide-react";
+import { CurrencySelector } from "@/components/ui/currency-selector";
 
 interface Tenant {
   id: string;
@@ -18,6 +19,7 @@ interface Tenant {
   phone_number?: string;
   address?: string;
   description?: string;
+  currency?: string;
 }
 
 interface RestaurantProfileProps {
@@ -54,6 +56,7 @@ export const RestaurantProfile: React.FC<RestaurantProfileProps> = ({
     address: tenant.address || '',
     description: tenant.description || '',
     slug: tenant.slug || '',
+    currency: tenant.currency || 'SYP',
   });
 
   const handleSlugRegeneration = () => {
@@ -74,6 +77,7 @@ export const RestaurantProfile: React.FC<RestaurantProfileProps> = ({
           address: formData.address || null,
           description: formData.description || null,
           slug: formData.slug,
+          currency: formData.currency,
         })
         .eq('id', tenant.id)
         .select()
@@ -133,13 +137,21 @@ export const RestaurantProfile: React.FC<RestaurantProfileProps> = ({
             </div>
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="address">{t('restaurant.profile.address')}</Label>
-            <Input
-              id="address"
-              value={formData.address}
-              onChange={(e) => setFormData(prev => ({ ...prev, address: e.target.value }))}
-              placeholder={t('restaurant.profile.addressPlaceholder')}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <Label htmlFor="address">{t('restaurant.profile.address')}</Label>
+              <Input
+                id="address"
+                value={formData.address}
+                onChange={(e) => setFormData(prev => ({ ...prev, address: e.target.value }))}
+                placeholder={t('restaurant.profile.addressPlaceholder')}
+              />
+            </div>
+
+            <CurrencySelector
+              value={formData.currency}
+              onChange={(currency) => setFormData(prev => ({ ...prev, currency }))}
+              disabled={isLoading}
             />
           </div>
 

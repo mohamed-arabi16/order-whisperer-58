@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Plus, Minus, ShoppingCart, Vegan, Flame } from "lucide-react";
+import { Plus, Minus, ShoppingCart, Vegan, Flame, Utensils } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { motion, AnimatePresence } from "framer-motion";
 import { VscFlame } from "@/components/icons/VscFlame";
@@ -118,18 +118,18 @@ const MenuDemo = (): JSX.Element => {
               >
                 <Card className="overflow-hidden shadow-card transition-all duration-300 hover:shadow-lg flex flex-col md:flex-row md:items-center">
                   <div className="w-full md:w-32 h-32 md:h-32 flex-shrink-0 bg-muted/20 rounded-lg md:rounded-l-lg md:rounded-r-none overflow-hidden">
-                    <img
-                      src={item.image || "/placeholder.svg"}
-                      alt={item.name}
-                      className="w-full h-full object-cover transition-opacity duration-300"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = "/placeholder.svg";
-                      }}
-                      onLoad={(e) => {
-                        (e.target as HTMLImageElement).style.opacity = "1";
-                      }}
-                      style={{ opacity: 0 }}
-                    />
+                    {item.image ? (
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-accent/10">
+                        <Utensils className="w-8 h-8 text-primary/40" />
+                      </div>
+                    )}
                   </div>
                   <CardContent className="p-4 flex flex-col flex-grow justify-between">
                     <div>
@@ -157,7 +157,7 @@ const MenuDemo = (): JSX.Element => {
                       </div>
                     </div>
                     <div className="flex items-center justify-between mt-4">
-                      <p className="text-lg font-semibold text-primary">
+                      <p className="text-base font-semibold text-primary">
                         {item.price.toLocaleString()} {t("currency")}
                       </p>
                       <div className="flex items-center gap-2">
@@ -173,17 +173,17 @@ const MenuDemo = (): JSX.Element => {
                                   size="sm"
                                   variant="outline"
                                   onClick={() => removeFromCart(item.id)}
-                                  className="h-9 w-9 p-0 rounded-full"
+                                  className="h-7 w-7 p-0 rounded-full"
                                 >
-                                  <Minus size={16} />
+                                  <Minus size={14} />
                                 </Button>
                               </motion.div>
-                              <motion.span
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: 10 }}
-                                className="text-base font-bold min-w-[2rem] text-center"
-                              >
+                               <motion.span
+                                 initial={{ opacity: 0, y: -10 }}
+                                 animate={{ opacity: 1, y: 0 }}
+                                 exit={{ opacity: 0, y: 10 }}
+                                 className="text-sm font-bold min-w-[1.5rem] text-center"
+                               >
                                 {getQuantity(item.id)}
                               </motion.span>
                             </>
@@ -192,9 +192,9 @@ const MenuDemo = (): JSX.Element => {
                         <Button
                           size="sm"
                           onClick={() => addToCart(item)}
-                          className="h-9 w-9 p-0 rounded-full"
+                          className="h-7 w-7 p-0 rounded-full"
                         >
-                          <Plus size={16} />
+                          <Plus size={14} />
                         </Button>
                       </div>
                     </div>

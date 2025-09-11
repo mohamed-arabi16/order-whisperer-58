@@ -179,6 +179,9 @@
     "unsavedChangesDescription": "You have unsaved changes. Are you sure you want to leave?",
     "update": "Update",
     "view": "View",
+    "menu": "Menu", 
+    "feedback": "Feedback",
+    "language": "Language",
     "yes": "Yes"
   },
   "contact": {
@@ -610,10 +613,24 @@
       "plan": "Subscription Plan",
       "title": "Restaurant Information"
     },
-    "noTenant": {
-      "contactAdmin": "Please contact the general manager to set up the restaurant account",
-      "description": "No restaurant account associated with this user was found",
-      "welcome": "Welcome {{name}}"
+    "profile": {
+      "address": "Address",
+      "addressPlaceholder": "Enter restaurant address", 
+      "currency": "Currency",
+      "selectCurrency": "Select currency",
+      "description": "Description",
+      "descriptionPlaceholder": "Brief description of your restaurant",
+      "menuSlug": "Menu link",
+      "name": "Restaurant name",
+      "namePlaceholder": "Enter restaurant name",
+      "phone": "Phone number", 
+      "phonePlaceholder": "+1 xxx xxx xxxx",
+      "saveChanges": "Save changes",
+      "title": "Restaurant profile",
+      "updateError": "Update failed",
+      "updateSuccess": "Profile updated", 
+      "updateSuccessDescription": "Restaurant profile updated successfully.",
+      "updating": "Updating..."
     },
     "quickActions": {
       "analytics": {
