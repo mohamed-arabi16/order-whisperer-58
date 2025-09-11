@@ -339,14 +339,21 @@
     "supportText": "Get help setting up your digital restaurant."
   },
   "header": {
+    "analytics": "Analytics",
     "brand": "RestaurantOS",
+    "branding": "Branding",
     "contact": "Contact",
     "dashboard": "Dashboard",
     "demo": "Demo",
     "features": "Features",
     "getStarted": "Get Started",
+    "home": "Home",
+    "language": "Language",
     "languageName": "ع",
+    "manageMenu": "Manage Menu",
     "pricing": "Pricing",
+    "profile": "Profile",
+    "qrCode": "QR Code",
     "signIn": "Sign In",
     "signOut": "Sign Out",
     "switchLanguage": "Switch to Arabic"
@@ -689,6 +696,32 @@
       "updating": "Updating..."
     },
     "welcome": "Welcome {{userName}} - Restaurant Control Panel"
+  },
+  "restaurant": {
+    "profile": {
+      "title": "Restaurant Profile",
+      "name": "Restaurant Name",
+      "namePlaceholder": "Enter restaurant name",
+      "phone": "Phone Number", 
+      "phonePlaceholder": "Enter phone number",
+      "address": "Address",
+      "addressPlaceholder": "Enter restaurant address",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe your restaurant",
+      "currency": "Currency",
+      "selectCurrency": "Select Currency",
+      "menuSlug": "Menu Link",
+      "saveChanges": "Save Changes",
+      "updating": "Updating...",
+      "updateSuccess": "Profile Updated",
+      "updateSuccessDescription": "Restaurant profile has been updated successfully",
+      "updateError": "Update Error"
+    },
+    "feedback": {
+      "title": "Customer Feedback",
+      "description": "Customer opinions and ratings",
+      "noFeedback": "No feedback yet"
+    }
   },
   "superAdmin": {
     "bulkActions": {
