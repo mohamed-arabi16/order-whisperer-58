@@ -17,27 +17,27 @@ import { Link } from "react-router-dom";
  * @returns {JSX.Element} The rendered pricing page.
  */
 const Pricing = (): JSX.Element => {
-  const { t, isRTL } = useTranslation();
+  const { t, isRTL, t_array } = useTranslation();
 
   const plans = [
     {
       name: t('pricing.plans.basic.name'),
       price: t('pricing.plans.basic.price'),
-      features: t('pricing.plans.basic.features'),
+      features: t_array('pricing.plans.basic.features'),
       cta: t('pricing.plans.basic.cta'),
       link: "/auth?tab=signup",
     },
     {
       name: t('pricing.plans.premium.name'),
       price: t('pricing.plans.premium.price'),
-      features: t('pricing.plans.premium.features'),
+      features: t_array('pricing.plans.premium.features'),
       cta: t('pricing.plans.premium.cta'),
       link: "/auth?tab=signup",
     },
     {
       name: t('pricing.plans.enterprise.name'),
       price: t('pricing.plans.enterprise.price'),
-      features: t('pricing.plans.enterprise.features'),
+      features: t_array('pricing.plans.enterprise.features'),
       cta: t('pricing.plans.enterprise.cta'),
       link: "/contact",
     },
