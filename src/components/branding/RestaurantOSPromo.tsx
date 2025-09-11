@@ -26,7 +26,7 @@ export const RestaurantOSPromo: React.FC<RestaurantOSPromoProps> = ({
               <Heart className="w-3 h-3 text-destructive fill-current" />
             </span>
             <Link 
-              to="https://restaurantos.com" 
+              to="https://restaurantos.qobouli.com" 
               target="_blank"
               className="font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1"
             >
