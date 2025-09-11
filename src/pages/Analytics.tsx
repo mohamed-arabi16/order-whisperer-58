@@ -179,31 +179,39 @@ const Analytics = () => {
 
         {isRestaurantOwner && (
           <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <Card className="p-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+              <Card className="p-3">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">{t('analytics.totalMenuViews')}</CardTitle>
+                  <CardTitle className="text-sm">{t('analytics.totalMenuViews')}</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <p className="text-2xl font-bold">{analyticsData.totalViews || 0}</p>
+                  <p className="text-xl font-bold">{analyticsData.totalViews || 0}</p>
                 </CardContent>
               </Card>
-              <Card className="p-4">
+              <Card className="p-3">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">{t('analytics.totalRevenue')}</CardTitle>
+                  <CardTitle className="text-sm">{t('analytics.totalRevenue')}</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <p className="text-2xl font-bold">
+                  <p className="text-xl font-bold">
                     ${analyticsData.salesData?.reduce((acc: any, item: any) => acc + parseFloat(item.total_sales), 0).toFixed(2) || 0}
                   </p>
                 </CardContent>
               </Card>
-              <Card className="p-4">
+              <Card className="p-3">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">{t('analytics.totalFeedback')}</CardTitle>
+                  <CardTitle className="text-sm">{t('analytics.totalFeedback')}</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <p className="text-2xl font-bold">{analyticsData.feedback?.length || 0}</p>
+                  <p className="text-xl font-bold">{analyticsData.feedback?.length || 0}</p>
+                </CardContent>
+              </Card>
+              <Card className="p-3">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm">{t('analytics.totalOrders')}</CardTitle>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <p className="text-xl font-bold">{analyticsData.salesData?.reduce((acc: any, item: any) => acc + parseInt(item.order_count || 0), 0) || 0}</p>
                 </CardContent>
               </Card>
             </div>

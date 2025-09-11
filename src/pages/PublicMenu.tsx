@@ -33,6 +33,7 @@ import { EnhancedCartBar } from "@/components/menu/EnhancedCartBar";
 import { CartDrawer } from "@/components/menu/CartDrawer";
 import { RestaurantOverview } from "@/components/menu/RestaurantOverview";
 import { RestaurantOSPromo } from "@/components/branding/RestaurantOSPromo";
+import { FeedbackModal } from "@/components/menu/FeedbackModal";
 
 interface Tenant {
   id: string;
@@ -250,8 +251,8 @@ const PublicMenu = (): JSX.Element => {
   const scrollToCategory = (categoryId: string) => {
     const element = document.getElementById(`category-${categoryId}`);
     if (element) {
-      // Calculate offset for sticky header (approximately 140px)
-      const headerOffset = 140;
+      // Calculate offset for sticky header (approximately 160px for better positioning)
+      const headerOffset = 160;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -606,12 +607,18 @@ const PublicMenu = (): JSX.Element => {
               }}
               className="w-full bg-brand-primary text-primary-foreground hover:bg-brand-primary-hover"
               disabled={feedback.rating === 0}
-            >
-              إرسال التقييم
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      {/* Feedback Modal */}
+      <FeedbackModal
+        isOpen={showFeedback}
+        onClose={() => setShowFeedback(false)}
+        tenantId={tenant.id}
+        restaurantName={tenant.name}
+      />
+
+      {/* RestaurantOS Promo Footer */}
+      <RestaurantOSPromo 
+        plan={tenant.subscription_plan as 'free' | 'starter' | 'premium' || 'free'} 
+      />
     </div>
   );
 };

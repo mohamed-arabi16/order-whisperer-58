@@ -102,7 +102,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
   return (
     <Drawer open={isOpen} onOpenChange={onClose}>
-      <DrawerContent className="max-h-[85vh]">
+      <DrawerContent className="max-h-[85vh] z-60">
         <DrawerHeader className="text-center border-b pb-4">
           <DrawerTitle className="text-xl">سلة التسوق</DrawerTitle>
           <p className="text-sm text-muted-foreground">{restaurantName}</p>

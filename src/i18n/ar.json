@@ -33,7 +33,7 @@
     "fullName": "الاسم الكامل",
     "fullNameLabel": "الاسم الكامل",
     "fullNamePlaceholder": "مثال: جون دو",
-    "password": "كلمة المرור",
+    "password": "كلمة المرور",
     "passwordLabel": "كلمة المرور",
     "signIn": "تسجيل الدخول",
     "signInButton": "تسجيل الدخول",
@@ -98,45 +98,55 @@
       "item": {
         "add": "إضافة +",
         "description": "دجاج مشوي مع الخضار",
-        "name": "مشاوي مشكلة",
-        "price": "25,000 ل.س"
+        "name": "شيش طاووق",
+        "price": "٥٠٬٠٠٠ ل.ل"
       },
-      "menuTitle": "القائمة الرقمية",
+      "menuTitle": "قائمة الطعام الرقمية",
       "title": "معاينة التصميم"
     },
+    "primaryColor": "اللون الأساسي",
+    "restaurantName": "اسم المطعم",
     "save": "حفظ التغييرات",
+    "saved": "تم حفظ التغييرات",
     "saving": "جاري الحفظ...",
+    "secondaryColor": "اللون الثانوي",
     "socialMedia": {
-      "description": "أضف روابط حسابات التواصل الاجتماعي",
+      "description": "أضف روابط صفحات التواصل الاجتماعي الخاصة بك.",
       "facebook": "فيسبوك",
-      "instagram": "إنستغرام",
-      "title": "وسائل التواصل الاجتماعي",
+      "instagram": "انستغرام",
+      "title": "روابط التواصل الاجتماعي",
       "twitter": "تويتر"
     },
-    "tenantNotFound": "لم يتم العثور على بيانات المطعم.",
+    "tenantNotFound": "لم يتم العثور على بيانات المطعم",
+    "title": "العلامة التجارية",
     "toast": {
-      "invalidImageDescription": "يرجى اختيار ملف صورة صالح (PNG, JPG, JPEG)",
-      "invalidImageTitle": "نوع ملف غير صالح",
-      "logoUploadErrorDescription": "حدث خطأ أثناء رفع الشعار. يرجى المحاولة مرة أخرى.",
-      "logoUploadErrorTitle": "خطأ في رفع الشعار",
-      "saveErrorDescription": "حدث خطأ أثناء حفظ التغييرات. يرجى المحاولة مرة أخرى.",
-      "saveErrorTitle": "خطأ في الحفظ",
-      "saveSuccessDescription": "تم حفظ تخصيص العلامة التجارية بنجاح.",
-      "saveSuccessTitle": "تم الحفظ بنجاح",
-      "tenantNotFoundDescription": "لم يتم العثور على مطعم مرتبط بحسابك.",
-      "tenantNotFoundTitle": "المطعم غير موجود"
+      "invalidImageDescription": "يرجى اختيار ملف صورة صحيح",
+      "invalidImageTitle": "خطأ",
+      "logoUploadErrorDescription": "حدث خطأ في رفع الشعار",
+      "logoUploadErrorTitle": "خطأ",
+      "saveErrorDescription": "حدث خطأ في حفظ التصميم",
+      "saveErrorTitle": "خطأ",
+      "saveSuccessDescription": "تم حفظ تصميم المطعم",
+      "saveSuccessTitle": "تم بنجاح",
+      "tenantNotFoundDescription": "لم يتم العثور على بيانات المطعم",
+      "tenantNotFoundTitle": "خطأ"
     },
-    "title": "تخصيص العلامة التجارية"
+    "uploadLogo": "رفع الشعار"
   },
   "common": {
+    "activated": "مفعل",
     "active": "نشط",
     "add": "إضافة",
-    "back": "العودة",
+    "available": "متوفر",
+    "back": "رجوع",
     "callUs": "اتصل بنا",
     "cancel": "إلغاء",
+    "category": "الفئة",
     "close": "إغلاق",
     "confirm": "تأكيد",
-    "createNewAccount": "إنشاء حساب جديد",
+    "create": "إنشاء",
+    "currency": "ل.ل",
+    "deactivated": "معطل",
     "delete": "حذف",
     "description": "الوصف",
     "edit": "تعديل",
@@ -144,7 +154,7 @@
     "error.genericMessage": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى في وقت لاحق.",
     "error.genericTitle": "حدث خطأ ما",
     "export": "تصدير",
-    "feedback": "التقييم",
+    "feedback": "التقييمات",
     "genericError": "حدث خطأ، يرجى المحاولة مرة أخرى",
     "image": "الصورة",
     "inactive": "غير نشط",
@@ -158,6 +168,7 @@
     "open": "فتح",
     "previous": "السابق",
     "price": "السعر",
+    "processing": "جاري المعالجة...",
     "required": "مطلوب",
     "save": "حفظ",
     "saving": "جاري الحفظ...",
@@ -173,133 +184,117 @@
     "view": "عرض",
     "yes": "نعم"
   },
+  "contact": {
+    "description": "تواصل معنا لأي استفسارات.",
+    "emailLabel": "البريد الإلكتروني",
+    "emailPlaceholder": "بريدك الإلكتروني",
+    "formTitle": "أرسل لنا رسالة",
+    "messageLabel": "الرسالة",
+    "messagePlaceholder": "رسالتك",
+    "nameLabel": "الاسم",
+    "namePlaceholder": "اسمك",
+    "placeholder": "نموذج التواصل سيكون هنا.",
+    "subjectLabel": "الموضوع",
+    "subjectPlaceholder": "موضوع رسالتك",
+    "submitButton": "إرسال الرسالة",
+    "title": "تواصل معنا"
+  },
+  "createTenantDialog": {
+    "addressLabel": "العنوان (اختياري)",
+    "addressPlaceholder": "عنوان المطعم",
+    "description": "إنشاء حساب مطعم جديد على المنصة مع تحديد خطة الاشتراك",
+    "errorTitle": "خطأ في إنشاء المطعم",
+    "genericError": "حدث خطأ أثناء إنشاء حساب المطعم",
+    "ownerEmailLabel": "البريد الإلكتروني للمالك",
+    "ownerNameLabel": "اسم المالك",
+    "ownerNamePlaceholder": "الاسم الكامل",
+    "passwordLabel": "كلمة المرور الأولية",
+    "phoneLabel": "رقم الهاتف (اختياري)",
+    "phonePlaceholder": "+963 XXX XXX XXX",
+    "restaurantNameLabel": "اسم المطعم",
+    "restaurantNamePlaceholder": "مثال: بوابة دمشق",
+    "submitButton": "إنشاء المطعم",
+    "subscriptionPlanLabel": "خطة الاشتراك",
+    "successDescription": "تم إنشاء حساب {{restaurantName}} وإرسال بيانات الدخول للمالك",
+    "successTitle": "تم إنشاء المطعم بنجاح",
+    "title": "إضافة مطعم جديد"
+  },
+  "editTenantDialog": {
+    "addressLabel": "العنوان (اختياري)",
+    "addressPlaceholder": "عنوان المطعم",
+    "description": "تحديث بيانات المطعم.",
+    "errorTitle": "خطأ في تحديث المطعم",
+    "genericError": "حدث خطأ أثناء تحديث حساب المطعم.",
+    "phoneLabel": "رقم الهاتف (اختياري)",
+    "phonePlaceholder": "+963 XXX XXX XXX",
+    "restaurantNameLabel": "اسم المطعم",
+    "restaurantNamePlaceholder": "مثال: بوابة دمشق",
+    "submitButton": "حفظ التغييرات",
+    "subscriptionPlanLabel": "خطة الاشتراك",
+    "successDescription": "تم تحديث حساب {{restaurantName}}.",
+    "successTitle": "تم تحديث المطعم بنجاح",
+    "title": "تعديل المطعم"
+  },
   "header": {
     "analytics": "التحليلات",
     "branding": "الهوية التجارية",
     "contact": "تواصل معنا",
     "dashboard": "لوحة التحكم",
     "home": "الرئيسية",
-    "language": "اللغة",
+    "languageName": "EN",
     "manageMenu": "إدارة القائمة",
     "pricing": "الأسعار",
     "profile": "الملف الشخصي",
     "qrCode": "رمز QR",
-    "signOut": "تسجيل الخروج"
+    "signOut": "تسجيل الخروج",
+    "switchLanguage": "التبديل إلى الإنجليزية"
   },
   "restaurant": {
-    "dashboardTitle": "مطعم {{restaurantName}}",
-    "feedback": {
-      "description": "مراجعة تقييمات وآراء العملاء",
-      "noFeedback": {
-        "description": "ستظهر تقييمات العملاء هنا بمجرد إرسالها.",
-        "title": "لا توجد تقييمات بعد"
-      },
-      "title": "تقييمات العملاء"
-    },
-    "gettingStarted": {
-      "cta": "ابدأ الآن",
-      "description": "اتبع هذه الخطوات البسيطة لإطلاق قائمتك الرقمية",
-      "step1": {
-        "description": "أضف معلومات مطعمك الأساسية",
-        "title": "إعداد الملف الشخصي"
-      },
-      "step2": {
-        "description": "أضف الأصناف والأسعار إلى قائمتك",
-        "title": "بناء القائمة"
-      },
-      "step3": {
-        "description": "خصص الألوان والشعار",
-        "title": "تخصيص التصميم"
-      },
-      "step4": {
-        "description": "احصل على رمز QR وضعه على طاولات المطعم",
-        "title": "طباعة رمز QR"
-      },
-      "title": "دليل البدء السريع"
-    },
-    "infoCard": {
-      "address": "العنوان",
-      "name": "اسم المطعم",
-      "phone": "رقم الهاتف",
-      "plan": "خطة الاشتراك",
-      "title": "معلومات المطعم"
-    },
-    "noTenant": {
-      "contactAdmin": "يرجى التواصل مع المدير العام لإعداد حساب المطعم",
-      "description": "لم يتم العثور على حساب مطعم مرتبط بهذا المستخدم",
-      "welcome": "مرحباً {{name}}"
-    },
     "profile": {
-      "address": "العنوان",
-      "addressPlaceholder": "أدخل عنوان المطعم",
-      "currency": "العملة",
-      "selectCurrency": "اختر العملة",
-      "description": "الوصف",
-      "descriptionPlaceholder": "وصف مختصر عن مطعمك",
-      "menuSlug": "رابط القائمة",
+      "title": "ملف المطعم",
       "name": "اسم المطعم",
       "namePlaceholder": "أدخل اسم المطعم",
       "phone": "رقم الهاتف",
-      "phonePlaceholder": "+963 xxx xxx xxx",
+      "phonePlaceholder": "أدخل رقم الهاتف",
+      "address": "العنوان",
+      "addressPlaceholder": "أدخل عنوان المطعم",
+      "description": "الوصف",
+      "descriptionPlaceholder": "اوصف مطعمك",
+      "currency": "العملة",
+      "selectCurrency": "اختر العملة",
+      "menuSlug": "رابط القائمة",
       "saveChanges": "حفظ التغييرات",
-      "title": "ملف المطعم",
-      "updateError": "فشل التحديث",
+      "updating": "جاري التحديث...",
       "updateSuccess": "تم تحديث الملف",
-      "updateSuccessDescription": "تم تحديث ملف المطعم بنجاح.",
-      "updating": "جاري التحديث..."
+      "updateSuccessDescription": "تم تحديث ملف المطعم بنجاح",
+      "updateError": "خطأ في التحديث"
     },
-    "quickActions": {
-      "analytics": {
-        "button": "عرض التحليلات",
-        "description": "عرض التقارير وتحليلات المبيعات",
-        "title": "التحليلات"
+    "feedback": {
+      "title": "تقييمات العملاء",
+      "description": "آراء وتقييمات عملائك",
+      "noFeedback": "لا توجد تقييمات حتى الآن"
+    },
+    "gettingStarted": {
+      "title": "دليل البداية السريعة",
+      "description": "اتبع هذه الخطوات لإعداد مطعمك",
+      "step1": {
+        "title": "أكمل ملف مطعمك",
+        "description": "أضف معلومات المطعم الأساسية"
       },
-      "branding": {
-        "button": "تخصيص التصميم",
-        "description": "تخصيص ألوان وشعار المطعم",
-        "title": "التصميم والشعار"
+      "step2": {
+        "title": "خصص العلامة التجارية",
+        "description": "ارفع الشعار واختر الألوان"
       },
-      "menu": {
-        "button": "إدارة القائمة",
-        "description": "إضافة وتعديل أصناف القائمة",
-        "title": "إدارة القائمة"
+      "step3": {
+        "title": "أضف فئات وأصناف القائمة",
+        "description": "أنشئ قائمة طعامك الرقمية"
       },
-      "qr": {
-        "button": "إنشاء رمز QR",
-        "description": "إنشاء وطباعة رمز QR للقائمة",
-        "title": "رمز QR"
-      }
-    },
-    "stats": {
-      "menuItems": "عدد الأصناف",
-      "monthlyViews": "المشاهدات الشهرية",
-      "orders": "الطلبات",
-      "revenue": "الإيرادات"
-    },
-    "toast": {
-      "copyErrorDescription": "لم يتم نسخ الرابط",
-      "copyErrorTitle": "خطأ",
-      "copySuccessDescription": "تم نسخ الرابط إلى الحافظة",
-      "copySuccessTitle": "تم النسخ",
-      "feedbackErrorDescription": "لا يمكن تحميل التقييمات. يرجى المحاولة مرة أخرى في وقت لاحق.",
-      "feedbackErrorTitle": "خطأ في جلب التقييمات",
-      "noTenantDescription": "لا يوجد مطعم مرتبط بحسابك.",
-      "noTenantTitle": "المطعم غير موجود"
-    },
-    "theme": {
-      "accentColor": "اللون المكمل",
-      "description": "خصص الألوان الأساسية لموقع المطعم",
-      "primaryColor": "اللون الأساسي",
-      "resetToDefault": "إعادة للوضع الافتراضي",
-      "saveChanges": "حفظ التغييرات",
-      "secondaryColor": "اللون الثانوي",
-      "title": "تخصيص الألوان",
-      "updateError": "فشل في تحديث الألوان",
-      "updateSuccess": "تم تحديث الألوان",
-      "updateSuccessDescription": "تم تحديث ألوان المطعم بنجاح.",
-      "updating": "جاري التحديث..."
-    },
-    "welcome": "مرحباً {{userName}} - لوحة تحكم المطعم"
+      "step4": {
+        "title": "شارك قائمتك مع العملاء",
+        "description": "استخدم رمز QR أو الرابط المباشر"
+      },
+      "cta": "ابدأ الآن"
+    }
   },
   "meta": {
     "description": "منصة إدارة المطاعم الحديثة مع دعم العربية وطلب QR وتكامل واتساب للمطاعم الشرق أوسطية.",
@@ -308,48 +303,5 @@
       "title": "RestaurantOS - منصة إدارة المطاعم الحديثة"
     },
     "title": "RestaurantOS - منصة إدارة المطاعم الحديثة"
-  },
-  "superAdmin": {
-    "filters": {
-      "plan": {
-        "all": "جميع الخطط",
-        "placeholder": "تصفية حسب الخطة"
-      },
-      "searchPlaceholder": "ابحث عن طريق اسم المطعم أو المالك ...",
-      "status": {
-        "active": "نشط",
-        "all": "جميع الحالات",
-        "inactive": "غير نشط",
-        "placeholder": "تصفية حسب الحالة"
-      }
-    },
-    "noTenants": {
-      "description": "ابدأ بإضافة أول مطعم على المنصة",
-      "title": "لا توجد مطاعم مسجلة بعد"
-    },
-    "stats": {
-      "activeAccounts": "الحسابات النشطة",
-      "activeCount": "{{count}} نشط",
-      "activityPercentage": "%{{percentage}} نسبة النشاط",
-      "analytics": "عرض التحليلات",
-      "analyticsDescription": "الغوص في تحليلات المنصة",
-      "outOfTotal": "من أصل {{total}} مطعم",
-      "paidPlans": "الخطط المدفوعة",
-      "totalRestaurants": "إجمالي المطاعم"
-    },
-    "tenant": {
-      "email": "البريد",
-      "owner": "المالك",
-      "registrationDate": "تاريخ التسجيل",
-      "viewMenu": "عرض القائمة"
-    },
-    "tenantsManagement": {
-      "addButton": "إضافة مطعم جديد",
-      "description": "إنشاء وإدارة حسابات المطاعم على المنصة",
-      "exportAriaLabel": "تصدير بيانات المستأجرين إلى CSV",
-      "title": "إدارة المطاعم"
-    },
-    "title": "لوحة تحكم المدير العام",
-    "welcome": "مرحباً {{name}} - إدارة المطاعم والحسابات"
   }
 }

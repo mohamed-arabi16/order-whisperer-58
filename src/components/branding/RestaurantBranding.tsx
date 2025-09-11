@@ -380,11 +380,11 @@ const RestaurantBranding = (): JSX.Element => {
             {/* Logo Upload */}
             <Card className="shadow-card">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
+                <CardTitle className="flex items-center gap-2 text-foreground">
                   <Upload className="h-5 w-5" />
                   {t('branding.logo.title')}
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-muted-foreground">
                   {t('branding.logo.description')}
                 </CardDescription>
               </CardHeader>
@@ -434,11 +434,11 @@ const RestaurantBranding = (): JSX.Element => {
             {/* Color Selection */}
             <Card className="shadow-card">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
+                <CardTitle className="flex items-center gap-2 text-foreground">
                   <Palette className="h-5 w-5" />
                   {t('branding.color.title')}
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-muted-foreground">
                   {t('branding.color.description')}
                 </CardDescription>
               </CardHeader>
@@ -466,7 +466,7 @@ const RestaurantBranding = (): JSX.Element => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="custom-color">{t('branding.color.custom')}</Label>
+                  <Label htmlFor="custom-color" className="text-foreground">{t('branding.color.custom')}</Label>
                   <div className="flex gap-2">
                     <Input
                       id="custom-color"
@@ -496,6 +496,120 @@ const RestaurantBranding = (): JSX.Element => {
 
               </CardContent>
             </Card>
+
+            {/* Theme Customizer Section - moved from Restaurant Profile */}
+            <ThemeCustomizer
+              tenant={tenant}
+              onUpdate={(updatedTenant) => {
+                setTenant(prev => prev ? { ...prev, ...updatedTenant } : null);
+              }}
+            />
+          </div>
+
+          {/* Preview Panel */}
+          <div className="space-y-6">
+            <Card className="shadow-card">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-foreground">
+                  <Eye className="h-5 w-5" />
+                  {t('branding.preview.title')}
+                </CardTitle>
+                <CardDescription className="text-muted-foreground">
+                  {t('branding.preview.description')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-gradient-subtle border rounded-lg overflow-hidden">
+                  <div className="relative">
+                    {/* Mobile Phone Frame */}
+                    <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+                        {/* Header */}
+                        <div className="p-4 bg-gradient-to-r from-brand-primary to-brand-primary-hover text-primary-foreground">
+                          <div className={`flex items-center gap-3 ${logoPosition === 'center' ? 'justify-center' : logoPosition === 'right' ? 'justify-end' : 'justify-start'}`}>
+                            {logoPreview && (
+                              <img src={logoPreview} alt="Logo" className="w-8 h-8 rounded" />
+                            )}
+                            <div className={logoPreview ? '' : 'text-center w-full'}>
+                              <h1 className="text-lg font-bold">{tenant.name}</h1>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Preview Content */}
+                        <div className="p-4 space-y-4">
+                          <div className="space-y-3">
+                            <h2 className="text-lg font-bold pb-2 border-b text-brand-primary border-brand-primary/20">
+                              {t('branding.preview.category')}
+                            </h2>
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between p-3 bg-card rounded-lg shadow-sm">
+                                <div>
+                                  <h3 className="font-medium">{t('branding.preview.item.name')}</h3>
+                                  <p className="text-xs text-muted-foreground">
+                                    {t('branding.preview.item.description')}
+                                  </p>
+                                  <span className="text-sm font-bold text-brand-primary">
+                                    {t('branding.preview.item.price')}
+                                  </span>
+                                </div>
+                                <Button 
+                                  size="sm" 
+                                  className="h-6 px-2 text-xs bg-brand-primary text-primary-foreground hover:bg-brand-primary-hover"
+                                >
+                                  {t('branding.preview.item.add')}
+                                </Button>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="p-3 rounded-lg border border-brand-primary/20 bg-brand-primary/10">
+                            <div className="flex items-center justify-between">
+                              <span className="text-sm font-medium">{t('branding.preview.cart.empty')}</span>
+                              <Button 
+                                size="sm" 
+                                disabled 
+                                className="text-xs bg-brand-primary/80"
+                              >
+                                {t('branding.preview.cart.send')}
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Save Button */}
+        <div className="flex justify-center">
+          <Button
+            onClick={handleSave}
+            disabled={saving}
+            size="lg"
+            className="min-w-40"
+          >
+            {saving ? (
+              <>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                {t('branding.saving')}
+              </>
+            ) : (
+              <>
+                <Save className="h-4 w-4 mr-2" />
+                {t('branding.save')}
+              </>
+            )}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
             {/* Logo Position */}
             <Card className="shadow-card">
@@ -681,5 +795,3 @@ const RestaurantBranding = (): JSX.Element => {
     </div>
   );
 };
-
-export default RestaurantBranding;

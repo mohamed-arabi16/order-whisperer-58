@@ -38,7 +38,7 @@ export const StickySearchHeader = ({
     <div className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border shadow-sm">
       {/* Search Section */}
       <div className="px-4 py-3 bg-background">
-        <div className="container mx-auto max-w-4xl">
+        <div className="w-full max-w-none">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input

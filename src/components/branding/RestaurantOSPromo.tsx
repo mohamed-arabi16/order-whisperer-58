@@ -17,7 +17,7 @@ export const RestaurantOSPromo: React.FC<RestaurantOSPromoProps> = ({
   if (plan === 'premium') return null;
 
   return (
-    <div className={`fixed bottom-0 left-0 right-0 z-40 ${className}`} dir={isRTL ? 'rtl' : 'ltr'}>
+    <div className={`fixed bottom-0 left-0 right-0 z-30 ${className}`} dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="bg-muted/95 backdrop-blur-sm border-t border-border">
         <div className="container mx-auto px-4 py-2">
           <div className={`flex items-center justify-center gap-2 text-xs text-muted-foreground ${isRTL ? 'flex-row-reverse' : ''}`}>

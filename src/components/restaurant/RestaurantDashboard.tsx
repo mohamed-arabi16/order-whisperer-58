@@ -503,16 +503,10 @@ const RestaurantDashboard = (): JSX.Element => {
             </Card>
           </TabsContent>
           <TabsContent value="profile">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <RestaurantProfile 
-                tenant={tenant} 
-                onUpdate={handleTenantUpdate}
-              />
-              <ThemeCustomizer 
-                tenant={tenant} 
-                onUpdate={handleTenantUpdate}
-              />
-            </div>
+            <RestaurantProfile
+              tenant={tenant}
+              onUpdate={handleTenantUpdate}
+            />
           </TabsContent>
         </Tabs>
       </div>
