@@ -504,12 +504,6 @@ const PublicMenu = (): JSX.Element => {
         isProcessingOrder={isProcessingOrder}
       />
 
-      {/* RestaurantOS Promo for Free/Starter Plans */}
-      <RestaurantOSPromo 
-        plan={(tenant?.subscription_plan as 'free' | 'starter' | 'premium') || 'free'} 
-        className="fixed bottom-0 left-0 right-0 z-20"
-      />
-
       {/* Item Details Modal */}
       <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
         <DialogContent className="max-w-md mx-auto" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -532,18 +526,21 @@ const PublicMenu = (): JSX.Element => {
                 {selectedItem.description && (
                   <p className="text-muted-foreground">{selectedItem.description}</p>
                 )}
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-brand-primary">
-                    {formatPrice(selectedItem.price)}
-                  </span>
+                <p className="text-lg font-bold text-primary">
+                  {formatPrice(selectedItem.price)}
+                </p>
+                <div className="flex gap-3">
+                  <Button variant="outline" onClick={() => setSelectedItem(null)} className="flex-1">
+                    إغلاق
+                  </Button>
                   <Button
                     onClick={() => {
                       addToCart(selectedItem);
                       setSelectedItem(null);
                     }}
-                    className="px-6 bg-brand-primary text-primary-foreground hover:bg-brand-primary-hover"
+                    className="flex-1"
                   >
-                    أضف إلى السلة
+                    إضافة للسلة
                   </Button>
                 </div>
               </div>
@@ -552,61 +549,6 @@ const PublicMenu = (): JSX.Element => {
         </DialogContent>
       </Dialog>
 
-      {/* Feedback Modal */}
-      <Dialog open={showFeedback} onOpenChange={setShowFeedback}>
-        <DialogContent className="max-w-md mx-auto" dir={isRTL ? 'rtl' : 'ltr'}>
-          <DialogHeader>
-            <DialogTitle>تقييم تجربتك</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4">
-            <div className="flex justify-center gap-2">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <Button
-                  key={star}
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setFeedback({ ...feedback, rating: star })}
-                  className="p-1"
-                >
-                  <Star
-                    className={`w-8 h-8 ${
-                      star <= feedback.rating
-                        ? 'fill-yellow-400 text-yellow-400'
-                        : 'text-muted-foreground'
-                    }`}
-                  />
-                </Button>
-              ))}
-            </div>
-            <Textarea
-              placeholder="اكتب تعليقك هنا (اختياري)"
-              value={feedback.comment}
-              onChange={(e) => setFeedback({ ...feedback, comment: e.target.value })}
-              className="min-h-20"
-            />
-            <Button
-              onClick={async () => {
-                if (!tenant?.id || !feedback.rating) return;
-                
-                try {
-                  const { error } = await supabase.rpc('submit_feedback', {
-                    tenant_id_param: tenant.id,
-                    rating_param: feedback.rating,
-                    comment_param: feedback.comment || null,
-                  });
-
-                  if (error) throw error;
-                  
-                  toast.success("شكراً لك على تقييمك!");
-                  setShowFeedback(false);
-                  setFeedback({ rating: 0, comment: "" });
-                } catch (error) {
-                  console.error('Error submitting feedback:', error);
-                  toast.error("حدث خطأ أثناء إرسال التقييم");
-                }
-              }}
-              className="w-full bg-brand-primary text-primary-foreground hover:bg-brand-primary-hover"
-              disabled={feedback.rating === 0}
       {/* Feedback Modal */}
       <FeedbackModal
         isOpen={showFeedback}

@@ -24,181 +24,6 @@
     "totalSales": "إجمالي المبيعات",
     "viewCount": "عدد المشاهدات"
   },
-  "auth": {
-    "alreadyHaveAccount": "لديك حساب بالفعل؟",
-    "createAccount": "إنشاء حساب جديد",
-    "dontHaveAccount": "ليس لديك حساب؟",
-    "email": "البريد الإلكتروني",
-    "emailLabel": "البريد الإلكتروني",
-    "fullName": "الاسم الكامل",
-    "fullNameLabel": "الاسم الكامل",
-    "fullNamePlaceholder": "مثال: جون دو",
-    "password": "كلمة المرور",
-    "passwordLabel": "كلمة المرور",
-    "signIn": "تسجيل الدخول",
-    "signInButton": "تسجيل الدخول",
-    "signInTab": "تسجيل الدخول",
-    "signUp": "إنشاء حساب",
-    "signUpButton": "إنشاء حساب",
-    "signUpTab": "إنشاء حساب",
-    "signingIn": "جاري تسجيل الدخول...",
-    "signingInButton": "جاري تسجيل الدخول...",
-    "signingUp": "جاري إنشاء الحساب...",
-    "signingUpButton": "جاري إنشاء الحساب...",
-    "subtitle": "سجل الدخول أو أنشئ حسابًا لإدارة مطعمك",
-    "title": "مرحبا بك في RestaurantOS",
-    "welcomeBack": "مرحباً بعودتك"
-  },
-  "branding": {
-    "backToDashboard": "العودة للوحة التحكم",
-    "color": {
-      "custom": "أو اختر لون مخصص:",
-      "description": "اختر اللون الأساسي للمطعم",
-      "preview": "المعاينة:",
-      "title": "اللون الأساسي"
-    },
-    "colors": {
-      "calmTurquoise": "تركوازي هادئ",
-      "classicBlue": "أزرق كلاسيكي",
-      "elegantRed": "أحمر أنيق",
-      "luxuryGold": "ذهبي فاخر",
-      "modernPink": "وردي حديث",
-      "naturalGreen": "أخضر طبيعي",
-      "royalPurple": "بنفسجي ملكي",
-      "warmOrange": "برتقالي دافئ"
-    },
-    "contrastWarning": {
-      "description": "هذا اللون قد يكون صعب القراءة على خلفية بيضاء. نوصي بنسبة تباين لا تقل عن 4.5:1.",
-      "title": "تباين ضعيف"
-    },
-    "description": "خصص شعار وألوان المطعم",
-    "error": "خطأ",
-    "loading": "جاري التحميل...",
-    "logo": {
-      "alt": "شعار المطعم",
-      "description": "ارفع شعار المطعم ليظهر في القائمة الرقمية (يُفضل 200x200 بكسل)",
-      "select": "اختر شعار جديد",
-      "title": "شعار المطعم",
-      "uploading": "جاري الرفع..."
-    },
-    "logoPosition": {
-      "center": "وسط",
-      "description": "اختر مكان ظهور الشعار في رأس القائمة.",
-      "left": "يسار",
-      "right": "يمين",
-      "title": "موضع الشعار"
-    },
-    "preview": {
-      "cart": {
-        "empty": "السلة فارغة",
-        "send": "إرسال عبر واتساب"
-      },
-      "category": "المشاوي",
-      "description": "هكذا سيظهر التصميم في القائمة الرقمية",
-      "item": {
-        "add": "إضافة +",
-        "description": "دجاج مشوي مع الخضار",
-        "name": "شيش طاووق",
-        "price": "٥٠٬٠٠٠ ل.ل"
-      },
-      "menuTitle": "قائمة الطعام الرقمية",
-      "title": "معاينة التصميم"
-    },
-    "primaryColor": "اللون الأساسي",
-    "restaurantName": "اسم المطعم",
-    "save": "حفظ التغييرات",
-    "saved": "تم حفظ التغييرات",
-    "saving": "جاري الحفظ...",
-    "secondaryColor": "اللون الثانوي",
-    "socialMedia": {
-      "description": "أضف روابط صفحات التواصل الاجتماعي الخاصة بك.",
-      "facebook": "فيسبوك",
-      "instagram": "انستغرام",
-      "title": "روابط التواصل الاجتماعي",
-      "twitter": "تويتر"
-    },
-    "tenantNotFound": "لم يتم العثور على بيانات المطعم",
-    "title": "العلامة التجارية",
-    "toast": {
-      "invalidImageDescription": "يرجى اختيار ملف صورة صحيح",
-      "invalidImageTitle": "خطأ",
-      "logoUploadErrorDescription": "حدث خطأ في رفع الشعار",
-      "logoUploadErrorTitle": "خطأ",
-      "saveErrorDescription": "حدث خطأ في حفظ التصميم",
-      "saveErrorTitle": "خطأ",
-      "saveSuccessDescription": "تم حفظ تصميم المطعم",
-      "saveSuccessTitle": "تم بنجاح",
-      "tenantNotFoundDescription": "لم يتم العثور على بيانات المطعم",
-      "tenantNotFoundTitle": "خطأ"
-    },
-    "uploadLogo": "رفع الشعار"
-  },
-  "common": {
-    "activated": "مفعل",
-    "active": "نشط",
-    "add": "إضافة",
-    "available": "متوفر",
-    "back": "رجوع",
-    "callUs": "اتصل بنا",
-    "cancel": "إلغاء",
-    "category": "الفئة",
-    "close": "إغلاق",
-    "confirm": "تأكيد",
-    "create": "إنشاء",
-    "currency": "ل.ل",
-    "deactivated": "معطل",
-    "delete": "حذف",
-    "description": "الوصف",
-    "edit": "تعديل",
-    "error": "خطأ",
-    "error.genericMessage": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى في وقت لاحق.",
-    "error.genericTitle": "حدث خطأ ما",
-    "export": "تصدير",
-    "feedback": "التقييمات",
-    "genericError": "حدث خطأ، يرجى المحاولة مرة أخرى",
-    "image": "الصورة",
-    "inactive": "غير نشط",
-    "language": "اللغة",
-    "leave": "المغادرة",
-    "loading": "جاري التحميل...",
-    "menu": "القائمة",
-    "name": "الاسم",
-    "next": "التالي",
-    "no": "لا",
-    "open": "فتح",
-    "previous": "السابق",
-    "price": "السعر",
-    "processing": "جاري المعالجة...",
-    "required": "مطلوب",
-    "save": "حفظ",
-    "saving": "جاري الحفظ...",
-    "search": "بحث",
-    "stay": "البقاء",
-    "submit": "إرسال",
-    "success": "نجح",
-    "total": "المجموع",
-    "unavailable": "غير متوفر",
-    "unsavedChanges": "تغييرات غير محفوظة",
-    "unsavedChangesDescription": "لديك تغييرات غير محفوظة. هل أنت متأكد من أنك تريد المغادرة؟",
-    "update": "تحديث",
-    "view": "عرض",
-    "yes": "نعم"
-  },
-  "contact": {
-    "description": "تواصل معنا لأي استفسارات.",
-    "emailLabel": "البريد الإلكتروني",
-    "emailPlaceholder": "بريدك الإلكتروني",
-    "formTitle": "أرسل لنا رسالة",
-    "messageLabel": "الرسالة",
-    "messagePlaceholder": "رسالتك",
-    "nameLabel": "الاسم",
-    "namePlaceholder": "اسمك",
-    "placeholder": "نموذج التواصل سيكون هنا.",
-    "subjectLabel": "الموضوع",
-    "subjectPlaceholder": "موضوع رسالتك",
-    "submitButton": "إرسال الرسالة",
-    "title": "تواصل معنا"
-  },
   "createTenantDialog": {
     "addressLabel": "العنوان (اختياري)",
     "addressPlaceholder": "عنوان المطعم",
@@ -235,6 +60,55 @@
     "successTitle": "تم تحديث المطعم بنجاح",
     "title": "تعديل المطعم"
   },
+  "common": {
+    "activated": "مفعل",
+    "active": "نشط",
+    "add": "إضافة",
+    "available": "متوفر",
+    "back": "رجوع",
+    "callUs": "اتصل بنا",
+    "cancel": "إلغاء",
+    "category": "الفئة",
+    "close": "إغلاق",
+    "confirm": "تأكيد",
+    "create": "إنشاء",
+    "currency": "ل.ل",
+    "deactivated": "معطل",
+    "delete": "حذف",
+    "description": "الوصف",
+    "edit": "تعديل",
+    "error": "خطأ",
+    "export": "تصدير",
+    "feedback": "التقييمات",
+    "genericError": "حدث خطأ، يرجى المحاولة مرة أخرى",
+    "image": "الصورة",
+    "inactive": "غير نشط",
+    "language": "اللغة",
+    "leave": "المغادرة",
+    "loading": "جاري التحميل...",
+    "menu": "القائمة",
+    "name": "الاسم",
+    "next": "التالي",
+    "no": "لا",
+    "open": "فتح",
+    "previous": "السابق",
+    "price": "السعر",
+    "processing": "جاري المعالجة...",
+    "required": "مطلوب",
+    "save": "حفظ",
+    "saving": "جاري الحفظ...",
+    "search": "بحث",
+    "stay": "البقاء",
+    "submit": "إرسال",
+    "success": "نجح",
+    "total": "المجموع",
+    "unavailable": "غير متوفر",
+    "unsavedChanges": "تغييرات غير محفوظة",
+    "unsavedChangesDescription": "لديك تغييرات غير محفوظة. هل أنت متأكد من أنك تريد المغادرة؟",
+    "update": "تحديث",
+    "view": "عرض",
+    "yes": "نعم"
+  },
   "header": {
     "analytics": "التحليلات",
     "branding": "الهوية التجارية",
@@ -248,6 +122,20 @@
     "qrCode": "رمز QR",
     "signOut": "تسجيل الخروج",
     "switchLanguage": "التبديل إلى الإنجليزية"
+  },
+  "menuDemo": {
+    "cartEmpty": "سلتك فارغة",
+    "cartTitle": "طلبك",
+    "currency": "ل.ل",
+    "dietary": {
+      "gluten-free": "خالي من الغلوتين",
+      "spicy": "حار",
+      "vegetarian": "نباتي"
+    },
+    "subtitle": "شاهد كيف ستبدو قائمة مطعمك الرقمية للعملاء",
+    "title": "معاينة القائمة الرقمية",
+    "total": "المجموع",
+    "whatsappButton": "إرسال الطلب عبر واتساب"
   },
   "restaurant": {
     "profile": {
@@ -273,27 +161,6 @@
       "title": "تقييمات العملاء",
       "description": "آراء وتقييمات عملائك",
       "noFeedback": "لا توجد تقييمات حتى الآن"
-    },
-    "gettingStarted": {
-      "title": "دليل البداية السريعة",
-      "description": "اتبع هذه الخطوات لإعداد مطعمك",
-      "step1": {
-        "title": "أكمل ملف مطعمك",
-        "description": "أضف معلومات المطعم الأساسية"
-      },
-      "step2": {
-        "title": "خصص العلامة التجارية",
-        "description": "ارفع الشعار واختر الألوان"
-      },
-      "step3": {
-        "title": "أضف فئات وأصناف القائمة",
-        "description": "أنشئ قائمة طعامك الرقمية"
-      },
-      "step4": {
-        "title": "شارك قائمتك مع العملاء",
-        "description": "استخدم رمز QR أو الرابط المباشر"
-      },
-      "cta": "ابدأ الآن"
     }
   },
   "meta": {

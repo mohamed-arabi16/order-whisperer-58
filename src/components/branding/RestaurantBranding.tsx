@@ -493,17 +493,27 @@ const RestaurantBranding = (): JSX.Element => {
                     style={{ backgroundColor: selectedColor }}
                   ></div>
                 </div>
-
               </CardContent>
             </Card>
 
-            {/* Theme Customizer Section - moved from Restaurant Profile */}
+            {/* Theme Customizer - moved from Restaurant Profile */}
             <ThemeCustomizer
               tenant={tenant}
               onUpdate={(updatedTenant) => {
                 setTenant(prev => prev ? { ...prev, ...updatedTenant } : null);
               }}
             />
+
+            {/* Save Button */}
+            <Button
+              onClick={handleSave}
+              disabled={saving || uploadingLogo}
+              className="w-full"
+              size="lg"
+            >
+              <Save className="h-5 w-5 mr-2" />
+              {saving ? t('branding.saving') : t('branding.save')}
+            </Button>
           </div>
 
           {/* Preview Panel */}
@@ -584,214 +594,9 @@ const RestaurantBranding = (): JSX.Element => {
             </Card>
           </div>
         </div>
-
-        {/* Save Button */}
-        <div className="flex justify-center">
-          <Button
-            onClick={handleSave}
-            disabled={saving}
-            size="lg"
-            className="min-w-40"
-          >
-            {saving ? (
-              <>
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                {t('branding.saving')}
-              </>
-            ) : (
-              <>
-                <Save className="h-4 w-4 mr-2" />
-                {t('branding.save')}
-              </>
-            )}
-          </Button>
-        </div>
       </div>
     </div>
   );
 };
 
-            {/* Logo Position */}
-            <Card className="shadow-card">
-              <CardHeader>
-                <CardTitle>{t('branding.logoPosition.title')}</CardTitle>
-                <CardDescription>{t('branding.logoPosition.description')}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex gap-2">
-                  <Button
-                    variant={logoPosition === 'left' ? 'default' : 'outline'}
-                    onClick={() => setLogoPosition('left')}
-                  >
-                    {t('branding.logoPosition.left')}
-                  </Button>
-                  <Button
-                    variant={logoPosition === 'center' ? 'default' : 'outline'}
-                    onClick={() => setLogoPosition('center')}
-                  >
-                    {t('branding.logoPosition.center')}
-                  </Button>
-                  <Button
-                    variant={logoPosition === 'right' ? 'default' : 'outline'}
-                    onClick={() => setLogoPosition('right')}
-                  >
-                    {t('branding.logoPosition.right')}
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Restaurant Description */}
-            <Card className="shadow-card">
-              <CardHeader>
-                <CardTitle>وصف المطعم</CardTitle>
-                <CardDescription>اكتب وصفاً جذاباً لمطعمك يظهر للعملاء</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Textarea
-                  placeholder="اكتشف أشهى الأطباق من مطبخنا المميز..."
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  className="min-h-24"
-                />
-              </CardContent>
-            </Card>
-
-            {/* Social Media Links */}
-            <Card className="shadow-card">
-              <CardHeader>
-                <CardTitle>{t('branding.socialMedia.title')}</CardTitle>
-                <CardDescription>{t('branding.socialMedia.description')}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="facebook-link">{t('branding.socialMedia.facebook')}</Label>
-                  <Input
-                    id="facebook-link"
-                    placeholder="https://facebook.com/your-page"
-                    value={socialMediaLinks.facebook}
-                    onChange={(e) => setSocialMediaLinks(prev => ({ ...prev, facebook: e.target.value }))}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="instagram-link">{t('branding.socialMedia.instagram')}</Label>
-                  <Input
-                    id="instagram-link"
-                    placeholder="https://instagram.com/your-profile"
-                    value={socialMediaLinks.instagram}
-                    onChange={(e) => setSocialMediaLinks(prev => ({ ...prev, instagram: e.target.value }))}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="twitter-link">{t('branding.socialMedia.twitter')}</Label>
-                  <Input
-                    id="twitter-link"
-                    placeholder="https://twitter.com/your-handle"
-                    value={socialMediaLinks.twitter}
-                    onChange={(e) => setSocialMediaLinks(prev => ({ ...prev, twitter: e.target.value }))}
-                  />
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Save Button */}
-            <Button
-              onClick={handleSave}
-              disabled={saving || uploadingLogo}
-              className="w-full"
-              size="lg"
-            >
-              <Save className="h-5 w-5 mr-2" />
-              {saving ? t('branding.saving') : t('branding.save')}
-            </Button>
-          </div>
-
-          {/* Preview */}
-          <div className="space-y-6">
-            <Card className="shadow-card">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Eye className="h-5 w-5" />
-                  {t('branding.preview.title')}
-                </CardTitle>
-                <CardDescription>
-                  {t('branding.preview.description')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                {/* Mobile Preview */}
-                <div className="mx-auto max-w-sm">
-                  <div className="w-full h-96 bg-card border-8 border-muted rounded-[2rem] shadow-2xl overflow-hidden">
-                    <div className="h-full bg-gradient-to-br from-background to-secondary/20 overflow-y-auto">
-                      {/* Preview Header */}
-                      <div className="p-4 border-b bg-card/95">
-                        <div className="flex items-center gap-3">
-                          {(logoPreview || logoFile) && (
-                            <img
-                              src={logoPreview}
-                              alt={t('branding.logo.alt')}
-                              className="w-12 h-12 rounded-full object-cover border-2 border-brand-primary"
-                            />
-                          )}
-                          <div>
-                            <h1 className="text-xl font-bold text-brand-primary">
-                              {tenant.name}
-                            </h1>
-                            <p className="text-sm text-muted-foreground">
-                              {t('branding.preview.menuTitle')}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Preview Content */}
-                      <div className="p-4 space-y-4">
-                        <div className="space-y-3">
-                          <h2 className="text-lg font-bold pb-2 border-b text-brand-primary border-brand-primary/20">
-                            {t('branding.preview.category')}
-                          </h2>
-                          <div className="space-y-2">
-                            <div className="flex items-center justify-between p-3 bg-card rounded-lg shadow-sm">
-                              <div>
-                                <h3 className="font-medium">{t('branding.preview.item.name')}</h3>
-                                <p className="text-xs text-muted-foreground">
-                                  {t('branding.preview.item.description')}
-                                </p>
-                                <span className="text-sm font-bold text-brand-primary">
-                                  {t('branding.preview.item.price')}
-                                </span>
-                              </div>
-                              <Button 
-                                size="sm" 
-                                className="h-6 px-2 text-xs bg-brand-primary text-primary-foreground hover:bg-brand-primary-hover"
-                              >
-                                {t('branding.preview.item.add')}
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="p-3 rounded-lg border border-brand-primary/20 bg-brand-primary/10">
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm font-medium">{t('branding.preview.cart.empty')}</span>
-                            <Button 
-                              size="sm" 
-                              disabled 
-                              className="text-xs bg-brand-primary/80"
-                            >
-                              {t('branding.preview.cart.send')}
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+export default RestaurantBranding;
