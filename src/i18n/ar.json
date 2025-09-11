@@ -398,6 +398,9 @@
     "preview": "معاينة",
     "customerReviews": "تقييمات العملاء",
     "categoriesReordered": "تم إعادة ترتيب الفئات بنجاح",
+    "reviews": "تقييم",
+    "noReviewsYet": "لا توجد تقييمات بعد",
+    "encourageFeedback": "كن أول من يقيم هذا المطعم!",
     "toggleAvailability": "تغيير حالة التوفر",
     "uploadImage": "رفع صورة"
   },
@@ -604,6 +607,17 @@
     "dashboardTitle": "مطعم {{restaurantName}}",
     "feedback": {
       "description": "مراجعة تقييمات العملاء وملاحظاتهم",
+      "modal": {
+        "title": "تقييم المطعم",
+        "submit": "إرسال التقييم",
+        "cancel": "إلغاء",
+        "submitting": "جاري الإرسال..."
+      },
+      "rating": {
+        "required": "التقييم مطلوب"
+      },
+      "comment": "التعليق",
+      "commentPlaceholder": "شاركنا رأيك في الطعام والخدمة...",
       "noFeedback": {
         "description": "ستظهر تقييمات العملاء هنا عند إرسالها.",
         "title": "لا توجد تقييمات بعد"
@@ -682,6 +696,11 @@
         "button": "إنشاء رمز QR",
         "description": "تحميل وطباعة رمز QR للقائمة",
         "title": "رمز QR"
+      },
+      "pos": {
+        "button": "عرض خطة نظام نقطة البيع",
+        "description": "خطة تطوير نظام نقطة البيع المتكامل",
+        "title": "نظام نقطة البيع"
       }
     },
     "shareableLink": {
@@ -691,6 +710,10 @@
     },
     "theme": {
       "accentColor": "اللون المكمل",
+      "advancedColors": "إعدادات الألوان المتقدمة",
+      "primaryColorDescription": "اللون الأساسي للعلامة التجارية",
+      "secondaryColorDescription": "لون الخلفيات والعناصر الثانوية",
+      "accentColorDescription": "لون التمييز والعناصر التفاعلية",
       "description": "خصص الألوان الأساسية لموقع المطعم",
       "primaryColor": "اللون الأساسي",
       "resetToDefault": "إعادة للوضع الافتراضي",

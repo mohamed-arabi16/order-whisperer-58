@@ -73,7 +73,7 @@ export const RestaurantFeedbackDisplay: React.FC<FeedbackDisplayProps> = ({ tena
     ));
   };
 
-  if (loading || !feedbackStats || feedbackStats.totalFeedback === 0) {
+  if (loading) {
     return null;
   }
 
@@ -84,21 +84,28 @@ export const RestaurantFeedbackDisplay: React.FC<FeedbackDisplayProps> = ({ tena
         <h3 className="text-lg font-semibold text-foreground">{t('publicMenu.customerReviews')}</h3>
       </div>
       
-      <div className="flex items-center gap-4 mb-4">
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1">
-            {renderStars(feedbackStats.averageRating)}
+      {feedbackStats && feedbackStats.totalFeedback > 0 ? (
+        <div className="flex items-center gap-4 mb-4">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
+              {renderStars(feedbackStats.averageRating)}
+            </div>
+            <span className="text-lg font-bold text-foreground">
+              {feedbackStats.averageRating}
+            </span>
           </div>
-          <span className="text-lg font-bold text-foreground">
-            {feedbackStats.averageRating}
-          </span>
+          <Badge variant="secondary" className="text-xs">
+            {feedbackStats.totalFeedback} {t('publicMenu.reviews')}
+          </Badge>
         </div>
-        <Badge variant="secondary" className="text-xs">
-          {feedbackStats.totalFeedback} {t('publicMenu.reviews')}
-        </Badge>
-      </div>
+      ) : (
+        <div className="text-center py-4 mb-4">
+          <p className="text-muted-foreground text-sm mb-2">{t('publicMenu.noReviewsYet')}</p>
+          <p className="text-xs text-muted-foreground">{t('publicMenu.encourageFeedback')}</p>
+        </div>
+      )}
 
-      {feedbackStats.recentComments.length > 0 && (
+      {feedbackStats && feedbackStats.recentComments.length > 0 && (
         <div className="space-y-2">
           {feedbackStats.recentComments.map((comment, index) => (
             <Card key={index} className="bg-background/50 border-border/30">

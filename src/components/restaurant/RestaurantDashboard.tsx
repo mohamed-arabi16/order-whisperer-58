@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Building2, Menu, QrCode, Palette, Link, Copy, LineChart, MessageSquare, Star } from "lucide-react";
+import { Building2, Menu, QrCode, Palette, Link, Copy, LineChart, MessageSquare, Star, ShoppingCart } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
@@ -392,6 +392,35 @@ const RestaurantDashboard = (): JSX.Element => {
                 size="sm"
               >
                 {t('restaurant.quickActions.analytics.button')}
+              </Button>
+            </CardContent>
+          </Card>
+          
+          <Card
+            className="shadow-card hover:shadow-warm transition-smooth cursor-pointer"
+            onClick={() => window.location.href = '/pos-system'}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                window.location.href = '/pos-system';
+              }
+            }}
+            role="button"
+            tabIndex={0}
+          >
+            <CardHeader className="text-center p-3 md:p-6">
+              <ShoppingCart className="h-8 w-8 md:h-12 md:w-12 text-accent mx-auto mb-1 md:mb-2" />
+              <CardTitle className="text-sm md:text-base">{t('restaurant.quickActions.pos.title')}</CardTitle>
+              <CardDescription className="text-xs md:text-sm">
+                {t('restaurant.quickActions.pos.description')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="p-3 md:p-6 pt-0">
+              <Button 
+                className="w-full text-xs md:text-sm" 
+                variant="outline"
+                size="sm"
+              >
+                {t('restaurant.quickActions.pos.button')}
               </Button>
             </CardContent>
           </Card>

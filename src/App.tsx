@@ -22,6 +22,7 @@ const Analytics = lazy(() => import("./pages/Analytics"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const Contact = lazy(() => import("./pages/Contact"));
+const POSSystem = lazy(() => import("./pages/POSSystem"));
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,7 @@ const App = (): JSX.Element => (
                     <Route path="/branding" element={<RestaurantBranding />} />
                     <Route path="/qr-code" element={<QRCodeGenerator />} />
                     <Route path="/menu/:slug" element={<PublicMenu />} />
+                    <Route path="/pos-system" element={<POSSystem />} />
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/contact" element={<Contact />} />
                     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -399,6 +399,9 @@
     "preview": "Preview",
     "customerReviews": "Customer Reviews", 
     "categoriesReordered": "Categories reordered successfully",
+    "reviews": "reviews",
+    "noReviewsYet": "No reviews yet",
+    "encourageFeedback": "Be the first to review this restaurant!",
     "toggleAvailability": "Toggle Availability",
     "uploadImage": "Upload Image"
   },
@@ -503,9 +506,14 @@
           "ROS will be removed"
         ],
         "cta": "Contact Sales"
+        },
+        "pos": {
+          "button": "View POS System Plan",
+          "description": "Integrated point of sale system development plan",
+          "title": "POS System"
+        }
       }
-    }
-  },
+    },
   "publicMenu": {
     "addToCart": "Add to Cart",
     "cart": "Cart",
@@ -612,6 +620,17 @@
     "dashboardTitle": "{{restaurantName}}'s Dashboard",
     "feedback": {
       "description": "Review customer ratings and feedback.",
+      "modal": {
+        "title": "Rate Restaurant",
+        "submit": "Submit Rating",
+        "cancel": "Cancel",
+        "submitting": "Submitting..."
+      },
+      "rating": {
+        "required": "Rating is required"
+      },
+      "comment": "Comment",
+      "commentPlaceholder": "Share your thoughts about the food and service...",
       "noFeedback": {
         "description": "Customer feedback will appear here once submitted.",
         "title": "No Feedback Yet"
@@ -690,6 +709,11 @@
         "button": "Generate QR Code",
         "description": "Download and print a QR code for your menu.",
         "title": "QR Code"
+      },
+      "pos": {
+        "button": "View POS System Plan",
+        "description": "Integrated point of sale system development plan",
+        "title": "POS System"
       }
     },
     "shareableLink": {
@@ -699,6 +723,10 @@
     },
     "theme": {
       "accentColor": "Accent Color",
+      "advancedColors": "Advanced Color Settings",
+      "primaryColorDescription": "Main brand color",
+      "secondaryColorDescription": "Background and secondary elements color",
+      "accentColorDescription": "Accent and interactive elements color",
       "description": "Customize the primary colors for your restaurant's site.",
       "primaryColor": "Primary Color",
       "resetToDefault": "Reset to Default",
