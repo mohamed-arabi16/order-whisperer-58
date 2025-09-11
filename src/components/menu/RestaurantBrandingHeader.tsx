@@ -57,7 +57,7 @@ export const RestaurantBrandingHeader = ({
             {(tenant.name || tenant.branch_name) && (
               <div className={`${tenant.logo_url ? isRTL ? 'mr-4' : 'ml-4' : ''} flex-1`}>
                 <h1 className="text-2xl font-bold text-foreground leading-tight">
-                  {tenant.name}
+                  مرحباً بكم في {tenant.name}
                   {tenant.branch_name && (
                     <span className="block text-lg text-muted-foreground font-medium mt-1">
                       {tenant.branch_name}
