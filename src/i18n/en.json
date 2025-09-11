@@ -397,6 +397,8 @@
     "noImage": "No Image",
     "noItems": "No items",
     "preview": "Preview",
+    "customerReviews": "Customer Reviews", 
+    "categoriesReordered": "Categories reordered successfully",
     "toggleAvailability": "Toggle Availability",
     "uploadImage": "Upload Image"
   },

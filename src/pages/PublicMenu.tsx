@@ -123,6 +123,16 @@ const PublicMenu = (): JSX.Element => {
           social_media_links: (tenantData.social_media_links as { facebook?: string; instagram?: string; twitter?: string } | null),
         });
 
+        // Log menu view for analytics
+        if (tenantData?.id) {
+          const { error: logError } = await supabase.rpc('log_menu_view', { 
+            tenant_id_param: tenantData.id 
+          });
+          if (logError) {
+            console.error('Error logging menu view:', logError);
+          }
+        }
+
         if (tenantData.primary_color) {
           document.documentElement.style.setProperty('--custom-primary', tenantData.primary_color);
           document.documentElement.style.setProperty('--custom-primary-hover', generateHoverColor(tenantData.primary_color));
