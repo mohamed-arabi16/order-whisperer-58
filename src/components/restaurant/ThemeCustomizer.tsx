@@ -45,14 +45,14 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
     if (colorType === 'primary') {
       root.style.setProperty('--custom-primary', color);
       root.style.setProperty('--custom-primary-hover', generateHoverColor(color));
-      // Update CSS variables for the public menu theme
-      root.style.setProperty('--primary', `${hexToHsl(color).h} ${hexToHsl(color).s}% ${hexToHsl(color).l}%`);
+      // Update CSS variables for the public menu theme only
+      root.style.setProperty('--menu-primary', `${hexToHsl(color).h} ${hexToHsl(color).s}% ${hexToHsl(color).l}%`);
     } else if (colorType === 'secondary') {
       root.style.setProperty('--custom-secondary', color);
-      root.style.setProperty('--secondary', `${hexToHsl(color).h} ${hexToHsl(color).s}% ${hexToHsl(color).l}%`);
+      root.style.setProperty('--menu-secondary', `${hexToHsl(color).h} ${hexToHsl(color).s}% ${hexToHsl(color).l}%`);
     } else if (colorType === 'accent') {
       root.style.setProperty('--custom-accent', color);
-      root.style.setProperty('--accent', `${hexToHsl(color).h} ${hexToHsl(color).s}% ${hexToHsl(color).l}%`);
+      root.style.setProperty('--menu-accent', `${hexToHsl(color).h} ${hexToHsl(color).s}% ${hexToHsl(color).l}%`);
     }
   };
 
@@ -130,123 +130,114 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
   };
 
   return (
-    <Card className="shadow-card" dir={isRTL ? 'rtl' : 'ltr'}>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Palette className="h-5 w-5" />
-          {t('restaurant.theme.title')}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="space-y-3">
-              <Label htmlFor="primary-color">{t('restaurant.theme.primaryColor')}</Label>
-              <div className="flex items-center gap-3">
-                <Input
-                  id="primary-color"
-                  type="color"
-                  value={colors.primary}
-                  onChange={(e) => handleColorChange('primary', e.target.value)}
-                  className="w-16 h-10 p-1 rounded-lg"
-                />
-                <Input
-                  type="text"
-                  value={colors.primary}
-                  onChange={(e) => handleColorChange('primary', e.target.value)}
-                  placeholder="#2F5233"
-                  className="flex-1"
-                  dir="ltr"
-                />
-              </div>
-              <div 
-                className="h-12 rounded-lg border-2"
-                style={{ backgroundColor: colors.primary }}
-              />
-            </div>
-
-            <div className="space-y-3">
-              <Label htmlFor="secondary-color">{t('restaurant.theme.secondaryColor')}</Label>
-              <div className="flex items-center gap-3">
-                <Input
-                  id="secondary-color"
-                  type="color"
-                  value={colors.secondary}
-                  onChange={(e) => handleColorChange('secondary', e.target.value)}
-                  className="w-16 h-10 p-1 rounded-lg"
-                />
-                <Input
-                  type="text"
-                  value={colors.secondary}
-                  onChange={(e) => handleColorChange('secondary', e.target.value)}
-                  placeholder="#A4C3B2"
-                  className="flex-1"
-                  dir="ltr"
-                />
-              </div>
-              <div 
-                className="h-12 rounded-lg border-2"
-                style={{ backgroundColor: colors.secondary }}
-              />
-            </div>
-
-            <div className="space-y-3">
-              <Label htmlFor="accent-color">{t('restaurant.theme.accentColor')}</Label>
-              <div className="flex items-center gap-3">
-                <Input
-                  id="accent-color"
-                  type="color"
-                  value={colors.accent}
-                  onChange={(e) => handleColorChange('accent', e.target.value)}
-                  className="w-16 h-10 p-1 rounded-lg"
-                />
-                <Input
-                  type="text"
-                  value={colors.accent}
-                  onChange={(e) => handleColorChange('accent', e.target.value)}
-                  placeholder="#D67D3E"
-                  className="flex-1"
-                  dir="ltr"
-                />
-              </div>
-              <div 
-                className="h-12 rounded-lg border-2"
-                style={{ backgroundColor: colors.accent }}
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleReset}
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="space-y-3">
+          <Label htmlFor="primary-color">{t('restaurant.theme.primaryColor')}</Label>
+          <div className="flex items-center gap-3">
+            <Input
+              id="primary-color"
+              type="color"
+              value={colors.primary}
+              onChange={(e) => handleColorChange('primary', e.target.value)}
+              className="w-16 h-10 p-1 rounded-lg"
+            />
+            <Input
+              type="text"
+              value={colors.primary}
+              onChange={(e) => handleColorChange('primary', e.target.value)}
+              placeholder="#2F5233"
               className="flex-1"
-            >
-              <RotateCcw className="w-4 h-4 mr-2" />
-              {t('restaurant.theme.resetToDefault')}
-            </Button>
-
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="flex-1"
-            >
-              {isLoading ? (
-                <>
-                  <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-                  {t('restaurant.theme.updating')}
-                </>
-              ) : (
-                <>
-                  <Save className="w-4 h-4 mr-2" />
-                  {t('restaurant.theme.saveChanges')}
-                </>
-              )}
-            </Button>
+              dir="ltr"
+            />
           </div>
-        </form>
-      </CardContent>
-    </Card>
+          <div 
+            className="h-12 rounded-lg border-2"
+            style={{ backgroundColor: colors.primary }}
+          />
+        </div>
+
+        <div className="space-y-3">
+          <Label htmlFor="secondary-color">{t('restaurant.theme.secondaryColor')}</Label>
+          <div className="flex items-center gap-3">
+            <Input
+              id="secondary-color"
+              type="color"
+              value={colors.secondary}
+              onChange={(e) => handleColorChange('secondary', e.target.value)}
+              className="w-16 h-10 p-1 rounded-lg"
+            />
+            <Input
+              type="text"
+              value={colors.secondary}
+              onChange={(e) => handleColorChange('secondary', e.target.value)}
+              placeholder="#A4C3B2"
+              className="flex-1"
+              dir="ltr"
+            />
+          </div>
+          <div 
+            className="h-12 rounded-lg border-2"
+            style={{ backgroundColor: colors.secondary }}
+          />
+        </div>
+
+        <div className="space-y-3">
+          <Label htmlFor="accent-color">{t('restaurant.theme.accentColor')}</Label>
+          <div className="flex items-center gap-3">
+            <Input
+              id="accent-color"
+              type="color"
+              value={colors.accent}
+              onChange={(e) => handleColorChange('accent', e.target.value)}
+              className="w-16 h-10 p-1 rounded-lg"
+            />
+            <Input
+              type="text"
+              value={colors.accent}
+              onChange={(e) => handleColorChange('accent', e.target.value)}
+              placeholder="#D67D3E"
+              className="flex-1"
+              dir="ltr"
+            />
+          </div>
+          <div 
+            className="h-12 rounded-lg border-2"
+            style={{ backgroundColor: colors.accent }}
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col sm:flex-row gap-3">
+        <Button
+          type="button"
+          variant="outline"
+          onClick={handleReset}
+          className="flex-1"
+        >
+          <RotateCcw className="w-4 h-4 mr-2" />
+          {t('restaurant.theme.resetToDefault')}
+        </Button>
+
+        <Button
+          type="submit"
+          disabled={isLoading}
+          onClick={handleSubmit}
+          className="flex-1"
+        >
+          {isLoading ? (
+            <>
+              <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+              {t('restaurant.theme.updating')}
+            </>
+          ) : (
+            <>
+              <Save className="w-4 h-4 mr-2" />
+              {t('restaurant.theme.saveChanges')}
+            </>
+          )}
+        </Button>
+      </div>
+    </div>
   );
 };

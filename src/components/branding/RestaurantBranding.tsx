@@ -17,6 +17,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { ThemeCustomizer } from "@/components/restaurant/ThemeCustomizer";
 
 // WCAG AA minimum contrast ratio for normal text
 const MIN_CONTRAST_RATIO = 4.5;
@@ -583,10 +584,10 @@ const RestaurantBranding = (): JSX.Element => {
             <Button
               onClick={handleSave}
               disabled={saving || uploadingLogo}
-              className="w-full text-white bg-brand-primary hover:bg-brand-primary-hover"
+              className="w-full"
               size="lg"
             >
-              <Save className="h-5 w-5 ml-2" />
+              <Save className="h-5 w-5 mr-2" />
               {saving ? t('branding.saving') : t('branding.save')}
             </Button>
           </div>

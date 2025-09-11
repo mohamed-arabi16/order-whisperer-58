@@ -250,7 +250,16 @@ const PublicMenu = (): JSX.Element => {
   const scrollToCategory = (categoryId: string) => {
     const element = document.getElementById(`category-${categoryId}`);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Calculate offset for sticky header (approximately 140px)
+      const headerOffset = 140;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
       setActiveCategory(categoryId);
     }
   };
@@ -497,7 +506,7 @@ const PublicMenu = (): JSX.Element => {
       {/* RestaurantOS Promo for Free/Starter Plans */}
       <RestaurantOSPromo 
         plan={(tenant?.subscription_plan as 'free' | 'starter' | 'premium') || 'free'} 
-        className="fixed bottom-0 left-0 right-0 z-10"
+        className="fixed bottom-0 left-0 right-0 z-20"
       />
 
       {/* Item Details Modal */}
@@ -510,12 +519,14 @@ const PublicMenu = (): JSX.Element => {
               </DialogHeader>
               <div className="space-y-4">
                 {selectedItem.image_url && (
-                  <LazyLoadImage
-                    src={selectedItem.image_url}
-                    alt={selectedItem.name}
-                    className="w-full h-48 object-cover rounded-lg"
-                    effect="blur"
-                  />
+                  <div className="flex justify-center">
+                    <LazyLoadImage
+                      src={selectedItem.image_url}
+                      alt={selectedItem.name}
+                      className="w-full max-w-sm h-48 object-cover rounded-lg mx-auto"
+                      effect="blur"
+                    />
+                  </div>
                 )}
                 {selectedItem.description && (
                   <p className="text-muted-foreground">{selectedItem.description}</p>
@@ -573,10 +584,25 @@ const PublicMenu = (): JSX.Element => {
               className="min-h-20"
             />
             <Button
-              onClick={() => {
-                toast.success("شكراً لك على تقييمك!");
-                setShowFeedback(false);
-                setFeedback({ rating: 0, comment: "" });
+              onClick={async () => {
+                if (!tenant?.id || !feedback.rating) return;
+                
+                try {
+                  const { error } = await supabase.rpc('submit_feedback', {
+                    tenant_id_param: tenant.id,
+                    rating_param: feedback.rating,
+                    comment_param: feedback.comment || null,
+                  });
+
+                  if (error) throw error;
+                  
+                  toast.success("شكراً لك على تقييمك!");
+                  setShowFeedback(false);
+                  setFeedback({ rating: 0, comment: "" });
+                } catch (error) {
+                  console.error('Error submitting feedback:', error);
+                  toast.error("حدث خطأ أثناء إرسال التقييم");
+                }
               }}
               className="w-full bg-brand-primary text-primary-foreground hover:bg-brand-primary-hover"
               disabled={feedback.rating === 0}

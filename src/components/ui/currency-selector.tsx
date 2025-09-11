@@ -10,13 +10,15 @@ interface CurrencySelectorProps {
 }
 
 const CURRENCIES = [
-  { code: 'SYP', name: 'Syrian Pound', symbol: 'ل.س' },
-  { code: 'USD', name: 'US Dollar', symbol: '$' },
-  { code: 'EUR', name: 'Euro', symbol: '€' },
-  { code: 'SAR', name: 'Saudi Riyal', symbol: 'ر.س' },
-  { code: 'AED', name: 'UAE Dirham', symbol: 'د.إ' },
-  { code: 'JOD', name: 'Jordanian Dinar', symbol: 'د.أ' },
-  { code: 'LBP', name: 'Lebanese Pound', symbol: 'ل.ل' },
+  { code: 'SYP', name: 'Syrian Pound', symbol: 'ل.س', nameAr: 'الليرة السورية' },
+  { code: 'USD', name: 'US Dollar', symbol: '$', nameAr: 'الدولار الأمريكي' },
+  { code: 'EUR', name: 'Euro', symbol: '€', nameAr: 'اليورو' },
+  { code: 'SAR', name: 'Saudi Riyal', symbol: 'ر.س', nameAr: 'الريال السعودي' },
+  { code: 'AED', name: 'UAE Dirham', symbol: 'د.إ', nameAr: 'الدرهم الإماراتي' },
+  { code: 'JOD', name: 'Jordanian Dinar', symbol: 'د.أ', nameAr: 'الدينار الأردني' },
+  { code: 'LBP', name: 'Lebanese Pound', symbol: 'ل.ل', nameAr: 'الليرة اللبنانية' },
+  { code: 'TRY', name: 'Turkish Lira', symbol: '₺', nameAr: 'الليرة التركية' },
+  { code: 'TL', name: 'Turkish Lira (TL)', symbol: 'TL', nameAr: 'الليرة التركية' },
 ];
 
 export const CurrencySelector: React.FC<CurrencySelectorProps> = ({
@@ -33,12 +35,12 @@ export const CurrencySelector: React.FC<CurrencySelectorProps> = ({
         <SelectTrigger id="currency-select">
           <SelectValue placeholder={t('restaurant.profile.selectCurrency')} />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="bg-popover border-border shadow-lg z-[70]">
           {CURRENCIES.map((currency) => (
             <SelectItem key={currency.code} value={currency.code}>
               <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <span className="font-mono text-sm">{currency.symbol}</span>
-                <span>{currency.name}</span>
+                <span>{isRTL ? currency.nameAr : currency.name}</span>
                 <span className="text-muted-foreground">({currency.code})</span>
               </div>
             </SelectItem>

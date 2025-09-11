@@ -35,7 +35,7 @@ export const StickySearchHeader = ({
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   return (
-    <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border shadow-sm">
+    <div className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border shadow-sm">
       {/* Search Section */}
       <div className="px-4 py-3 bg-background">
         <div className="container mx-auto max-w-4xl">
@@ -56,10 +56,10 @@ export const StickySearchHeader = ({
         </div>
       </div>
 
-      {/* Category Navigation - Edge to Edge */}
+      {/* Category Navigation - Full Width Edge to Edge */}
       <div className="w-full bg-background/80 border-t border-border/50">
-        <div className="px-4 py-3">
-          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+        <div className="py-3">
+          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide px-4">
             <div className="flex gap-2 min-w-max">
               {categories.map((category) => (
                 <motion.div

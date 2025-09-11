@@ -178,10 +178,18 @@
     "unsavedChangesDescription": "لديك تغييرات غير محفوظة. هل أنت متأكد من أنك تريد المغادرة؟",
     "update": "تحديث",
     "view": "عرض",
-    "menu": "القائمة",
-    "feedback": "التقييم",
+  "header": {
+    "analytics": "التحليلات",
+    "branding": "الهوية التجارية",
+    "contact": "تواصل معنا",
+    "dashboard": "لوحة التحكم",
+    "home": "الرئيسية",
     "language": "اللغة",
-    "yes": "نعم"
+    "manageMenu": "إدارة القائمة",
+    "pricing": "الأسعار",
+    "profile": "الملف الشخصي",
+    "qrCode": "رمز QR",
+    "signOut": "تسجيل الخروج"
   },
   "contact": {
     "description": "تواصل معنا لأي استفسارات.",
@@ -683,6 +691,19 @@
       "feedbackErrorTitle": "خطأ في جلب التقييمات",
       "noTenantDescription": "لا يوجد مطعم مرتبط بحسابك.",
       "noTenantTitle": "المطعم غير موجود"
+    },
+    "theme": {
+      "accentColor": "اللون المكمل",
+      "description": "خصص الألوان الأساسية لموقع المطعم",
+      "primaryColor": "اللون الأساسي",
+      "resetToDefault": "إعادة للوضع الافتراضي",
+      "saveChanges": "حفظ التغييرات",
+      "secondaryColor": "اللون الثانوي",
+      "title": "تخصيص الألوان",
+      "updateError": "فشل في تحديث الألوان",
+      "updateSuccess": "تم تحديث الألوان",
+      "updateSuccessDescription": "تم تحديث ألوان المطعم بنجاح.",
+      "updating": "جاري التحديث..."
     },
     "welcome": "مرحباً {{userName}} - لوحة تحكم المطعم"
   },

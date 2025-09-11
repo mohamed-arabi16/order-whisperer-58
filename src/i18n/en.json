@@ -675,9 +675,10 @@
     },
     "theme": {
       "accentColor": "Accent Color",
+      "description": "Customize the primary colors for your restaurant site",
       "primaryColor": "Primary Color",
       "resetToDefault": "Reset to Default",
-      "saveChanges": "Save Colors",
+      "saveChanges": "Save Changes",
       "secondaryColor": "Secondary Color",
       "title": "Color Customization",
       "updateError": "Failed to update colors",
