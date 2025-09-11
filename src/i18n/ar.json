@@ -526,7 +526,7 @@
   "qr": {
     "actions": {
       "download": "تحميل رمز QR",
-      "preview": "معاينة القائمة", 
+      "preview": "معاينة القائمة",
       "print": "طباعة رمز QR",
       "title": "الإجراءات"
     },
@@ -571,6 +571,8 @@
       "subtitle": "قائمة الطعام الرقمية",
       "title": "رمز QR"
     },
+    "qrCodes": "رموز QR",
+    "sampleTable": "رقم الطاولة",
     "sizeLabel": "حجم الرمز:",
     "sizes": {
       "large": "كبير (300×300)",
@@ -578,6 +580,7 @@
       "small": "صغير (150×150)",
       "xlarge": "كبير جداً (400×400)"
     },
+    "tableNumber": "رقم الطاولة",
     "tenantNotFound": "لم يتم العثور على بيانات المطعم",
     "tips": {
       "tip1": "تأكد من وضوح الرمز عند الطباعة",
@@ -586,7 +589,7 @@
       "tip4": "يمكنك إنشاء أحجام مختلفة للاستخدامات المختلفة",
       "title": "نصائح هامة"
     },
-    "title": "رمز QR للقائمة الرقمية",
+    "title": "QR Code Generator",
     "yourMenuLink": "رابط القائمة الخاص بك"
   },
   "restaurant": {
@@ -709,38 +712,40 @@
     "qrCode": "رموز QR"
   },
   "superAdmin": {
+    "bulkActions": {
+      "activate": "تفعيل المحدد",
+      "deactivate": "إلغاء تفعيل المحدد",
+      "delete": "حذف المحدد"
+    },
+    "dashboard": {
+      "description": "إدارة شاملة لجميع المطاعم المسجلة على المنصة",
+      "title": "لوحة تحكم المدير العام"
+    },
     "filters": {
-      "plan": {
-        "all": "جميع الخطط",
-        "placeholder": "تصفية حسب الخطة"
-      },
-      "status": {
-        "active": "نشط",
-        "all": "جميع الحالات",
-        "inactive": "غير نشط",
-        "placeholder": "تصفية حسب الحالة"
-      }
+      "all": "الكل",
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "plan": "خطة الاشتراك",
+      "status": "الحالة"
     },
     "stats": {
-      "activeRestaurants": "المطاعم النشطة",
-      "analyticsDescription": "الغوص في تحليلات المنصة",
-      "outOfTotal": "من أصل {{total}} مطعم",
-      "paidPlans": "الخطط المدفوعة",
-      "totalRestaurants": "إجمالي المطاعم"
+      "activeTenants": "المطاعم النشطة",
+      "totalRevenue": "إجمالي الإيرادات",
+      "totalTenants": "إجمالي المطاعم"
     },
-    "tenant": {
-      "email": "البريد",
+    "tenants": {
+      "actions": "الإجراءات",
+      "address": "العنوان",
+      "createdAt": "تاريخ الإنشاء",
+      "edit": "تعديل",
+      "name": "اسم المطعم",
       "owner": "المالك",
-      "registrationDate": "تاريخ التسجيل",
-      "viewMenu": "عرض القائمة"
+      "phone": "الهاتف",
+      "plan": "الخطة",
+      "status": "الحالة",
+      "title": "إدارة المطاعم",
+      "view": "عرض"
     },
-    "tenantsManagement": {
-      "addButton": "إضافة مطعم جديد",
-      "description": "إنشاء وإدارة حسابات المطاعم على المنصة",
-      "exportAriaLabel": "تصدير بيانات المستأجرين إلى CSV",
-      "title": "إدارة المطاعم"
-    },
-    "title": "لوحة تحكم المدير العام",
-    "welcome": "مرحباً {{name}} - إدارة المطاعم والحسابات"
+    "welcome": "مرحباً بالمدير العام"
   }
 }

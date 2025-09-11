@@ -532,22 +532,71 @@
     "welcome": "Welcome to"
   },
   "qr": {
+    "actions": {
+      "download": "Download QR Code",
+      "preview": "Preview Menu",
+      "print": "Print QR Code",
+      "title": "Actions"
+    },
+    "card": {
+      "description": "Scan this code to access {{restaurantName}}'s menu",
+      "title": "QR Code"
+    },
+    "copyFailed": "Failed to copy link",
+    "copySuccess": "Link copied to clipboard",
     "customizeColors": "Customize Colors",
     "description": "Create custom QR codes for your restaurant tables. Customers can scan the code to access the digital menu directly.",
     "download": "Download QR Code",
     "downloadAll": "Download All Codes",
     "downloadInstructions": "Click \"Download\" to save the QR code as an image, then print it and place it on the designated table.",
+    "downloadSuccess": "QR code downloaded successfully",
     "foregroundColor": "Foreground Color",
     "generateNewCode": "Generate New Code",
+    "generationFailed": "Failed to generate QR code",
     "howToUse": "How to Use",
     "instructions": {
-      "step1": "Create QR codes for each table in your restaurant",
-      "step2": "Print the codes and place them on the appropriate tables",
-      "step3": "Customers will be able to scan the code to view the menu and order directly"
+      "step1": {
+        "description": "Save or print the QR code at an appropriate size (preferably at least 5x5 cm)",
+        "title": "Print the Code"
+      },
+      "step2": {
+        "description": "Place the code on restaurant tables or near the entrance",
+        "title": "Position the Code"
+      },
+      "step3": {
+        "description": "Customers scan the code with their phone camera and order via WhatsApp",
+        "title": "Scan and Order"
+      },
+      "title": "How to Use"
+    },
+    "menuUrl": {
+      "description": "Customers can also access the menu directly via this link",
+      "title": "Menu Link"
+    },
+    "print": {
+      "instructionsLine1": "Scan this code with your phone camera",
+      "instructionsLine2": "to view the digital menu",
+      "subtitle": "Digital Menu",
+      "title": "QR Code"
     },
     "qrCodes": "QR Codes",
     "sampleTable": "Table Number",
+    "sizeLabel": "Code size:",
+    "sizes": {
+      "large": "Large (300×300)",
+      "medium": "Medium (200×200)",
+      "small": "Small (150×150)",
+      "xlarge": "Extra Large (400×400)"
+    },
     "tableNumber": "Table Number",
+    "tenantNotFound": "Restaurant data not found",
+    "tips": {
+      "tip1": "Make sure the code is clear when printing",
+      "tip2": "Place the code where customers can easily access it",
+      "tip3": "Save a digital copy of the code for future use",
+      "tip4": "You can create different sizes for different uses",
+      "title": "Important Tips"
+    },
     "title": "QR Code Generator",
     "yourMenuLink": "Your Menu Link"
   },
