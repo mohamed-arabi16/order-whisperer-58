@@ -157,6 +157,55 @@
   "restaurant": {
     "dashboardTitle": "{{restaurantName}} Restaurant",
     "welcome": "Welcome {{userName}} - Restaurant Control Panel",
+    "dashboard": "Dashboard",
+    "infoCard": {
+      "title": "Restaurant Information",
+      "name": "Restaurant Name",
+      "plan": "Current Plan",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "shareableLink": {
+      "title": "Shareable Menu Link",
+      "description": "Share this link with your customers to view your menu",
+      "copy": "Copy Link",
+      "copied": "Link copied!",
+      "qrCode": "QR Code"
+    },
+    "profile": {
+      "title": "Restaurant Profile",
+      "name": "Restaurant Name",
+      "namePlaceholder": "Enter restaurant name",
+      "slug": "Menu URL",
+      "slugPlaceholder": "Enter custom URL (optional)",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe your restaurant",
+      "address": "Address",
+      "addressPlaceholder": "Enter restaurant address",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter phone number",
+      "deliveryFee": "Delivery Fee",
+      "deliveryFeePlaceholder": "Enter delivery fee",
+      "save": "Save Changes",
+      "saving": "Saving...",
+      "saved": "Profile updated successfully!",
+      "error": "Failed to update profile"
+    },
+    "theme": {
+      "title": "Theme Customization",
+      "primary": "Primary Color",
+      "secondary": "Secondary Color",
+      "accent": "Accent Color",
+      "background": "Background Color",
+      "card": "Card Color",
+      "preview": "Preview",
+      "reset": "Reset to Default",
+      "save": "Save Theme",
+      "saving": "Saving...",
+      "saved": "Theme updated successfully!",
+      "error": "Failed to update theme"
+    },
     "noTenant": {
       "welcome": "Welcome {{name}}",
       "description": "No restaurant account associated with this user was found",
@@ -546,7 +595,64 @@
     "title": "Get Started with Digital Restaurant Platform",
     "subtitle": "Comprehensive platform for managing digital restaurant menus with direct WhatsApp integration for orders",
     "restaurantLogin": "Restaurant Login",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "infoCard": {
+      "title": "Restaurant Information",
+      "name": "Restaurant Name",
+      "plan": "Current Plan",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "shareableLink": {
+      "title": "Shareable Menu Link",
+      "description": "Share this link with your customers to view your menu",
+      "copy": "Copy Link",
+      "copied": "Link copied!",
+      "qrCode": "QR Code"
+    },
+    "quickStart": {
+      "title": "Quick Start Guide",
+      "steps": {
+        "profile": "Complete your restaurant profile",
+        "menu": "Add menu categories and items", 
+        "theme": "Customize your theme colors",
+        "share": "Share your menu with customers"
+      }
+    },
+    "profile": {
+      "title": "Restaurant Profile",
+      "name": "Restaurant Name",
+      "namePlaceholder": "Enter restaurant name",
+      "slug": "Menu URL",
+      "slugPlaceholder": "Enter custom URL (optional)",
+      "description": "Description", 
+      "descriptionPlaceholder": "Describe your restaurant",
+      "address": "Address",
+      "addressPlaceholder": "Enter restaurant address",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter phone number",
+      "deliveryFee": "Delivery Fee",
+      "deliveryFeePlaceholder": "Enter delivery fee",
+      "save": "Save Changes",
+      "saving": "Saving...",
+      "saved": "Profile updated successfully!",
+      "error": "Failed to update profile"
+    },
+    "theme": {
+      "title": "Theme Customization",
+      "primary": "Primary Color",
+      "secondary": "Secondary Color", 
+      "accent": "Accent Color",
+      "background": "Background Color",
+      "card": "Card Color",
+      "preview": "Preview",
+      "reset": "Reset to Default",
+      "save": "Save Theme",
+      "saving": "Saving...",
+      "saved": "Theme updated successfully!",
+      "error": "Failed to update theme"
+    }
   },
   "createTenantDialog": {
     "title": "Add New Restaurant",
@@ -605,6 +711,38 @@
         "features": [
           "Up to 10 menu items",
           "QR code generation",
+          "WhatsApp ordering",
+          "Basic analytics",
+          "Email support"
+        ],
+        "cta": "Get Started"
+      },
+      "premium": {
+        "name": "Starter",
+        "price": "$15/month",
+        "features": [
+          "Unlimited menu items",
+          "Advanced QR code customization",
+          "Priority support",
+          "Advanced analytics",
+          "Customer feedback management",
+          "Staff accounts",
+          "Remove the ROS AD"
+        ],
+        "cta": "Upgrade Now"
+      },
+      "enterprise": {
+        "name": "Premium",
+        "price": "$29/month yearly billing",
+        "features": [
+          "All Starter features",
+          "Custom branding",
+          "Custom integrations"
+        ],
+        "cta": "Contact Sales"
+      }
+    }
+  }
           "WhatsApp ordering",
           "Basic analytics",
           "Email support"

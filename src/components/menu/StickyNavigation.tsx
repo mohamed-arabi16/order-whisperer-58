@@ -80,14 +80,15 @@ export const StickyNavigation: React.FC<StickyNavigationProps> = ({
         </div>
 
         {/* Category Chips - Scrollable */}
-        <div 
-          ref={categoryTabsRef}
-          className="flex overflow-x-auto snap-x gap-3 px-4 pb-1 -mb-1 scrollbar-hide"
-          style={{ 
-            scrollbarWidth: 'none', 
-            msOverflowStyle: 'none',
-          }}
-        >
+        <div className="overflow-x-auto scrollbar-hide -mx-4">
+          <div 
+            ref={categoryTabsRef}
+            className={`flex gap-3 px-6 pb-2 ${isRTL ? 'flex-row-reverse' : ''}`}
+            style={{ 
+              scrollbarWidth: 'none', 
+              msOverflowStyle: 'none',
+            }}
+          >
           {categories.map((category) => {
             const isActive = activeCategory === category.id;
             return (
@@ -96,21 +97,22 @@ export const StickyNavigation: React.FC<StickyNavigationProps> = ({
                 whileTap={{ scale: 0.95 }}
                 className="flex-shrink-0 snap-center"
               >
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => onCategorySelect(category.id)}
-                  className={`whitespace-nowrap rounded-full px-6 py-2 transition-all border ${
-                    isActive 
-                      ? 'bg-accent text-accent-foreground border-accent shadow-sm font-medium' 
-                      : 'border-border hover:border-accent/50 hover:bg-accent/10'
-                  }`}
-                >
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => onCategorySelect(category.id)}
+                    className={`whitespace-nowrap rounded-full px-6 py-2 transition-all border flex-shrink-0 ${
+                      isActive 
+                        ? 'bg-accent text-accent-foreground border-accent shadow-sm font-medium' 
+                        : 'border-border hover:border-accent/50 hover:bg-accent/10'
+                    }`}
+                  >
                   {category.name}
                 </Button>
               </motion.div>
             );
           })}
+          </div>
         </div>
       </div>
     </div>

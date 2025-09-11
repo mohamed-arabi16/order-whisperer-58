@@ -395,6 +395,7 @@ export type Database = {
       }
       tenants: {
         Row: {
+          accent_color: string | null
           address: string | null
           branch_name: string | null
           created_at: string
@@ -408,12 +409,14 @@ export type Database = {
           owner_id: string
           phone_number: string | null
           primary_color: string | null
+          secondary_color: string | null
           slug: string
           social_media_links: Json | null
           subscription_plan: Database["public"]["Enums"]["subscription_plan"]
           updated_at: string
         }
         Insert: {
+          accent_color?: string | null
           address?: string | null
           branch_name?: string | null
           created_at?: string
@@ -427,12 +430,14 @@ export type Database = {
           owner_id: string
           phone_number?: string | null
           primary_color?: string | null
+          secondary_color?: string | null
           slug: string
           social_media_links?: Json | null
           subscription_plan?: Database["public"]["Enums"]["subscription_plan"]
           updated_at?: string
         }
         Update: {
+          accent_color?: string | null
           address?: string | null
           branch_name?: string | null
           created_at?: string
@@ -446,6 +451,7 @@ export type Database = {
           owner_id?: string
           phone_number?: string | null
           primary_color?: string | null
+          secondary_color?: string | null
           slug?: string
           social_media_links?: Json | null
           subscription_plan?: Database["public"]["Enums"]["subscription_plan"]

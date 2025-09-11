@@ -489,8 +489,8 @@ const PublicMenu = (): JSX.Element => {
 
       {/* RestaurantOS Promo for Free/Starter Plans */}
       <RestaurantOSPromo 
-        plan={(tenant.subscription_plan as 'free' | 'starter' | 'premium') || 'free'} 
-        className="mb-16"
+        plan={(tenant?.subscription_plan as 'free' | 'starter' | 'premium') || 'free'} 
+        className="fixed bottom-0 left-0 right-0 z-40"
       />
 
       {/* Item Details Modal */}
