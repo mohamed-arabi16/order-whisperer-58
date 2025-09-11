@@ -388,8 +388,46 @@
   },
   "pricing": {
     "description": "Choose the best plan for your restaurant.",
-    "placeholder": "Pricing content will be here.",
-    "title": "Pricing Plans"
+    "title": "Pricing Plans",
+    "plans": {
+      "basic": {
+        "name": "Free",
+        "price": "Free",
+        "features": [
+          "Up to 10 menu items",
+          "QR code generation",
+          "WhatsApp ordering",
+          "Basic analytics",
+          "Email support"
+        ],
+        "cta": "Get Started"
+      },
+      "premium": {
+        "name": "Starter",
+        "price": "$15/mo",
+        "features": [
+          "Unlimited menu items",
+          "Advanced QR code customization",
+          "Priority support",
+          "Advanced analytics",
+          "Customer feedback management",
+          "Staff accounts",
+          "If paid yearly, the ROS will be removed"
+        ],
+        "cta": "Upgrade Now"
+      },
+      "enterprise": {
+        "name": "Premium",
+        "price": "$29/mo yearly billing",
+        "features": [
+          "All Starter features",
+          "Custom branding",
+          "Custom integrations",
+          "the ROS will be removed"
+        ],
+        "cta": "Contact Sales"
+      }
+    }
   },
   "publicMenu": {
     "addToCart": "Add to Cart",
