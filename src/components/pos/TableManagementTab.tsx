@@ -102,35 +102,59 @@ export const TableManagementTab: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!user) {
+      toast({
+        title: "خطأ",
+        description: "يجب تسجيل الدخول أولاً",
+        variant: "destructive",
+      });
+      return;
+    }
+
     try {
-      if (editingTable) {
-        // Update existing table
-        const { error } = await supabase
-          .from('restaurant_tables')
-          .update(formData)
-          .eq('id', editingTable.id);
+      // Get user's tenant
+      const { data: userTenant, error: tenantError } = await supabase
+        .from('tenants')
+        .select('id, slug')
+        .eq('owner_id', (user as any).id)
+        .single();
 
-        if (error) throw error;
-
+      if (tenantError || !userTenant) {
         toast({
-          title: "تم التحديث",
-          description: "تم تحديث بيانات الطاولة بنجاح",
-          variant: "default"
+          title: "خطأ",
+          description: "لم يتم العثور على بيانات المطعم",
+          variant: "destructive",
         });
-      } else {
-        // Create new table
-        const { error } = await supabase
-          .from('restaurant_tables')
-          .insert([{ ...formData, tenant_id: user?.user_metadata?.tenant_id }]);
-
-        if (error) throw error;
-
-        toast({
-          title: "تم الإضافة",
-          description: "تم إضافة الطاولة الجديدة بنجاح",
-          variant: "default"
-        });
+        return;
       }
+
+      const qrCodeUrl = `${window.location.origin}/menu/${userTenant.slug}?table=${formData.table_number}`;
+      
+      const tableData = {
+        ...formData,
+        tenant_id: userTenant.id,
+        qr_code_url: qrCodeUrl
+      };
+
+      let result;
+      if (editingTable) {
+        result = await supabase
+          .from('restaurant_tables')
+          .update(tableData)
+          .eq('id', editingTable.id);
+      } else {
+        result = await supabase
+          .from('restaurant_tables')
+          .insert([tableData]);
+      }
+
+      if (result.error) throw result.error;
+
+      toast({
+        title: "تم الحفظ",
+        description: editingTable ? "تم تحديث الطاولة بنجاح" : "تم إضافة الطاولة بنجاح",
+        variant: "default"
+      });
 
       setIsDialogOpen(false);
       setEditingTable(null);
@@ -139,7 +163,7 @@ export const TableManagementTab: React.FC = () => {
     } catch (error) {
       console.error('Error saving table:', error);
       toast({
-        title: t('common.error'),
+        title: "خطأ",
         description: "حدث خطأ أثناء حفظ بيانات الطاولة",
         variant: "destructive"
       });
@@ -408,7 +432,19 @@ export const TableManagementTab: React.FC = () => {
                     <Button
                       size="sm"
                       variant="outline"
-                      disabled
+                      onClick={() => {
+                        if (table.qr_code_url) {
+                          // Generate QR code image URL and open it
+                          const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&format=png&data=${encodeURIComponent(table.qr_code_url)}`;
+                          window.open(qrImageUrl, '_blank');
+                        } else {
+                          toast({
+                            title: "خطأ",
+                            description: "لا يوجد رمز QR لهذه الطاولة",
+                            variant: "destructive",
+                          });
+                        }
+                      }}
                       className="flex-1"
                     >
                       <QrCode className="w-4 h-4 mr-1" />

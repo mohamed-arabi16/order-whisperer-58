@@ -18,6 +18,7 @@ interface StickySearchHeaderProps {
   searchQuery: string;
   onSearchChange: (query: string) => void;
   onCategorySelect: (categoryId: string) => void;
+  tableNumber?: string | null;
 }
 
 /**
@@ -30,12 +31,23 @@ export const StickySearchHeader = ({
   searchQuery,
   onSearchChange,
   onCategorySelect,
+  tableNumber
 }: StickySearchHeaderProps) => {
   const { t, isRTL } = useTranslation();
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   return (
     <div className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border shadow-sm">
+      {tableNumber && (
+        <div className="px-4 py-2 bg-primary/10 border-b border-primary/20">
+          <div className="text-center">
+            <span className="text-sm font-medium text-primary">
+              طاولة رقم {tableNumber}
+            </span>
+          </div>
+        </div>
+      )}
+      
       {/* Search Section */}
       <div className="px-4 py-3 bg-background">
         <div className="w-full max-w-none">

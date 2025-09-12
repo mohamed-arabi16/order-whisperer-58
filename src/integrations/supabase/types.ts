@@ -665,6 +665,57 @@ export type Database = {
         }
         Relationships: []
       }
+      table_sessions: {
+        Row: {
+          created_at: string | null
+          id: string
+          orders_count: number | null
+          session_end: string | null
+          session_start: string | null
+          table_id: string
+          tenant_id: string
+          total_revenue: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          orders_count?: number | null
+          session_end?: string | null
+          session_start?: string | null
+          table_id: string
+          tenant_id: string
+          total_revenue?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          orders_count?: number | null
+          session_end?: string | null
+          session_start?: string | null
+          table_id?: string
+          tenant_id?: string
+          total_revenue?: number | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "table_sessions_table_id_fkey"
+            columns: ["table_id"]
+            isOneToOne: false
+            referencedRelation: "restaurant_tables"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "table_sessions_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       tenants: {
         Row: {
           accent_color: string | null

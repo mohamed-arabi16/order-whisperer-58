@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -77,6 +77,8 @@ interface MenuItem {
 
 const PublicMenu = (): JSX.Element => {
   const { slug } = useParams();
+  const [searchParams] = useSearchParams();
+  const tableId = searchParams.get('table');
   const { t, isRTL } = useTranslation();
   
   const [tenant, setTenant] = useState<Tenant | null>(null);
@@ -94,6 +96,7 @@ const PublicMenu = (): JSX.Element => {
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
   const [showCart, setShowCart] = useState(false);
   const [isAddingToCart, setIsAddingToCart] = useState<string | null>(null);
+  const [tableNumber, setTableNumber] = useState<string | null>(null);
 
   // Animation controls
   const cartAnimation = useAnimation();
@@ -122,6 +125,23 @@ const PublicMenu = (): JSX.Element => {
           ...tenantData,
           social_media_links: (tenantData.social_media_links as { facebook?: string; instagram?: string; twitter?: string } | null),
         });
+
+        // Load table info if table ID is provided
+        if (tableId) {
+          try {
+            const { data: table, error } = await supabase
+              .from('restaurant_tables')
+              .select('table_number')
+              .eq('id', tableId)
+              .eq('tenant_id', tenantData.id)
+              .single();
+
+            if (error) throw error;
+            setTableNumber(table.table_number);
+          } catch (error) {
+            console.error('Error loading table info:', error);
+          }
+        }
 
         // Log menu view for analytics
         if (tenantData?.id) {
@@ -173,7 +193,7 @@ const PublicMenu = (): JSX.Element => {
     };
 
     fetchData();
-  }, [slug]);
+  }, [slug, tableId]);
 
   // Cart functions
   const addToCart = async (item: MenuItem) => {
@@ -334,16 +354,57 @@ const PublicMenu = (): JSX.Element => {
       const deliveryFee = orderData.orderType.value === 'delivery' ? (tenant.delivery_fee || 0) : 0;
       const finalTotal = subtotal + deliveryFee;
 
+      // Determine order type based on table presence
+      const finalOrderType = tableNumber ? 
+        { ...orderData.orderType, name: `تناول في المطعم - طاولة ${tableNumber}` } : 
+        orderData.orderType;
+
+      // Update customer info with table number if present
+      const finalCustomerInfo = tableNumber ? {
+        ...orderData.customerInfo,
+        name: orderData.customerInfo?.name || `زبون الطاولة ${tableNumber}`,
+        phone: orderData.customerInfo?.phone || tenant.phone_number || "",
+        tableNumber
+      } : orderData.customerInfo;
+
+      try {
+        // Create POS order directly (primary method for table orders)
+        if (tableNumber) {
+          const posOrder = {
+            tenant_id: tenant.id,
+            order_number: `T${tableNumber}-${Date.now().toString().slice(-6)}`,
+            items: cart as any, // Convert to JSON
+            customer_info: finalCustomerInfo as any, // Convert to JSON
+            total_amount: finalTotal,
+            status: 'new',
+            order_type: 'table',
+            table_id: tableId,
+            notes: `Ordered via table QR (Table ${tableNumber})`
+          };
+
+          const { error: posError } = await supabase
+            .from('pos_orders')
+            .insert(posOrder);
+
+          if (posError) throw posError;
+
+          toast.success(`تم إرسال طلب الطاولة ${tableNumber} بنجاح!`);
+        }
+      } catch (error) {
+        console.error('Error creating POS order:', error);
+        // Continue with WhatsApp as fallback
+      }
+
       // Log WhatsApp click analytics
       try {
         await supabase.rpc('log_whatsapp_click', {
           tenant_id_param: tenant.id,
           cart_total_param: finalTotal,
           items_count_param: totalItems,
-          order_type_param: orderData.orderType.name,
+          order_type_param: finalOrderType.name,
           cart_id_param: cartId,
-          customer_phone_param: orderData.customerInfo?.phone,
-          customer_name_param: orderData.customerInfo?.name,
+          customer_phone_param: finalCustomerInfo?.phone,
+          customer_name_param: finalCustomerInfo?.name,
         });
       } catch (error) {
         console.log('Analytics logging failed:', error);
@@ -354,8 +415,8 @@ const PublicMenu = (): JSX.Element => {
         restaurantName: tenant.name,
         branchName: tenant.branch_name || undefined,
         items: cart,
-        orderType: orderData.orderType.name,
-        customerInfo: orderData.customerInfo,
+        orderType: finalOrderType.name,
+        customerInfo: finalCustomerInfo,
         subtotal: subtotal,
         deliveryFee: deliveryFee,
         discount: 0,
@@ -371,10 +432,10 @@ const PublicMenu = (): JSX.Element => {
         await logOrderHistory({
           tenant_id: tenant.id,
           cart_id: cartId,
-          customer_name: orderData.customerInfo?.name,
-          customer_phone: orderData.customerInfo?.phone,
+          customer_name: finalCustomerInfo?.name,
+          customer_phone: finalCustomerInfo?.phone,
           order_type: 'whatsapp',
-          order_mode: orderData.orderType.value,
+          order_mode: finalOrderType.value,
           items_count: totalItems,
           subtotal: subtotal,
           delivery_fee: deliveryFee,
@@ -382,11 +443,12 @@ const PublicMenu = (): JSX.Element => {
           total_amount: finalTotal,
           order_data: {
             items: cart,
-            orderType: orderData.orderType.name,
-            customerInfo: orderData.customerInfo,
+            orderType: finalOrderType.name,
+            customerInfo: finalCustomerInfo,
             orderNotes: orderData.orderNotes,
             restaurantName: tenant.name,
             message: message,
+            tableNumber: tableNumber,
           },
           customer_notes: orderData.orderNotes,
         });
@@ -397,7 +459,10 @@ const PublicMenu = (): JSX.Element => {
       // Clear cart and close drawer
       setCart([]);
       setShowCart(false);
-      toast.success("تم إرسال طلبك عبر الواتساب!");
+      
+      if (!tableNumber) {
+        toast.success("تم إرسال طلبك عبر الواتساب!");
+      }
 
     } catch (error: any) {
       console.error('Error processing order:', error);
@@ -443,6 +508,7 @@ const PublicMenu = (): JSX.Element => {
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         onCategorySelect={scrollToCategory}
+        tableNumber={tableNumber}
       />
 
       {/* Restaurant Overview */}
