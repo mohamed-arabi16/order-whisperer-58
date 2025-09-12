@@ -27,6 +27,79 @@
     "totalSales": "Total Sales",
     "viewCount": "View Count"
   },
+  "pos": {
+    "dashboard": {
+      "title": "POS System",
+      "description": "Real-time order management with advanced analytics",
+      "newOrders": "New Orders",
+      "preparing": "Preparing",
+      "ready": "Ready",
+      "completed": "Completed",
+      "orderQueue": "Order Queue",
+      "kitchenDisplay": "Kitchen Display",
+      "analytics": "Analytics",
+      "tableManagement": "Table Management",
+      "notifications": "Notifications",
+      "refresh": "Refresh"
+    },
+    "status": {
+      "new": "New",
+      "preparing": "Preparing",
+      "ready": "Ready",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "priority": {
+      "low": "Low",
+      "normal": "Normal",
+      "high": "High",
+      "urgent": "Urgent"
+    },
+    "actions": {
+      "startPreparing": "Start Preparing",
+      "markReady": "Mark Ready",
+      "markCompleted": "Mark Completed",
+      "cancel": "Cancel",
+      "assign": "Assign",
+      "priority": "Priority"
+    },
+    "analytics": {
+      "title": "POS Analytics",
+      "todayOrders": "Today's Orders",
+      "todayRevenue": "Today's Revenue",
+      "avgPrepTime": "Avg Prep Time",
+      "peakHours": "Peak Hours",
+      "staffPerformance": "Staff Performance",
+      "revenueChart": "Revenue Chart",
+      "orderTrends": "Order Trends"
+    },
+    "tables": {
+      "title": "Table Management",
+      "tableNumber": "Table Number",
+      "capacity": "Capacity",
+      "status": "Status",
+      "currentOrder": "Current Order",
+      "available": "Available",
+      "occupied": "Occupied",
+      "reserved": "Reserved",
+      "addTable": "Add Table",
+      "editTable": "Edit Table"
+    },
+    "notifications": {
+      "title": "Notification Settings",
+      "newOrderSound": "New Order Sound",
+      "urgentAlert": "Urgent Alert",
+      "browserNotifications": "Browser Notifications",
+      "emailNotifications": "Email Notifications",
+      "smsNotifications": "SMS Notifications"
+    },
+    "offline": {
+      "title": "Offline Mode",
+      "description": "You're offline, changes will sync when connection is restored",
+      "queuedOrders": "Queued Orders",
+      "syncPending": "Sync Pending"
+    }
+  },
   "auth": {
     "alreadyHaveAccount": "Already have an account?",
     "createAccount": "Create New Account",

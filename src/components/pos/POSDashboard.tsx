@@ -11,12 +11,20 @@ import {
   ChefHat,
   Monitor,
   Bell,
-  RefreshCw
+  RefreshCw,
+  BarChart3,
+  Settings,
+  Table,
+  Wifi,
+  WifiOff
 } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "@/hooks/use-toast";
+import { POSAnalyticsTab } from "./POSAnalyticsTab";
+import { TableManagementTab } from "./TableManagementTab";
+import { NotificationManager } from "./NotificationManager";
 
 interface POSOrder {
   id: string;
@@ -40,13 +48,30 @@ export const POSDashboard: React.FC = () => {
   const [orders, setOrders] = useState<POSOrder[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('queue');
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [offlineOrders, setOfflineOrders] = useState<POSOrder[]>([]);
 
-  // Load orders
+  // Load orders and setup offline detection
   useEffect(() => {
     if (user) {
       loadOrders();
       subscribeToOrders();
     }
+
+    // Setup offline detection
+    const handleOnline = () => {
+      setIsOnline(true);
+      syncOfflineOrders();
+    };
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
   }, [user]);
 
   const loadOrders = async () => {
@@ -62,8 +87,8 @@ export const POSDashboard: React.FC = () => {
     } catch (error) {
       console.error('Error loading orders:', error);
       toast({
-        title: "خطأ في تحميل الطلبات",
-        description: "حدث خطأ أثناء تحميل طلبات نقاط البيع",
+        title: t('common.error'),
+        description: t('pos.dashboard.loadError') || "حدث خطأ أثناء تحميل طلبات نقاط البيع",
         variant: "destructive"
       });
     } finally {
@@ -89,10 +114,13 @@ export const POSDashboard: React.FC = () => {
             
             // Show notification for new orders
             toast({
-              title: "طلب جديد!",
-              description: `طلب رقم ${newOrder.order_number} - ${newOrder.total_amount} ${t('common.currency')}`,
+              title: t('pos.dashboard.newOrder') || "طلب جديد!",
+              description: `${t('pos.dashboard.orderNumber')} ${newOrder.order_number} - ${newOrder.total_amount} ${t('common.currency')}`,
               variant: "default"
             });
+
+            // Play notification sound if enabled
+            playNotificationSound();
           } else if (payload.eventType === 'UPDATE') {
             const updatedOrder = payload.new as POSOrder;
             setOrders(prev => 
@@ -120,15 +148,15 @@ export const POSDashboard: React.FC = () => {
       if (error) throw error;
 
       toast({
-        title: "تم تحديث الطلب",
-        description: `تم تغيير حالة الطلب إلى ${t(`pos.status.${newStatus}`)}`,
+        title: t('pos.dashboard.orderUpdated') || "تم تحديث الطلب",
+        description: `${t('pos.dashboard.statusChanged')} ${t(`pos.status.${newStatus}`)}`,
         variant: "default"
       });
     } catch (error) {
       console.error('Error updating order:', error);
       toast({
-        title: "خطأ في التحديث",
-        description: "حدث خطأ أثناء تحديث حالة الطلب",
+        title: t('common.error'),
+        description: t('pos.dashboard.updateError') || "حدث خطأ أثناء تحديث حالة الطلب", 
         variant: "destructive"
       });
     }
@@ -161,6 +189,39 @@ export const POSDashboard: React.FC = () => {
     return orders.filter(order => order.status === status);
   };
 
+  const playNotificationSound = () => {
+    try {
+      const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvGIYBjiNz+/OfC0EJXHBzi2');
+      audio.play().catch(() => {
+        // Ignore audio errors in case user hasn't interacted with page
+      });
+    } catch (error) {
+      console.log('Could not play notification sound:', error);
+    }
+  };
+
+  const syncOfflineOrders = async () => {
+    if (offlineOrders.length === 0) return;
+    
+    try {
+      for (const order of offlineOrders) {
+        await supabase
+          .from('pos_orders')
+          .update({ status: order.status })
+          .eq('id', order.id);
+      }
+      
+      setOfflineOrders([]);
+      toast({
+        title: t('pos.offline.syncComplete') || "تم التزامن",
+        description: `تم تزامن ${offlineOrders.length} طلب`,
+        variant: "default"
+      });
+    } catch (error) {
+      console.error('Error syncing offline orders:', error);
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
@@ -172,7 +233,7 @@ export const POSDashboard: React.FC = () => {
   }
 
   return (
-    <div className="space-y-6" dir={isRTL ? 'rtl' : 'ltr'}>
+    <div className="container mx-auto p-6 space-y-6" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -183,10 +244,24 @@ export const POSDashboard: React.FC = () => {
             {t('pos.dashboard.description')}
           </p>
         </div>
-        <Button onClick={loadOrders} variant="outline" size="sm">
-          <RefreshCw className="w-4 h-4 mr-2" />
-          تحديث
-        </Button>
+        <div className="flex items-center gap-2">
+          {!isOnline && (
+            <Badge variant="destructive" className="flex items-center gap-1">
+              <WifiOff className="w-3 h-3" />
+              {t('pos.offline.title')}
+            </Badge>
+          )}
+          {isOnline && (
+            <Badge variant="outline" className="flex items-center gap-1">
+              <Wifi className="w-3 h-3" />
+              متصل
+            </Badge>
+          )}
+          <Button onClick={loadOrders} variant="outline" size="sm">
+            <RefreshCw className="w-4 h-4 mr-2" />
+            {t('pos.dashboard.refresh')}
+          </Button>
+        </div>
       </div>
 
       {/* Stats Cards */}
@@ -242,7 +317,7 @@ export const POSDashboard: React.FC = () => {
 
       {/* Main Content */}
       <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="queue" className="flex items-center gap-2">
             <ShoppingCart className="w-4 h-4" />
             {t('pos.dashboard.orderQueue')}
@@ -250,6 +325,18 @@ export const POSDashboard: React.FC = () => {
           <TabsTrigger value="kitchen" className="flex items-center gap-2">
             <ChefHat className="w-4 h-4" />
             {t('pos.dashboard.kitchenDisplay')}
+          </TabsTrigger>
+          <TabsTrigger value="analytics" className="flex items-center gap-2">
+            <BarChart3 className="w-4 h-4" />
+            {t('pos.dashboard.analytics')}
+          </TabsTrigger>
+          <TabsTrigger value="tables" className="flex items-center gap-2">
+            <Table className="w-4 h-4" />
+            {t('pos.dashboard.tableManagement')}
+          </TabsTrigger>
+          <TabsTrigger value="notifications" className="flex items-center gap-2">
+            <Settings className="w-4 h-4" />
+            {t('pos.dashboard.notifications')}
           </TabsTrigger>
         </TabsList>
 
@@ -262,7 +349,7 @@ export const POSDashboard: React.FC = () => {
               <div className="space-y-3">
                 {orders.length === 0 ? (
                   <div className="text-center py-8 text-muted-foreground">
-                    لا توجد طلبات حالياً
+                    {t('pos.dashboard.noOrders') || "لا توجد طلبات حالياً"}
                   </div>
                 ) : (
                   orders.map((order) => (
@@ -285,7 +372,7 @@ export const POSDashboard: React.FC = () => {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <h4 className="font-medium mb-2">تفاصيل الطلب:</h4>
+                          <h4 className="font-medium mb-2">{t('pos.dashboard.orderDetails') || "تفاصيل الطلب:"}:</h4>
                           <div className="space-y-1 text-sm">
                             {order.items.map((item: any, index: number) => (
                               <div key={index} className="flex justify-between">
@@ -295,20 +382,20 @@ export const POSDashboard: React.FC = () => {
                             ))}
                           </div>
                           <div className="border-t pt-2 mt-2 font-medium">
-                            المجموع: {order.total_amount.toLocaleString()} {t('common.currency')}
+                            {t('common.total')}: {order.total_amount.toLocaleString()} {t('common.currency')}
                           </div>
                         </div>
 
                         <div className="space-y-3">
                           {order.customer_info && (
                             <div>
-                              <h4 className="font-medium mb-1">بيانات العميل:</h4>
+                              <h4 className="font-medium mb-1">{t('pos.dashboard.customerInfo') || "بيانات العميل:"}:</h4>
                               <div className="text-sm space-y-1">
                                 {order.customer_info.name && (
-                                  <div>الاسم: {order.customer_info.name}</div>
+                                  <div>{t('common.name')}: {order.customer_info.name}</div>
                                 )}
                                 {order.customer_info.phone && (
-                                  <div>الهاتف: {order.customer_info.phone}</div>
+                                  <div>{t('common.phone')}: {order.customer_info.phone}</div>
                                 )}
                               </div>
                             </div>
@@ -316,7 +403,7 @@ export const POSDashboard: React.FC = () => {
 
                           {order.notes && (
                             <div>
-                              <h4 className="font-medium mb-1">ملاحظات:</h4>
+                              <h4 className="font-medium mb-1">{t('common.notes')}:</h4>
                               <p className="text-sm text-muted-foreground">{order.notes}</p>
                             </div>
                           )}
@@ -327,7 +414,7 @@ export const POSDashboard: React.FC = () => {
                                 size="sm"
                                 onClick={() => updateOrderStatus(order.id, 'preparing')}
                               >
-                                بدء التحضير
+                                {t('pos.actions.startPreparing')}
                               </Button>
                             )}
                             {order.status === 'preparing' && (
@@ -336,7 +423,7 @@ export const POSDashboard: React.FC = () => {
                                 variant="outline"
                                 onClick={() => updateOrderStatus(order.id, 'ready')}
                               >
-                                جاهز
+                                {t('pos.actions.markReady')}
                               </Button>
                             )}
                             {order.status === 'ready' && (
@@ -345,7 +432,7 @@ export const POSDashboard: React.FC = () => {
                                 variant="default"
                                 onClick={() => updateOrderStatus(order.id, 'completed')}
                               >
-                                مكتمل
+                                {t('pos.actions.markCompleted')}
                               </Button>
                             )}
                             {(order.status === 'new' || order.status === 'preparing') && (
@@ -354,7 +441,7 @@ export const POSDashboard: React.FC = () => {
                                 variant="destructive"
                                 onClick={() => updateOrderStatus(order.id, 'cancelled')}
                               >
-                                إلغاء
+                                {t('pos.actions.cancel')}
                               </Button>
                             )}
                           </div>
@@ -402,14 +489,14 @@ export const POSDashboard: React.FC = () => {
                       </div>
                       {order.notes && (
                         <div className="mt-3 p-2 bg-muted rounded text-sm">
-                          <strong>ملاحظات:</strong> {order.notes}
+                          <strong>{t('common.notes')}:</strong> {order.notes}
                         </div>
                       )}
                       <Button 
                         className="w-full mt-3"
                         onClick={() => updateOrderStatus(order.id, 'ready')}
                       >
-                        جاهز للتسليم
+                        {t('pos.dashboard.readyForDelivery') || "جاهز للتسليم"}
                       </Button>
                     </CardContent>
                   </Card>
@@ -417,12 +504,24 @@ export const POSDashboard: React.FC = () => {
                 
                 {filterOrdersByStatus('preparing').length === 0 && (
                   <div className="col-span-full text-center py-8 text-muted-foreground">
-                    لا توجد طلبات قيد التحضير حالياً
+                    {t('pos.dashboard.noPreparingOrders') || "لا توجد طلبات قيد التحضير حالياً"}
                   </div>
                 )}
               </div>
             </CardContent>
           </Card>
+        </TabsContent>
+
+        <TabsContent value="analytics">
+          <POSAnalyticsTab />
+        </TabsContent>
+
+        <TabsContent value="tables">
+          <TableManagementTab />
+        </TabsContent>
+
+        <TabsContent value="notifications">
+          <NotificationManager />
         </TabsContent>
       </Tabs>
     </div>

@@ -27,6 +27,79 @@
     "totalSales": "إجمالي المبيعات",
     "viewCount": "عدد المشاهدات"
   },
+  "pos": {
+    "dashboard": {
+      "title": "نظام نقاط البيع",
+      "description": "إدارة الطلبات في الوقت الفعلي مع التحليلات المتقدمة",
+      "newOrders": "طلبات جديدة",
+      "preparing": "قيد التحضير",
+      "ready": "جاهز",
+      "completed": "مكتمل",
+      "orderQueue": "قائمة الطلبات",
+      "kitchenDisplay": "شاشة المطبخ",
+      "analytics": "التحليلات",
+      "tableManagement": "إدارة الطاولات",
+      "notifications": "الإشعارات",
+      "refresh": "تحديث"
+    },
+    "status": {
+      "new": "جديد",
+      "preparing": "قيد التحضير",
+      "ready": "جاهز",
+      "completed": "مكتمل",
+      "cancelled": "ملغي"
+    },
+    "priority": {
+      "low": "منخفضة",
+      "normal": "عادية",
+      "high": "عالية",
+      "urgent": "عاجلة"
+    },
+    "actions": {
+      "startPreparing": "بدء التحضير",
+      "markReady": "جاهز",
+      "markCompleted": "مكتمل",
+      "cancel": "إلغاء",
+      "assign": "تعيين",
+      "priority": "أولوية"
+    },
+    "analytics": {
+      "title": "تحليلات نقاط البيع",
+      "todayOrders": "طلبات اليوم",
+      "todayRevenue": "إيرادات اليوم",
+      "avgPrepTime": "متوسط وقت التحضير",
+      "peakHours": "ساعات الذروة",
+      "staffPerformance": "أداء الموظفين",
+      "revenueChart": "مخطط الإيرادات",
+      "orderTrends": "اتجاهات الطلبات"
+    },
+    "tables": {
+      "title": "إدارة الطاولات",
+      "tableNumber": "رقم الطاولة",
+      "capacity": "السعة",
+      "status": "الحالة",
+      "currentOrder": "الطلب الحالي",
+      "available": "متاحة",
+      "occupied": "مشغولة",
+      "reserved": "محجوزة",
+      "addTable": "إضافة طاولة",
+      "editTable": "تعديل الطاولة"
+    },
+    "notifications": {
+      "title": "إعدادات الإشعارات",
+      "newOrderSound": "صوت الطلب الجديد",
+      "urgentAlert": "تنبيه عاجل",
+      "browserNotifications": "إشعارات المتصفح",
+      "emailNotifications": "إشعارات البريد الإلكتروني",
+      "smsNotifications": "إشعارات الرسائل النصية"
+    },
+    "offline": {
+      "title": "الوضع غير المتصل",
+      "description": "أنت غير متصل بالإنترنت، سيتم مزامنة التغييرات عند عودة الاتصال",
+      "queuedOrders": "طلبات في قائمة الانتظار",
+      "syncPending": "في انتظار المزامنة"
+    }
+  },
   "auth": {
     "alreadyHaveAccount": "لديك حساب بالفعل؟",
     "createAccount": "إنشاء حساب جديد",

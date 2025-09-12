@@ -227,6 +227,45 @@ export type Database = {
           },
         ]
       }
+      notification_preferences: {
+        Row: {
+          browser_notifications: boolean | null
+          created_at: string
+          email_notifications: boolean | null
+          id: string
+          new_order_sound: boolean | null
+          sms_notifications: boolean | null
+          tenant_id: string
+          updated_at: string
+          urgent_order_alert: boolean | null
+          user_id: string
+        }
+        Insert: {
+          browser_notifications?: boolean | null
+          created_at?: string
+          email_notifications?: boolean | null
+          id?: string
+          new_order_sound?: boolean | null
+          sms_notifications?: boolean | null
+          tenant_id: string
+          updated_at?: string
+          urgent_order_alert?: boolean | null
+          user_id: string
+        }
+        Update: {
+          browser_notifications?: boolean | null
+          created_at?: string
+          email_notifications?: boolean | null
+          id?: string
+          new_order_sound?: boolean | null
+          sms_notifications?: boolean | null
+          tenant_id?: string
+          updated_at?: string
+          urgent_order_alert?: boolean | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       order_history: {
         Row: {
           cart_hash: string
@@ -366,47 +405,114 @@ export type Database = {
           },
         ]
       }
+      pos_analytics: {
+        Row: {
+          avg_preparation_time: unknown | null
+          created_at: string
+          date: string
+          id: string
+          peak_hours: Json | null
+          staff_performance: Json | null
+          tenant_id: string
+          total_orders: number | null
+          total_revenue: number | null
+          updated_at: string
+        }
+        Insert: {
+          avg_preparation_time?: unknown | null
+          created_at?: string
+          date: string
+          id?: string
+          peak_hours?: Json | null
+          staff_performance?: Json | null
+          tenant_id: string
+          total_orders?: number | null
+          total_revenue?: number | null
+          updated_at?: string
+        }
+        Update: {
+          avg_preparation_time?: unknown | null
+          created_at?: string
+          date?: string
+          id?: string
+          peak_hours?: Json | null
+          staff_performance?: Json | null
+          tenant_id?: string
+          total_orders?: number | null
+          total_revenue?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       pos_orders: {
         Row: {
+          assigned_staff_id: string | null
+          completion_time: string | null
           created_at: string
           customer_info: Json | null
+          estimated_completion_time: string | null
           id: string
           items: Json
           notes: string | null
           order_number: string
           order_type: string
+          preparation_start_time: string | null
+          priority: string | null
+          ready_time: string | null
           status: string
+          table_id: string | null
           tenant_id: string
           total_amount: number
           updated_at: string
         }
         Insert: {
+          assigned_staff_id?: string | null
+          completion_time?: string | null
           created_at?: string
           customer_info?: Json | null
+          estimated_completion_time?: string | null
           id?: string
           items: Json
           notes?: string | null
           order_number: string
           order_type?: string
+          preparation_start_time?: string | null
+          priority?: string | null
+          ready_time?: string | null
           status?: string
+          table_id?: string | null
           tenant_id: string
           total_amount: number
           updated_at?: string
         }
         Update: {
+          assigned_staff_id?: string | null
+          completion_time?: string | null
           created_at?: string
           customer_info?: Json | null
+          estimated_completion_time?: string | null
           id?: string
           items?: Json
           notes?: string | null
           order_number?: string
           order_type?: string
+          preparation_start_time?: string | null
+          priority?: string | null
+          ready_time?: string | null
           status?: string
+          table_id?: string | null
           tenant_id?: string
           total_amount?: number
           updated_at?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "pos_orders_table_id_fkey"
+            columns: ["table_id"]
+            isOneToOne: false
+            referencedRelation: "restaurant_tables"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "pos_orders_tenant_id_fkey"
             columns: ["tenant_id"]
@@ -484,6 +590,78 @@ export type Database = {
           role?: Database["public"]["Enums"]["user_role"]
           updated_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      restaurant_tables: {
+        Row: {
+          capacity: number | null
+          created_at: string
+          id: string
+          is_active: boolean | null
+          location_area: string | null
+          qr_code_url: string | null
+          table_number: string
+          tenant_id: string
+          updated_at: string
+        }
+        Insert: {
+          capacity?: number | null
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          location_area?: string | null
+          qr_code_url?: string | null
+          table_number: string
+          tenant_id: string
+          updated_at?: string
+        }
+        Update: {
+          capacity?: number | null
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          location_area?: string | null
+          qr_code_url?: string | null
+          table_number?: string
+          tenant_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      staff_performance: {
+        Row: {
+          avg_completion_time: unknown | null
+          created_at: string
+          id: string
+          orders_completed: number | null
+          performance_score: number | null
+          shift_date: string
+          staff_id: string
+          tenant_id: string
+          updated_at: string
+        }
+        Insert: {
+          avg_completion_time?: unknown | null
+          created_at?: string
+          id?: string
+          orders_completed?: number | null
+          performance_score?: number | null
+          shift_date: string
+          staff_id: string
+          tenant_id: string
+          updated_at?: string
+        }
+        Update: {
+          avg_completion_time?: unknown | null
+          created_at?: string
+          id?: string
+          orders_completed?: number | null
+          performance_score?: number | null
+          shift_date?: string
+          staff_id?: string
+          tenant_id?: string
+          updated_at?: string
         }
         Relationships: []
       }
