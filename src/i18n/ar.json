@@ -281,7 +281,9 @@
     "unsavedChanges": "تغييرات غير محفوظة",
     "unsavedChangesDescription": "لديك تغييرات غير محفوظة. هل أنت متأكد من أنك تريد المغادرة؟",
     "update": "تحديث",
-    "view": "عرض"
+    "upgrade": "ترقية",
+    "view": "عرض",
+    "back": "رجوع"
   },
   "header": {
     "analytics": "التحليلات",
@@ -554,9 +556,20 @@
     "title": "RestaurantOS - منصة حديثة لإدارة المطاعم"
   },
   "plans": {
-    "basic": "أساسي - مجاني",
-    "enterprise": "متقدم - $99/شهر",
-    "premium": "مميز - $29/شهر"
+    "basic": "أساسي", 
+    "premium": "مميز",
+    "enterprise": "مؤسسي"
+  },
+  "posAccess": {
+    "premiumRequired": "الوصول لنظام نقاط البيع يتطلب الاشتراك المميز",
+    "upgradePrompt": "قم بالترقية للاشتراك المميز للوصول لميزات نقاط البيع",
+    "availableFeatures": "متوفر في الاشتراك المميز:",
+    "featureList": {
+      "orderManagement": "• إدارة الطلبات المتقدمة",
+      "kitchenDisplay": "• نظام عرض المطبخ",
+      "realTimeUpdates": "• تحديثات الطلبات في الوقت الفعلي", 
+      "analytics": "• تحليلات وتقارير مفصلة"
+    }
   },
   "pricing": {
     "description": "اختر الخطة الأنسب لمطعمك.",
@@ -872,6 +885,13 @@
       "status": "الحالة",
       "title": "إدارة المطاعم",
       "view": "عرض"
+    },
+    "tenant": {
+      "email": "البريد الإلكتروني",
+      "owner": "المالك",
+      "registrationDate": "تاريخ التسجيل", 
+      "viewMenu": "عرض القائمة",
+      "viewPOS": "عرض نقاط البيع"
     },
     "welcome": "مرحباً بالمدير العام"
   },

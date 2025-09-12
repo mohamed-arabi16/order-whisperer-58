@@ -370,6 +370,7 @@ const PublicMenu = (): JSX.Element => {
       try {
         // Create POS order if table number is present or for all orders (with approval workflow)
         if (tableNumber || true) { // All orders now go through POS system
+          const orderNumber = `ORD-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`;
           const posOrderData = {
             tenant_id: tenant.id,
             order_number: orderNumber,
@@ -377,7 +378,6 @@ const PublicMenu = (): JSX.Element => {
             items: cart as any, // Convert to JSON
             customer_info: finalCustomerInfo as any, // Convert to JSON
             total_amount: finalTotal,
-            status: 'new',
             order_type: 'table',
             table_id: tableId,
             notes: `Ordered via table QR (Table ${tableNumber})`
@@ -385,7 +385,7 @@ const PublicMenu = (): JSX.Element => {
 
           const { error: posError } = await supabase
             .from('pos_orders')
-            .insert(posOrder);
+            .insert(posOrderData);
 
           if (posError) throw posError;
 

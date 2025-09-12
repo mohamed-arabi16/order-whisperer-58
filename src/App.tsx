@@ -23,6 +23,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const Contact = lazy(() => import("./pages/Contact"));
 const POSSystem = lazy(() => import("./pages/POSSystem"));
+const POSAccess = lazy(() => import("./pages/POSAccess"));
 
 const queryClient = new QueryClient();
 
@@ -57,6 +58,8 @@ const App = (): JSX.Element => (
                     <Route path="/branding" element={<RestaurantBranding />} />
                     <Route path="/qr-code" element={<QRCodeGenerator />} />
                     <Route path="/menu/:slug" element={<PublicMenu />} />
+                    <Route path="/pos/:slug" element={<POSAccess />} />
+                    <Route path="/pos-system/:slug" element={<POSSystem />} />
                     <Route path="/pos-system" element={<POSSystem />} />
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/contact" element={<Contact />} />

@@ -468,6 +468,15 @@ const SuperAdminDashboard = (): JSX.Element => {
                       <Button variant="ghost" size="sm" onClick={() => navigate(`/menu/${tenant.slug}`)}>
                         {t('superAdmin.tenant.viewMenu')}
                       </Button>
+                      {tenant.subscription_plan === 'premium' ? (
+                        <Button variant="outline" size="sm" onClick={() => navigate(`/pos/${tenant.slug}`)}>
+                          {t('superAdmin.tenant.viewPOS')}
+                        </Button>
+                      ) : (
+                        <Button variant="outline" size="sm" disabled title={t('posAccess.premiumRequired')}>
+                          {t('superAdmin.tenant.viewPOS')}
+                        </Button>
+                      )}
                     </div>
                   </div>
                 ))}

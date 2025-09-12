@@ -285,7 +285,9 @@
     "unsavedChanges": "Unsaved Changes",
     "unsavedChangesDescription": "You have unsaved changes. Are you sure you want to leave?",
     "update": "Update",
+    "upgrade": "Upgrade",
     "view": "View",
+    "back": "Back",
     "yes": "Yes"
   },
   "contact": {
@@ -562,9 +564,20 @@
     "title": "RestaurantOS - Modern Restaurant Management Platform"
   },
   "plans": {
-    "basic": "Basic - Free",
-    "enterprise": "Enterprise - $99/month",
-    "premium": "Premium - $29/month"
+    "basic": "Basic",
+    "premium": "Premium", 
+    "enterprise": "Enterprise"
+  },
+  "posAccess": {
+    "premiumRequired": "POS System access requires Premium subscription",
+    "upgradePrompt": "Upgrade to Premium to access POS features",
+    "availableFeatures": "Available in Premium:",
+    "featureList": {
+      "orderManagement": "• Advanced order management",
+      "kitchenDisplay": "• Kitchen display system", 
+      "realTimeUpdates": "• Real-time order updates",
+      "analytics": "• Detailed analytics and reporting"
+    }
   },
   "pricing": {
     "description": "Choose the best plan for your restaurant.",
@@ -885,6 +898,13 @@
       "status": "Status",
       "title": "Restaurant Management",
       "view": "View"
+    },
+    "tenant": {
+      "email": "Email",
+      "owner": "Owner", 
+      "registrationDate": "Registration Date",
+      "viewMenu": "View Menu",
+      "viewPOS": "View POS"
     },
     "welcome": "Welcome Super Admin"
   },
