@@ -368,11 +368,12 @@ const PublicMenu = (): JSX.Element => {
       } : orderData.customerInfo;
 
       try {
-        // Create POS order directly (primary method for table orders)
-        if (tableNumber) {
-          const posOrder = {
+        // Create POS order if table number is present or for all orders (with approval workflow)
+        if (tableNumber || true) { // All orders now go through POS system
+          const posOrderData = {
             tenant_id: tenant.id,
-            order_number: `T${tableNumber}-${Date.now().toString().slice(-6)}`,
+            order_number: orderNumber,
+            status: 'pending_approval', // All orders need approval first
             items: cart as any, // Convert to JSON
             customer_info: finalCustomerInfo as any, // Convert to JSON
             total_amount: finalTotal,

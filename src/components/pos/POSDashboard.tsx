@@ -29,7 +29,7 @@ import { NotificationManager } from "./NotificationManager";
 interface POSOrder {
   id: string;
   order_number: string;
-  status: 'new' | 'preparing' | 'ready' | 'completed' | 'cancelled';
+  status: 'pending_approval' | 'new' | 'preparing' | 'ready' | 'completed' | 'cancelled';
   order_type: string;
   customer_info?: {
     name?: string;
@@ -40,6 +40,8 @@ interface POSOrder {
   notes?: string;
   created_at: string;
   updated_at: string;
+  approved_by?: string;
+  approved_at?: string;
 }
 
 export const POSDashboard: React.FC = () => {
@@ -164,6 +166,7 @@ export const POSDashboard: React.FC = () => {
 
   const getStatusColor = (status: POSOrder['status']) => {
     switch (status) {
+      case 'pending_approval': return 'bg-orange-500 text-white';
       case 'new': return 'bg-blue-500 text-white';
       case 'preparing': return 'bg-yellow-500 text-white';
       case 'ready': return 'bg-green-500 text-white';
@@ -175,6 +178,7 @@ export const POSDashboard: React.FC = () => {
 
   const getStatusIcon = (status: POSOrder['status']) => {
     switch (status) {
+      case 'pending_approval': return <Bell className="w-4 h-4" />;
       case 'new': return <Bell className="w-4 h-4" />;
       case 'preparing': return <Clock className="w-4 h-4" />;
       case 'ready': return <CheckCircle className="w-4 h-4" />;
@@ -248,13 +252,13 @@ export const POSDashboard: React.FC = () => {
           {!isOnline && (
             <Badge variant="destructive" className="flex items-center gap-1">
               <WifiOff className="w-3 h-3" />
-              {t('pos.offline.title')}
+              {t('pos.dashboard.offline')}
             </Badge>
           )}
           {isOnline && (
             <Badge variant="outline" className="flex items-center gap-1">
               <Wifi className="w-3 h-3" />
-              متصل
+              {t('pos.dashboard.online')}
             </Badge>
           )}
           <Button onClick={loadOrders} variant="outline" size="sm">
@@ -265,7 +269,19 @@ export const POSDashboard: React.FC = () => {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium flex items-center gap-2">
+              <Bell className="w-4 h-4 text-orange-500" />
+              {t('pos.dashboard.pendingApproval')}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl font-bold">{filterOrdersByStatus('pending_approval').length}</p>
+          </CardContent>
+        </Card>
+
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium flex items-center gap-2">
@@ -316,7 +332,7 @@ export const POSDashboard: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-6">
         <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="queue" className="flex items-center gap-2">
             <ShoppingCart className="w-4 h-4" />
@@ -340,16 +356,16 @@ export const POSDashboard: React.FC = () => {
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="queue">
+        <TabsContent value="queue" className="mt-6">
           <Card>
             <CardHeader>
               <CardTitle>{t('pos.dashboard.orderQueue')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
-                {orders.length === 0 ? (
+                 {orders.length === 0 ? (
                   <div className="text-center py-8 text-muted-foreground">
-                    {t('pos.dashboard.noOrders') || "لا توجد طلبات حالياً"}
+                    {t('pos.dashboard.noOrders')}
                   </div>
                 ) : (
                   orders.map((order) => (
@@ -372,7 +388,7 @@ export const POSDashboard: React.FC = () => {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <h4 className="font-medium mb-2">{t('pos.dashboard.orderDetails') || "تفاصيل الطلب:"}:</h4>
+                          <h4 className="font-medium mb-2">{t('pos.dashboard.orderDetails')}:</h4>
                           <div className="space-y-1 text-sm">
                             {order.items.map((item: any, index: number) => (
                               <div key={index} className="flex justify-between">
@@ -389,7 +405,7 @@ export const POSDashboard: React.FC = () => {
                         <div className="space-y-3">
                           {order.customer_info && (
                             <div>
-                              <h4 className="font-medium mb-1">{t('pos.dashboard.customerInfo') || "بيانات العميل:"}:</h4>
+                              <h4 className="font-medium mb-1">{t('pos.dashboard.customerInfo')}:</h4>
                               <div className="text-sm space-y-1">
                                 {order.customer_info.name && (
                                   <div>{t('common.name')}: {order.customer_info.name}</div>
@@ -409,6 +425,23 @@ export const POSDashboard: React.FC = () => {
                           )}
 
                           <div className="flex gap-2 flex-wrap">
+                            {order.status === 'pending_approval' && (
+                              <>
+                                <Button
+                                  size="sm"
+                                  onClick={() => updateOrderStatus(order.id, 'new')}
+                                >
+                                  {t('pos.actions.approve')}
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="destructive"
+                                  onClick={() => updateOrderStatus(order.id, 'cancelled')}
+                                >
+                                  {t('pos.actions.reject')}
+                                </Button>
+                              </>
+                            )}
                             {order.status === 'new' && (
                               <Button
                                 size="sm"
@@ -455,7 +488,7 @@ export const POSDashboard: React.FC = () => {
           </Card>
         </TabsContent>
 
-        <TabsContent value="kitchen">
+        <TabsContent value="kitchen" className="mt-6">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -465,7 +498,12 @@ export const POSDashboard: React.FC = () => {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filterOrdersByStatus('preparing').map((order) => (
+                {filterOrdersByStatus('preparing').length === 0 ? (
+                  <div className="col-span-full text-center py-8 text-muted-foreground">
+                    {t('pos.dashboard.noPreparingOrders')}
+                  </div>
+                ) : (
+                  filterOrdersByStatus('preparing').map((order) => (
                   <Card key={order.id} className="border-l-4 border-l-yellow-500">
                     <CardHeader className="pb-2">
                       <div className="flex items-center justify-between">
@@ -496,31 +534,26 @@ export const POSDashboard: React.FC = () => {
                         className="w-full mt-3"
                         onClick={() => updateOrderStatus(order.id, 'ready')}
                       >
-                        {t('pos.dashboard.readyForDelivery') || "جاهز للتسليم"}
+                        {t('pos.actions.markReady')}
                       </Button>
                     </CardContent>
                   </Card>
-                ))}
-                
-                {filterOrdersByStatus('preparing').length === 0 && (
-                  <div className="col-span-full text-center py-8 text-muted-foreground">
-                    {t('pos.dashboard.noPreparingOrders') || "لا توجد طلبات قيد التحضير حالياً"}
-                  </div>
+                  ))
                 )}
               </div>
             </CardContent>
           </Card>
         </TabsContent>
 
-        <TabsContent value="analytics">
+        <TabsContent value="analytics" className="mt-6">
           <POSAnalyticsTab />
         </TabsContent>
 
-        <TabsContent value="tables">
+        <TabsContent value="tables" className="mt-6">
           <TableManagementTab />
         </TabsContent>
 
-        <TabsContent value="notifications">
+        <TabsContent value="notifications" className="mt-6">
           <NotificationManager />
         </TabsContent>
       </Tabs>

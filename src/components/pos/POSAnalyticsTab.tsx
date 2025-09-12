@@ -126,18 +126,14 @@ export const POSAnalyticsTab: React.FC = () => {
         avgPrepTime: '15min', // This would need actual calculation
         peakHours,
         orderTrends,
-        staffPerformance: [
-          { name: 'أحمد', orders: 12, avgTime: '14min' },
-          { name: 'فاطمة', orders: 8, avgTime: '16min' },
-          { name: 'محمد', orders: 15, avgTime: '13min' }
-        ]
+        staffPerformance: [] // Real data would come from actual staff performance tracking
       });
 
     } catch (error) {
       console.error('Error loading analytics:', error);
       toast({
         title: t('common.error'),
-        description: "حدث خطأ أثناء تحميل التحليلات",
+        description: t('common.genericError'),
         variant: "destructive"
       });
     } finally {

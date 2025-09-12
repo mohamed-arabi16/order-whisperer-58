@@ -40,14 +40,30 @@
       "analytics": "التحليلات",
       "tableManagement": "إدارة الطاولات",
       "notifications": "الإشعارات",
-      "refresh": "تحديث"
+      "refresh": "تحديث",
+      "noOrders": "لا توجد طلبات حالياً",
+      "orderDetails": "تفاصيل الطلب",
+      "customerInfo": "بيانات العميل",
+      "readyForDelivery": "جاهز للتسليم",
+      "noPreparingOrders": "لا توجد طلبات قيد التحضير",
+      "approvalQueue": "قائمة الموافقات",
+      "pendingApproval": "في انتظار الموافقة",
+      "newOrder": "طلب جديد!",
+      "orderNumber": "رقم الطلب",
+      "orderUpdated": "تم تحديث الطلب",
+      "statusChanged": "تم تغيير الحالة إلى",
+      "loadError": "خطأ في تحميل طلبات نقاط البيع",
+      "updateError": "خطأ في تحديث حالة الطلب",
+      "online": "متصل",
+      "offline": "غير متصل"
     },
     "status": {
       "new": "جديد",
       "preparing": "قيد التحضير",
       "ready": "جاهز",
       "completed": "مكتمل",
-      "cancelled": "ملغي"
+      "cancelled": "ملغي",
+      "pending_approval": "في انتظار الموافقة"
     },
     "priority": {
       "low": "منخفضة",
@@ -61,7 +77,11 @@
       "markCompleted": "مكتمل",
       "cancel": "إلغاء",
       "assign": "تعيين",
-      "priority": "أولوية"
+      "priority": "أولوية",
+      "approve": "موافقة",
+      "approveAll": "موافقة الكل",
+      "modify": "تعديل",
+      "reject": "رفض"
     },
     "analytics": {
       "title": "تحليلات نقاط البيع",
@@ -75,6 +95,7 @@
     },
     "tables": {
       "title": "إدارة الطاولات",
+      "description": "إدارة طاولات المطعم وتتبع الطلبات الحالية",
       "tableNumber": "رقم الطاولة",
       "capacity": "السعة",
       "status": "الحالة",
@@ -82,8 +103,14 @@
       "available": "متاحة",
       "occupied": "مشغولة",
       "reserved": "محجوزة",
+      "inactive": "غير نشطة",
       "addTable": "إضافة طاولة",
-      "editTable": "تعديل الطاولة"
+      "editTable": "تعديل الطاولة",
+      "location": "الموقع",
+      "totalCapacity": "إجمالي السعة",
+      "edit": "تعديل",
+      "noTables": "لا توجد طاولات مضافة بعد",
+      "addFirstTable": "إضافة أول طاولة"
     },
     "notifications": {
       "title": "إعدادات الإشعارات",
@@ -97,7 +124,8 @@
       "title": "الوضع غير المتصل",
       "description": "أنت غير متصل بالإنترنت، سيتم مزامنة التغييرات عند عودة الاتصال",
       "queuedOrders": "طلبات في قائمة الانتظار",
-      "syncPending": "في انتظار المزامنة"
+      "syncPending": "في انتظار المزامنة",
+      "syncComplete": "تم التزامن"
     }
   },
   "auth": {

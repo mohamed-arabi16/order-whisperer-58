@@ -40,14 +40,30 @@
       "analytics": "Analytics",
       "tableManagement": "Table Management",
       "notifications": "Notifications",
-      "refresh": "Refresh"
+      "refresh": "Refresh",
+      "noOrders": "No orders currently",
+      "orderDetails": "Order Details",
+      "customerInfo": "Customer Info",
+      "readyForDelivery": "Ready for Delivery",
+      "noPreparingOrders": "No orders being prepared",
+      "approvalQueue": "Approval Queue",
+      "pendingApproval": "Pending Approval",
+      "newOrder": "New Order!",
+      "orderNumber": "Order Number",
+      "orderUpdated": "Order Updated",
+      "statusChanged": "Status changed to",
+      "loadError": "Error loading POS orders",
+      "updateError": "Error updating order status",
+      "online": "Online",
+      "offline": "Offline"
     },
     "status": {
       "new": "New",
       "preparing": "Preparing",
       "ready": "Ready",
       "completed": "Completed",
-      "cancelled": "Cancelled"
+      "cancelled": "Cancelled",
+      "pending_approval": "Pending Approval"
     },
     "priority": {
       "low": "Low",
@@ -61,7 +77,11 @@
       "markCompleted": "Mark Completed",
       "cancel": "Cancel",
       "assign": "Assign",
-      "priority": "Priority"
+      "priority": "Priority",
+      "approve": "Approve",
+      "approveAll": "Approve All",
+      "modify": "Modify",
+      "reject": "Reject"
     },
     "analytics": {
       "title": "POS Analytics",
@@ -75,6 +95,7 @@
     },
     "tables": {
       "title": "Table Management",
+      "description": "Manage restaurant tables and track current orders",
       "tableNumber": "Table Number",
       "capacity": "Capacity",
       "status": "Status",
@@ -82,8 +103,14 @@
       "available": "Available",
       "occupied": "Occupied",
       "reserved": "Reserved",
+      "inactive": "Inactive",
       "addTable": "Add Table",
-      "editTable": "Edit Table"
+      "editTable": "Edit Table",
+      "location": "Location",
+      "totalCapacity": "Total Capacity",
+      "edit": "Edit",
+      "noTables": "No tables added yet",
+      "addFirstTable": "Add your first table"
     },
     "notifications": {
       "title": "Notification Settings",
@@ -97,7 +124,8 @@
       "title": "Offline Mode",
       "description": "You're offline, changes will sync when connection is restored",
       "queuedOrders": "Queued Orders",
-      "syncPending": "Sync Pending"
+      "syncPending": "Sync Pending",
+      "syncComplete": "Sync Complete"
     }
   },
   "auth": {

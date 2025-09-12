@@ -446,6 +446,8 @@ export type Database = {
       }
       pos_orders: {
         Row: {
+          approved_at: string | null
+          approved_by: string | null
           assigned_staff_id: string | null
           completion_time: string | null
           created_at: string
@@ -466,6 +468,8 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          approved_at?: string | null
+          approved_by?: string | null
           assigned_staff_id?: string | null
           completion_time?: string | null
           created_at?: string
@@ -486,6 +490,8 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          approved_at?: string | null
+          approved_by?: string | null
           assigned_staff_id?: string | null
           completion_time?: string | null
           created_at?: string
@@ -506,6 +512,13 @@ export type Database = {
           updated_at?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "pos_orders_approved_by_fkey"
+            columns: ["approved_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "pos_orders_table_id_fkey"
             columns: ["table_id"]

@@ -91,7 +91,7 @@ export const TableManagementTab: React.FC = () => {
       console.error('Error loading tables:', error);
       toast({
         title: t('common.error'),
-        description: "حدث خطأ أثناء تحميل الطاولات",
+        description: t('common.genericError'),
         variant: "destructive"
       });
     } finally {
@@ -112,17 +112,32 @@ export const TableManagementTab: React.FC = () => {
     }
 
     try {
-      // Get user's tenant
+      // Get user's profile first, then tenant
+      const { data: profile, error: profileError } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('user_id', user.id)
+        .single();
+
+      if (profileError || !profile) {
+        toast({
+          title: t('common.error'),
+          description: t('branding.tenantNotFound'),
+          variant: "destructive",
+        });
+        return;
+      }
+
       const { data: userTenant, error: tenantError } = await supabase
         .from('tenants')
         .select('id, slug')
-        .eq('owner_id', (user as any).id)
+        .eq('owner_id', profile.id)
         .single();
 
       if (tenantError || !userTenant) {
         toast({
-          title: "خطأ",
-          description: "لم يتم العثور على بيانات المطعم",
+          title: t('common.error'),
+          description: t('branding.tenantNotFound'),
           variant: "destructive",
         });
         return;
@@ -151,8 +166,8 @@ export const TableManagementTab: React.FC = () => {
       if (result.error) throw result.error;
 
       toast({
-        title: "تم الحفظ",
-        description: editingTable ? "تم تحديث الطاولة بنجاح" : "تم إضافة الطاولة بنجاح",
+        title: t('common.success'),
+        description: editingTable ? t('pos.tables.editTable') + " " + t('common.success') : t('pos.tables.addTable') + " " + t('common.success'),
         variant: "default"
       });
 
@@ -163,8 +178,8 @@ export const TableManagementTab: React.FC = () => {
     } catch (error) {
       console.error('Error saving table:', error);
       toast({
-        title: "خطأ",
-        description: "حدث خطأ أثناء حفظ بيانات الطاولة",
+        title: t('common.error'),
+        description: t('common.genericError'),
         variant: "destructive"
       });
     }
@@ -237,7 +252,7 @@ export const TableManagementTab: React.FC = () => {
         <div>
           <h3 className="text-lg font-medium">{t('pos.tables.title')}</h3>
           <p className="text-sm text-muted-foreground">
-            إدارة طاولات المطعم وتتبع الطلبات الحالية
+            {t('pos.tables.description')}
           </p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -260,7 +275,7 @@ export const TableManagementTab: React.FC = () => {
                   id="table_number"
                   value={formData.table_number}
                   onChange={(e) => setFormData({ ...formData, table_number: e.target.value })}
-                  placeholder="مثال: 1"
+                  placeholder={isRTL ? "مثال: 1" : "e.g. 1"}
                   required
                 />
               </div>
@@ -276,27 +291,27 @@ export const TableManagementTab: React.FC = () => {
                   <SelectContent>
                     {[1, 2, 3, 4, 5, 6, 8, 10].map((num) => (
                       <SelectItem key={num} value={num.toString()}>
-                        {num} {num === 1 ? 'شخص' : 'أشخاص'}
+                        {num} {num === 1 ? (isRTL ? 'شخص' : 'person') : (isRTL ? 'أشخاص' : 'people')}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
               <div>
-                <Label htmlFor="location_area">المنطقة</Label>
+                <Label htmlFor="location_area">{t('pos.tables.location')}</Label>
                 <Input
                   id="location_area"
                   value={formData.location_area}
                   onChange={(e) => setFormData({ ...formData, location_area: e.target.value })}
-                  placeholder="مثال: الدور الأول، النافذة، الشرفة"
+                  placeholder={isRTL ? "مثال: الدور الأول، النافذة، الشرفة" : "e.g. First floor, Window, Terrace"}
                 />
               </div>
               <div className="flex justify-end gap-2">
                 <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>
-                  إلغاء
+                  {t('common.cancel')}
                 </Button>
                 <Button type="submit">
-                  {editingTable ? 'حفظ' : 'إضافة'}
+                  {editingTable ? t('common.save') : t('common.add')}
                 </Button>
               </div>
             </form>
@@ -347,7 +362,7 @@ export const TableManagementTab: React.FC = () => {
                   {tables.filter(t => !t.is_active).length}
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  غير نشطة
+                  {t('pos.tables.inactive')}
                 </div>
               </div>
             </div>
@@ -363,7 +378,7 @@ export const TableManagementTab: React.FC = () => {
                   {tables.reduce((sum, t) => sum + t.capacity, 0)}
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  إجمالي السعة
+                  {t('pos.tables.totalCapacity')}
                 </div>
               </div>
             </div>
@@ -380,13 +395,13 @@ export const TableManagementTab: React.FC = () => {
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-lg">
-                    طاولة #{table.table_number}
+                    {isRTL ? `طاولة #${table.table_number}` : `Table #${table.table_number}`}
                   </CardTitle>
                   <Badge className={getStatusColor(status)}>
                     {getStatusIcon(status)}
                     <span className="mr-1">
                       {status === 'available' ? t('pos.tables.available') :
-                       status === 'occupied' ? t('pos.tables.occupied') : 'غير نشطة'}
+                       status === 'occupied' ? t('pos.tables.occupied') : t('pos.tables.inactive')}
                     </span>
                   </Badge>
                 </div>
@@ -395,7 +410,7 @@ export const TableManagementTab: React.FC = () => {
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 text-sm">
                     <Users className="w-4 h-4 text-muted-foreground" />
-                    <span>{table.capacity} أشخاص</span>
+                    <span>{table.capacity} {table.capacity === 1 ? (isRTL ? 'شخص' : 'person') : (isRTL ? 'أشخاص' : 'people')}</span>
                   </div>
                   
                   {table.location_area && (
@@ -427,7 +442,7 @@ export const TableManagementTab: React.FC = () => {
                       className="flex-1"
                     >
                       <Edit className="w-4 h-4 mr-1" />
-                      تعديل
+                      {t('pos.tables.edit')}
                     </Button>
                     <Button
                       size="sm"
@@ -439,8 +454,8 @@ export const TableManagementTab: React.FC = () => {
                           window.open(qrImageUrl, '_blank');
                         } else {
                           toast({
-                            title: "خطأ",
-                            description: "لا يوجد رمز QR لهذه الطاولة",
+                            title: t('common.error'),
+                            description: isRTL ? "لا يوجد رمز QR لهذه الطاولة" : "No QR code for this table",
                             variant: "destructive",
                           });
                         }
@@ -460,11 +475,11 @@ export const TableManagementTab: React.FC = () => {
         {tables.length === 0 && (
           <div className="col-span-full text-center py-8">
             <div className="text-muted-foreground">
-              لا توجد طاولات مضافة بعد
+              {t('pos.tables.noTables')}
             </div>
             <Button className="mt-4" onClick={openNewDialog}>
               <Plus className="w-4 h-4 mr-2" />
-              إضافة أول طاولة
+              {t('pos.tables.addFirstTable')}
             </Button>
           </div>
         )}
