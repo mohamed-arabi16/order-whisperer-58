@@ -786,5 +786,144 @@
       "view": "View"
     },
     "welcome": "Welcome Super Admin"
+  },
+  "pos": {
+    "title": "POS System - Development Plan",
+    "subtitle": "Comprehensive plan to develop an integrated POS system that works with the existing digital menu and WhatsApp ordering system",
+    "featuresTitle": "Planned Features",
+    "phasesTitle": "Development Phases",
+    "technicalArchTitle": "Technical Architecture",
+    "integrationTitle": "Integration Points with Current System",
+    "features": {
+      "orderManagement": {
+        "title": "Real-time Order Management",
+        "description": "Live order queue with status tracking from WhatsApp orders"
+      },
+      "kitchenDisplay": {
+        "title": "Kitchen Display System (KDS)",
+        "description": "Digital screens showing order details and preparation times"
+      },
+      "staffManagement": {
+        "title": "Staff Management",
+        "description": "Role-based access and performance tracking"
+      },
+      "analytics": {
+        "title": "Advanced Analytics",
+        "description": "Real-time sales, inventory, and performance metrics"
+      },
+      "printing": {
+        "title": "Receipt & Kitchen Printing",
+        "description": "Automated printing for orders and receipts"
+      },
+      "mobileApp": {
+        "title": "Mobile POS App",
+        "description": "Tablet/mobile interface for order management"
+      },
+      "offline": {
+        "title": "Offline Capability",
+        "description": "Continue operations during network disruptions"
+      },
+      "payment": {
+        "title": "Payment Processing",
+        "description": "Integration with local and international payment gateways"
+      },
+      "inventory": {
+        "title": "Inventory Management",
+        "description": "Track ingredients and menu item availability"
+      },
+      "notifications": {
+        "title": "Smart Notifications",
+        "description": "Real-time alerts for orders, low inventory, and issues"
+      }
+    },
+    "phases": {
+      "phase1": {
+        "title": "Foundation & Order Management",
+        "duration": "2-3 months",
+        "features": [
+          "Real-time order dashboard integration with WhatsApp orders",
+          "Basic kitchen display system",
+          "Order status tracking (New → Preparing → Ready → Delivered)",
+          "Staff user management and roles"
+        ]
+      },
+      "phase2": {
+        "title": "Payment & Customer Management",
+        "duration": "2-3 months",
+        "features": [
+          "Payment gateway integrations (Stripe, local processors)",
+          "Customer database and order history",
+          "Receipt generation and printing",
+          "Basic inventory tracking"
+        ]
+      },
+      "phase3": {
+        "title": "Advanced Features & Analytics",
+        "duration": "3-4 months",
+        "features": [
+          "Advanced analytics and reporting dashboard",
+          "Inventory management with low-stock alerts",
+          "Mobile POS application",
+          "Offline capability and data synchronization"
+        ]
+      },
+      "phase4": {
+        "title": "Enterprise Features",
+        "duration": "2-3 months",
+        "features": [
+          "Multi-location support",
+          "Advanced staff scheduling and performance tracking",
+          "Integration with accounting software",
+          "Custom reporting and business intelligence"
+        ]
+      }
+    },
+    "status": {
+      "planned": "Planned",
+      "inProgress": "In Progress",
+      "completed": "Completed"
+    },
+    "architecture": {
+      "frontend": "Frontend Components",
+      "backend": "Backend Services",
+      "frontendFeatures": [
+        "POS Dashboard (React/TypeScript)",
+        "Kitchen Display System Interface",
+        "Mobile POS App (PWA)",
+        "Real-time order management",
+        "Payment processing interface"
+      ],
+      "backendFeatures": [
+        "WebSocket connections for real-time updates",
+        "Supabase Edge Functions for POS logic",
+        "Payment gateway integrations",
+        "Inventory management system",
+        "Analytics and reporting engine"
+      ]
+    },
+    "integration": {
+      "whatsapp": {
+        "title": "WhatsApp Order Integration",
+        "description": "Automatically convert WhatsApp orders to POS system for processing"
+      },
+      "menuSync": {
+        "title": "Menu Synchronization",
+        "description": "Automatic synchronization between digital menu and POS system"
+      },
+      "analyticsEnhancement": {
+        "title": "Analytics Enhancement",
+        "description": "Enhance existing analytics system by adding POS data"
+      }
+    },
+    "dashboard": {
+      "title": "POS System",
+      "description": "Order & kitchen management",
+      "orderQueue": "Order Queue",
+      "kitchenDisplay": "Kitchen Display",
+      "newOrders": "New Orders",
+      "preparing": "Preparing",
+      "ready": "Ready",
+      "completed": "Completed"
+    }
   }
 }

@@ -72,6 +72,7 @@ export type Database = {
           id: number
           rating: number
           tenant_id: string | null
+          updated_at: string | null
         }
         Insert: {
           comment?: string | null
@@ -79,6 +80,7 @@ export type Database = {
           id?: never
           rating: number
           tenant_id?: string | null
+          updated_at?: string | null
         }
         Update: {
           comment?: string | null
@@ -86,6 +88,7 @@ export type Database = {
           id?: never
           rating?: number
           tenant_id?: string | null
+          updated_at?: string | null
         }
         Relationships: [
           {
@@ -356,6 +359,97 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "orders_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pos_orders: {
+        Row: {
+          created_at: string
+          customer_info: Json | null
+          id: string
+          items: Json
+          notes: string | null
+          order_number: string
+          order_type: string
+          status: string
+          tenant_id: string
+          total_amount: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          customer_info?: Json | null
+          id?: string
+          items: Json
+          notes?: string | null
+          order_number: string
+          order_type?: string
+          status?: string
+          tenant_id: string
+          total_amount: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          customer_info?: Json | null
+          id?: string
+          items?: Json
+          notes?: string | null
+          order_number?: string
+          order_type?: string
+          status?: string
+          tenant_id?: string
+          total_amount?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pos_orders_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pos_stations: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean
+          last_heartbeat: string
+          station_name: string
+          station_type: string
+          tenant_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          last_heartbeat?: string
+          station_name: string
+          station_type?: string
+          tenant_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          last_heartbeat?: string
+          station_name?: string
+          station_type?: string
+          tenant_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pos_stations_tenant_id_fkey"
             columns: ["tenant_id"]
             isOneToOne: false
             referencedRelation: "tenants"

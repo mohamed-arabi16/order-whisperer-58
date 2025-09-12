@@ -1,9 +1,9 @@
 import { useAuth } from "@/hooks/useAuth";
 import { Navigate } from "react-router-dom";
-import { POSSystemPlan } from "@/components/restaurant/POSSystemPlan";
+import { POSDashboard } from "@/components/pos/POSDashboard";
 
 /**
- * POS System page component that displays the POS system development plan
+ * POS System page component that displays the POS system dashboard
  * Only accessible by authenticated restaurant owners and super admins
  */
 const POSSystem = (): JSX.Element => {
@@ -26,7 +26,7 @@ const POSSystem = (): JSX.Element => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
-      <POSSystemPlan />
+      <POSDashboard />
     </div>
   );
 };

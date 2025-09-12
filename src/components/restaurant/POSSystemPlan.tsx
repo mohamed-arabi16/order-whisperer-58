@@ -21,67 +21,67 @@ import { useTranslation } from "@/hooks/useTranslation";
  * that integrates with the existing digital menu and WhatsApp ordering system.
  */
 export const POSSystemPlan: React.FC = () => {
-  const { t, isRTL } = useTranslation();
+  const { t, t_array, isRTL } = useTranslation();
 
   const features = [
     {
       icon: ShoppingCart,
-      title: "Real-time Order Management",
-      description: "Live order queue with status tracking from WhatsApp orders",
+      title: t('pos.features.orderManagement.title'),
+      description: t('pos.features.orderManagement.description'),
       status: "planned"
     },
     {
       icon: Clock,
-      title: "Kitchen Display System (KDS)",
-      description: "Digital screens showing order details and preparation times",
+      title: t('pos.features.kitchenDisplay.title'),
+      description: t('pos.features.kitchenDisplay.description'),
       status: "planned"
     },
     {
       icon: Users,
-      title: "Staff Management",
-      description: "Role-based access and performance tracking",
+      title: t('pos.features.staffManagement.title'),
+      description: t('pos.features.staffManagement.description'),
       status: "planned"
     },
     {
       icon: BarChart3,
-      title: "Advanced Analytics",
-      description: "Real-time sales, inventory, and performance metrics",
+      title: t('pos.features.analytics.title'),
+      description: t('pos.features.analytics.description'),
       status: "planned"
     },
     {
       icon: Printer,
-      title: "Receipt & Kitchen Printing",
-      description: "Automated printing for orders and receipts",
+      title: t('pos.features.printing.title'),
+      description: t('pos.features.printing.description'),
       status: "planned"
     },
     {
       icon: Smartphone,
-      title: "Mobile POS App",
-      description: "Tablet/mobile interface for order management",
+      title: t('pos.features.mobileApp.title'),
+      description: t('pos.features.mobileApp.description'),
       status: "planned"
     },
     {
       icon: Wifi,
-      title: "Offline Capability",
-      description: "Continue operations during network disruptions",
+      title: t('pos.features.offline.title'),
+      description: t('pos.features.offline.description'),
       status: "planned"
     },
     {
       icon: CreditCard,
-      title: "Payment Processing",
-      description: "Integration with local and international payment gateways",
+      title: t('pos.features.payment.title'),
+      description: t('pos.features.payment.description'),
       status: "planned"
     },
     {
       icon: Package,
-      title: "Inventory Management",
-      description: "Track ingredients and menu item availability",
+      title: t('pos.features.inventory.title'),
+      description: t('pos.features.inventory.description'),
       status: "planned"
     },
     {
       icon: Bell,
-      title: "Smart Notifications",
-      description: "Real-time alerts for orders, low inventory, and issues",
+      title: t('pos.features.notifications.title'),
+      description: t('pos.features.notifications.description'),
       status: "planned"
     }
   ];
@@ -89,47 +89,27 @@ export const POSSystemPlan: React.FC = () => {
   const phases = [
     {
       phase: 1,
-      title: "Foundation & Order Management",
-      duration: "2-3 months",
-      features: [
-        "Real-time order dashboard integration with WhatsApp orders",
-        "Basic kitchen display system",
-        "Order status tracking (New → Preparing → Ready → Delivered)",
-        "Staff user management and roles"
-      ]
+      title: t('pos.phases.phase1.title'),
+      duration: t('pos.phases.phase1.duration'),
+      features: t_array('pos.phases.phase1.features')
     },
     {
       phase: 2,
-      title: "Payment & Customer Management",
-      duration: "2-3 months", 
-      features: [
-        "Payment gateway integrations (Stripe, local processors)",
-        "Customer database and order history",
-        "Receipt generation and printing",
-        "Basic inventory tracking"
-      ]
+      title: t('pos.phases.phase2.title'),
+      duration: t('pos.phases.phase2.duration'),
+      features: t_array('pos.phases.phase2.features')
     },
     {
       phase: 3,
-      title: "Advanced Features & Analytics",
-      duration: "3-4 months",
-      features: [
-        "Advanced analytics and reporting dashboard",
-        "Inventory management with low-stock alerts",
-        "Mobile POS application",
-        "Offline capability and data synchronization"
-      ]
+      title: t('pos.phases.phase3.title'),
+      duration: t('pos.phases.phase3.duration'),
+      features: t_array('pos.phases.phase3.features')
     },
     {
       phase: 4,
-      title: "Enterprise Features",
-      duration: "2-3 months",
-      features: [
-        "Multi-location support",
-        "Advanced staff scheduling and performance tracking",
-        "Integration with accounting software",
-        "Custom reporting and business intelligence"
-      ]
+      title: t('pos.phases.phase4.title'),
+      duration: t('pos.phases.phase4.duration'),
+      features: t_array('pos.phases.phase4.features')
     }
   ];
 
@@ -147,10 +127,10 @@ export const POSSystemPlan: React.FC = () => {
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl font-bold gradient-hero bg-clip-text text-transparent mb-4">
-          نظام نقاط البيع (POS) - خطة التطوير
+          {t('pos.title')}
         </h1>
         <p className="text-muted-foreground max-w-3xl mx-auto">
-          خطة شاملة لتطوير نظام نقاط بيع متكامل يعمل مع نظام القائمة الرقمية وطلبات الواتساب الحالي
+          {t('pos.subtitle')}
         </p>
       </div>
 
@@ -159,7 +139,7 @@ export const POSSystemPlan: React.FC = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Package className="w-5 h-5" />
-            الميزات المخططة
+            {t('pos.featuresTitle')}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -171,7 +151,7 @@ export const POSSystemPlan: React.FC = () => {
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="font-medium text-foreground">{feature.title}</h3>
                     <Badge variant="outline" className={getStatusColor(feature.status)}>
-                      {feature.status === 'planned' ? 'مخطط' : feature.status}
+                      {t(`pos.status.${feature.status}`)}
                     </Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">{feature.description}</p>
@@ -187,7 +167,7 @@ export const POSSystemPlan: React.FC = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Clock className="w-5 h-5" />
-            مراحل التطوير
+            {t('pos.phasesTitle')}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -195,11 +175,11 @@ export const POSSystemPlan: React.FC = () => {
             {phases.map((phase, index) => (
               <div key={index} className="relative">
                 {index !== phases.length - 1 && (
-                  <div className="absolute left-4 top-8 w-0.5 h-full bg-border" />
+                  <div className={`absolute ${isRTL ? 'right-4' : 'left-4'} top-8 w-0.5 h-full bg-border`} />
                 )}
-                <div className="flex items-start gap-4">
+                <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                   <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
-                    {phase.phase}
+                    {isRTL && phase.phase <= 4 ? ['١', '٢', '٣', '٤'][phase.phase - 1] : phase.phase}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
@@ -208,7 +188,7 @@ export const POSSystemPlan: React.FC = () => {
                     </div>
                     <ul className="space-y-1 text-sm text-muted-foreground">
                       {phase.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-start gap-2">
+                        <li key={featureIndex} className={`flex items-start gap-2 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                           <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
                           {feature}
                         </li>
@@ -227,30 +207,26 @@ export const POSSystemPlan: React.FC = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <BarChart3 className="w-5 h-5" />
-            الهيكل التقني
+            {t('pos.technicalArchTitle')}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-medium text-foreground mb-3">Frontend Components</h4>
+                <h4 className="font-medium text-foreground mb-3">{t('pos.architecture.frontend')}</h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• POS Dashboard (React/TypeScript)</li>
-                  <li>• Kitchen Display System Interface</li>  
-                  <li>• Mobile POS App (PWA)</li>
-                  <li>• Real-time order management</li>
-                  <li>• Payment processing interface</li>
+                  {t_array('pos.architecture.frontendFeatures').map((feature, index) => (
+                    <li key={index}>• {feature}</li>
+                  ))}
                 </ul>
               </div>
               <div>
-                <h4 className="font-medium text-foreground mb-3">Backend Services</h4>
+                <h4 className="font-medium text-foreground mb-3">{t('pos.architecture.backend')}</h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• WebSocket connections for real-time updates</li>
-                  <li>• Supabase Edge Functions for POS logic</li>
-                  <li>• Payment gateway integrations</li>
-                  <li>• Inventory management system</li>
-                  <li>• Analytics and reporting engine</li>
+                  {t_array('pos.architecture.backendFeatures').map((feature, index) => (
+                    <li key={index}>• {feature}</li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -263,7 +239,7 @@ export const POSSystemPlan: React.FC = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Wifi className="w-5 h-5" />
-            نقاط التكامل مع النظام الحالي
+            {t('pos.integrationTitle')}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -271,22 +247,22 @@ export const POSSystemPlan: React.FC = () => {
             <div className="flex items-start gap-3 p-3 rounded-lg bg-primary/5 border border-primary/10">
               <div className="w-2 h-2 bg-primary rounded-full mt-2" />
               <div>
-                <h4 className="font-medium text-foreground">WhatsApp Order Integration</h4>
-                <p className="text-sm text-muted-foreground">تحويل طلبات الواتساب تلقائياً إلى نظام نقاط البيع للمعالجة</p>
+                <h4 className="font-medium text-foreground">{t('pos.integration.whatsapp.title')}</h4>
+                <p className="text-sm text-muted-foreground">{t('pos.integration.whatsapp.description')}</p>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 rounded-lg bg-secondary/20 border border-secondary/30">
               <div className="w-2 h-2 bg-secondary rounded-full mt-2" />
               <div>
-                <h4 className="font-medium text-foreground">Menu Synchronization</h4>
-                <p className="text-sm text-muted-foreground">مزامنة تلقائية بين القائمة الرقمية ونظام نقاط البيع</p>
+                <h4 className="font-medium text-foreground">{t('pos.integration.menuSync.title')}</h4>
+                <p className="text-sm text-muted-foreground">{t('pos.integration.menuSync.description')}</p>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 rounded-lg bg-accent/10 border border-accent/20">
               <div className="w-2 h-2 bg-accent rounded-full mt-2" />
               <div>
-                <h4 className="font-medium text-foreground">Analytics Enhancement</h4>
-                <p className="text-sm text-muted-foreground">تحسين نظام التحليلات الحالي بإضافة بيانات نقاط البيع</p>
+                <h4 className="font-medium text-foreground">{t('pos.integration.analyticsEnhancement.title')}</h4>
+                <p className="text-sm text-muted-foreground">{t('pos.integration.analyticsEnhancement.description')}</p>
               </div>
             </div>
           </div>
