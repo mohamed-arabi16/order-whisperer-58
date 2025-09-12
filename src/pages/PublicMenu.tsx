@@ -368,28 +368,30 @@ const PublicMenu = (): JSX.Element => {
       } : orderData.customerInfo;
 
       try {
-        // Create POS order if table number is present or for all orders (with approval workflow)
-        if (tableNumber || true) { // All orders now go through POS system
-          const orderNumber = `ORD-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`;
-          const posOrderData = {
-            tenant_id: tenant.id,
-            order_number: orderNumber,
-            status: 'pending_approval', // All orders need approval first
-            items: cart as any, // Convert to JSON
-            customer_info: finalCustomerInfo as any, // Convert to JSON
-            total_amount: finalTotal,
-            order_type: 'table',
-            table_id: tableId,
-            notes: `Ordered via table QR (Table ${tableNumber})`
-          };
+        // Create POS order for ALL orders (with approval workflow)
+        const orderNumber = `ORD-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`;
+        const posOrderData = {
+          tenant_id: tenant.id,
+          order_number: orderNumber,
+          status: 'pending_approval', // All orders need approval first
+          items: cart as any, // Convert to JSON
+          customer_info: finalCustomerInfo as any, // Convert to JSON
+          total_amount: finalTotal,
+          order_type: tableNumber ? 'table' : 'whatsapp',
+          table_id: tableId,
+          notes: tableNumber ? `Ordered via table QR (Table ${tableNumber})` : 'Ordered via WhatsApp'
+        };
 
-          const { error: posError } = await supabase
-            .from('pos_orders')
-            .insert(posOrderData);
+        const { error: posError } = await supabase
+          .from('pos_orders')
+          .insert(posOrderData);
 
-          if (posError) throw posError;
+        if (posError) throw posError;
 
+        if (tableNumber) {
           toast.success(`تم إرسال طلب الطاولة ${tableNumber} بنجاح!`);
+        } else {
+          toast.success("تم إرسال طلبك بنجاح!");
         }
       } catch (error) {
         console.error('Error creating POS order:', error);

@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
-import { toast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 import { 
   Plus,
   Edit,
@@ -89,11 +89,7 @@ export const TableManagementTab: React.FC = () => {
       setTables(tablesWithOrders);
     } catch (error) {
       console.error('Error loading tables:', error);
-      toast({
-        title: t('common.error'),
-        description: t('common.genericError'),
-        variant: "destructive"
-      });
+      toast.error(t('common.genericError'));
     } finally {
       setLoading(false);
     }
@@ -103,11 +99,7 @@ export const TableManagementTab: React.FC = () => {
     e.preventDefault();
     
     if (!user) {
-      toast({
-        title: "خطأ",
-        description: "يجب تسجيل الدخول أولاً",
-        variant: "destructive",
-      });
+      toast.error("يجب تسجيل الدخول أولاً");
       return;
     }
 
@@ -120,11 +112,7 @@ export const TableManagementTab: React.FC = () => {
         .single();
 
       if (profileError || !profile) {
-        toast({
-          title: t('common.error'),
-          description: t('branding.tenantNotFound'),
-          variant: "destructive",
-        });
+        toast.error(t('branding.tenantNotFound'));
         return;
       }
 
@@ -135,11 +123,7 @@ export const TableManagementTab: React.FC = () => {
         .single();
 
       if (tenantError || !userTenant) {
-        toast({
-          title: t('common.error'),
-          description: t('branding.tenantNotFound'),
-          variant: "destructive",
-        });
+        toast.error(t('branding.tenantNotFound'));
         return;
       }
 
@@ -165,11 +149,7 @@ export const TableManagementTab: React.FC = () => {
 
       if (result.error) throw result.error;
 
-      toast({
-        title: t('common.success'),
-        description: editingTable ? t('pos.tables.editTable') + " " + t('common.success') : t('pos.tables.addTable') + " " + t('common.success'),
-        variant: "default"
-      });
+      toast.success(editingTable ? t('pos.tables.editTable') + " " + t('common.success') : t('pos.tables.addTable') + " " + t('common.success'));
 
       setIsDialogOpen(false);
       setEditingTable(null);
@@ -177,11 +157,7 @@ export const TableManagementTab: React.FC = () => {
       loadTables();
     } catch (error) {
       console.error('Error saving table:', error);
-      toast({
-        title: t('common.error'),
-        description: t('common.genericError'),
-        variant: "destructive"
-      });
+      toast.error(t('common.genericError'));
     }
   };
 
@@ -453,11 +429,7 @@ export const TableManagementTab: React.FC = () => {
                           const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&format=png&data=${encodeURIComponent(table.qr_code_url)}`;
                           window.open(qrImageUrl, '_blank');
                         } else {
-                          toast({
-                            title: t('common.error'),
-                            description: isRTL ? "لا يوجد رمز QR لهذه الطاولة" : "No QR code for this table",
-                            variant: "destructive",
-                          });
+                          toast.error(isRTL ? "لا يوجد رمز QR لهذه الطاولة" : "No QR code for this table");
                         }
                       }}
                       className="flex-1"

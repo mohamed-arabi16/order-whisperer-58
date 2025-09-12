@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { User, Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
-import { toast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 
 /**
  * The shape of the authentication context.
@@ -93,19 +93,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
 
     if (error) {
-      toast({
-        variant: "destructive",
-        title: "خطأ في التسجيل",
-        description:
-          error.message === "User already registered"
-            ? "المستخدم مسجل بالفعل"
-            : "حدث خطأ أثناء التسجيل",
-      });
+      toast.error(
+        error.message === "User already registered"
+          ? "المستخدم مسجل بالفعل"
+          : "حدث خطأ أثناء التسجيل"
+      );
     } else {
-      toast({
-        title: "تم التسجيل بنجاح",
-        description: "تحقق من بريدك الإلكتروني لتأكيد الحساب",
-      });
+      toast.success("تم التسجيل بنجاح - تحقق من بريدك الإلكتروني لتأكيد الحساب");
     }
 
     return { error };
@@ -118,14 +112,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
 
     if (error) {
-      toast({
-        variant: "destructive",
-        title: "خطأ في تسجيل الدخول",
-        description:
-          error.message === "Invalid login credentials"
-            ? "بيانات الدخول غير صحيحة"
-            : "حدث خطأ أثناء تسجيل الدخول",
-      });
+      toast.error(
+        error.message === "Invalid login credentials"
+          ? "بيانات الدخول غير صحيحة"
+          : "حدث خطأ أثناء تسجيل الدخول"
+      );
     }
 
     return { error };
@@ -134,11 +125,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) {
-      toast({
-        variant: "destructive",
-        title: "خطأ في تسجيل الخروج",
-        description: "حدث خطأ أثناء تسجيل الخروج",
-      });
+      toast.error("حدث خطأ أثناء تسجيل الخروج");
     }
     return { error };
   };

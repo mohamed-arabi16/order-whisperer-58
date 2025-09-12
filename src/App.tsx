@@ -59,6 +59,7 @@ const App = (): JSX.Element => (
                     <Route path="/qr-code" element={<QRCodeGenerator />} />
                     <Route path="/menu/:slug" element={<PublicMenu />} />
                     <Route path="/pos/:slug" element={<POSAccess />} />
+                    <Route path="/pos-access" element={<POSAccess />} />
                     <Route path="/pos-system/:slug" element={<POSSystem />} />
                     <Route path="/pos-system" element={<POSSystem />} />
                     <Route path="/pricing" element={<Pricing />} />
