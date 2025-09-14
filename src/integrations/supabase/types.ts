@@ -405,6 +405,54 @@ export type Database = {
           },
         ]
       }
+      payments: {
+        Row: {
+          amount: number
+          change_amount: number | null
+          created_at: string
+          id: string
+          notes: string | null
+          order_id: string
+          payment_method: string
+          payment_status: string
+          processed_by: string | null
+          received_amount: number | null
+          tenant_id: string
+          transaction_reference: string | null
+          updated_at: string
+        }
+        Insert: {
+          amount: number
+          change_amount?: number | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          order_id: string
+          payment_method: string
+          payment_status?: string
+          processed_by?: string | null
+          received_amount?: number | null
+          tenant_id: string
+          transaction_reference?: string | null
+          updated_at?: string
+        }
+        Update: {
+          amount?: number
+          change_amount?: number | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          order_id?: string
+          payment_method?: string
+          payment_status?: string
+          processed_by?: string | null
+          received_amount?: number | null
+          tenant_id?: string
+          transaction_reference?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       pos_analytics: {
         Row: {
           avg_preparation_time: unknown | null
@@ -444,25 +492,76 @@ export type Database = {
         }
         Relationships: []
       }
+      pos_devices: {
+        Row: {
+          created_at: string
+          device_name: string
+          device_type: string
+          id: string
+          ip_address: unknown | null
+          is_active: boolean
+          last_heartbeat: string | null
+          mac_address: string | null
+          printer_config: Json | null
+          tenant_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          device_name: string
+          device_type: string
+          id?: string
+          ip_address?: unknown | null
+          is_active?: boolean
+          last_heartbeat?: string | null
+          mac_address?: string | null
+          printer_config?: Json | null
+          tenant_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          device_name?: string
+          device_type?: string
+          id?: string
+          ip_address?: unknown | null
+          is_active?: boolean
+          last_heartbeat?: string | null
+          mac_address?: string | null
+          printer_config?: Json | null
+          tenant_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       pos_orders: {
         Row: {
           approved_at: string | null
           approved_by: string | null
           assigned_staff_id: string | null
+          channel: string | null
           completion_time: string | null
           created_at: string
           customer_info: Json | null
+          discount_amount: number | null
           estimated_completion_time: string | null
           id: string
           items: Json
           notes: string | null
           order_number: string
           order_type: string
+          payment_method: string | null
+          payment_status: string | null
           preparation_start_time: string | null
           priority: string | null
           ready_time: string | null
+          service_charge: number | null
+          shift_id: string | null
+          source_device_id: string | null
+          staff_user_id: string | null
           status: string
           table_id: string | null
+          tax_amount: number | null
           tenant_id: string
           total_amount: number
           updated_at: string
@@ -471,20 +570,29 @@ export type Database = {
           approved_at?: string | null
           approved_by?: string | null
           assigned_staff_id?: string | null
+          channel?: string | null
           completion_time?: string | null
           created_at?: string
           customer_info?: Json | null
+          discount_amount?: number | null
           estimated_completion_time?: string | null
           id?: string
           items: Json
           notes?: string | null
           order_number: string
           order_type?: string
+          payment_method?: string | null
+          payment_status?: string | null
           preparation_start_time?: string | null
           priority?: string | null
           ready_time?: string | null
+          service_charge?: number | null
+          shift_id?: string | null
+          source_device_id?: string | null
+          staff_user_id?: string | null
           status?: string
           table_id?: string | null
+          tax_amount?: number | null
           tenant_id: string
           total_amount: number
           updated_at?: string
@@ -493,20 +601,29 @@ export type Database = {
           approved_at?: string | null
           approved_by?: string | null
           assigned_staff_id?: string | null
+          channel?: string | null
           completion_time?: string | null
           created_at?: string
           customer_info?: Json | null
+          discount_amount?: number | null
           estimated_completion_time?: string | null
           id?: string
           items?: Json
           notes?: string | null
           order_number?: string
           order_type?: string
+          payment_method?: string | null
+          payment_status?: string | null
           preparation_start_time?: string | null
           priority?: string | null
           ready_time?: string | null
+          service_charge?: number | null
+          shift_id?: string | null
+          source_device_id?: string | null
+          staff_user_id?: string | null
           status?: string
           table_id?: string | null
+          tax_amount?: number | null
           tenant_id?: string
           total_amount?: number
           updated_at?: string
@@ -642,6 +759,63 @@ export type Database = {
         }
         Relationships: []
       }
+      shifts: {
+        Row: {
+          card_payments: number | null
+          cash_payments: number | null
+          closing_cash: number | null
+          created_at: string
+          discounts_given: number | null
+          id: string
+          notes: string | null
+          opening_cash: number | null
+          shift_end: string | null
+          shift_start: string
+          staff_user_id: string
+          status: string
+          tenant_id: string
+          total_orders: number | null
+          total_sales: number | null
+          updated_at: string
+        }
+        Insert: {
+          card_payments?: number | null
+          cash_payments?: number | null
+          closing_cash?: number | null
+          created_at?: string
+          discounts_given?: number | null
+          id?: string
+          notes?: string | null
+          opening_cash?: number | null
+          shift_end?: string | null
+          shift_start?: string
+          staff_user_id: string
+          status?: string
+          tenant_id: string
+          total_orders?: number | null
+          total_sales?: number | null
+          updated_at?: string
+        }
+        Update: {
+          card_payments?: number | null
+          cash_payments?: number | null
+          closing_cash?: number | null
+          created_at?: string
+          discounts_given?: number | null
+          id?: string
+          notes?: string | null
+          opening_cash?: number | null
+          shift_end?: string | null
+          shift_start?: string
+          staff_user_id?: string
+          status?: string
+          tenant_id?: string
+          total_orders?: number | null
+          total_sales?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       staff_performance: {
         Row: {
           avg_completion_time: unknown | null
@@ -675,6 +849,45 @@ export type Database = {
           staff_id?: string
           tenant_id?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      staff_users: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean
+          permissions: Json | null
+          pin_code: string | null
+          role: string
+          staff_name: string
+          tenant_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          permissions?: Json | null
+          pin_code?: string | null
+          role?: string
+          staff_name: string
+          tenant_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          permissions?: Json | null
+          pin_code?: string | null
+          role?: string
+          staff_name?: string
+          tenant_id?: string
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
